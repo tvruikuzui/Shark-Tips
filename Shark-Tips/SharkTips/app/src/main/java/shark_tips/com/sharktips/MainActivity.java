@@ -14,5 +14,7 @@ public class MainActivity extends AppCompatActivity {
         TelephonyManager manager = (TelephonyManager) this.getSystemService(this.TELEPHONY_SERVICE);
         String id = manager.getDeviceId();
 
+        // DO YOU SEE THIS ?
+
     }
 }
