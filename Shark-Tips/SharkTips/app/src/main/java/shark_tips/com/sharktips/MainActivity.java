@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         String id = manager.getDeviceId();
 
         // DO YOU SEE THIS ?
+        //shalev changes
 
     }
 }
