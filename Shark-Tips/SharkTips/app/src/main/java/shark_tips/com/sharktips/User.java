@@ -1,9 +1,6 @@
 package shark_tips.com.sharktips;
 
 
-import java.util.Date;
-import java.util.Timer;
-
 /**
  * Created by User on 03/04/2017.
  */
@@ -42,8 +39,15 @@ public class User {
 
     public void setName(String name) {
         if (name.length() < 2)
-            throw new IllegalArgumentException();
+            return;
         this.name = name;
+    }
+
+    public boolean nameIsOk(){
+        if (name != null){
+            return true;
+        }
+        return false;
     }
 
     public String getLastName() {
@@ -52,8 +56,15 @@ public class User {
 
     public void setLastName(String lastName) {
         if (lastName.length() < 2)
-            throw new IllegalArgumentException();
+            return;
         this.lastName = lastName;
+    }
+
+    public boolean lastNameIsOk(){
+        if (lastName != null){
+            return true;
+        }
+        return false;
     }
 
     public String getMail() {
@@ -61,7 +72,7 @@ public class User {
     }
 
     public void setMail(String mail) {
-        if (!mail.contains("@") || !mail.contains("."))
+        if (!mail.contains("@") && !mail.contains("."))
             throw new IllegalArgumentException();
         this.mail = mail;
     }
