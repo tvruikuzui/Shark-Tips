@@ -20,6 +20,9 @@ public class User {
     private long registerTime;
     private int isActive;
 
+    public User() {
+    }
+
     public User(String name, String lastName, String mail, int phoneNumber,
                 String country, String password) {
         this.name = name;
@@ -43,7 +46,7 @@ public class User {
         this.name = name;
     }
 
-    public boolean nameIsOk(){
+    public boolean checkValidUserName(){
         if (name != null){
             return true;
         }
@@ -60,7 +63,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public boolean lastNameIsOk(){
+    public boolean checkValidUserLastName(){
         if (lastName != null){
             return true;
         }
@@ -73,8 +76,15 @@ public class User {
 
     public void setMail(String mail) {
         if (!mail.contains("@") && !mail.contains("."))
-            throw new IllegalArgumentException();
+            return;
         this.mail = mail;
+    }
+
+    public boolean checkValidMail(){
+        if (mail != null){
+            return true;
+        }
+        return false;
     }
 
     public int getPhoneNumber() {
@@ -82,7 +92,16 @@ public class User {
     }
 
     public void setPhoneNumber(int phoneNumber) {
+        if (phoneNumber < 6)
+            return;
         this.phoneNumber = phoneNumber;
+    }
+
+    public boolean checkValidPhoneNumber(){
+        if (phoneNumber > 6){
+            return true;
+        }
+        return false;
     }
 
     public String getCountry() {
@@ -91,9 +110,16 @@ public class User {
 
     public void setCountry(String country) {
         if (country.length() != 2)
-            throw new IllegalArgumentException();
+            return;
         String realCountry = Phone2Country.getPhone(country);
         this.country = realCountry;
+    }
+
+    public boolean checkValidCountryCode(){
+        if (country != null){
+            return true;
+        }
+        return false;
     }
 
     public String getPassword() {
@@ -102,9 +128,17 @@ public class User {
 
     public void setPassword(String password) {
         if (password.length() < 6)
-            throw new IllegalArgumentException();
+            return;
         this.password = password;
     }
+
+    public boolean checkValidPassword(){
+        if (password != null){
+            return true;
+        }
+        return false;
+    }
+
 
     public IsAdmin getIsAdmin() {
         return isAdmin;
