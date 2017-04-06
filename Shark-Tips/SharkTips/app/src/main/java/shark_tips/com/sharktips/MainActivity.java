@@ -41,6 +41,6 @@ public class MainActivity extends AppCompatActivity implements AddUserListener {
 
     @Override
     public void addUser(User user) {
-        Log.d("USER",user.toString());
+        Log.d("CODE", String.valueOf(user.getPhoneNumber()));
     }
 }

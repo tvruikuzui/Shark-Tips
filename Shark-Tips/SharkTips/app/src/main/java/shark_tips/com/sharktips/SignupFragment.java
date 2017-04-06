@@ -4,22 +4,32 @@ package shark_tips.com.sharktips;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.hbb20.CountryCodePicker;
+
+
+interface AddUserListener{
+    public void addUser(User user);
+}
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SignupFragment extends Fragment {
 
+    private Button btnRegister;
+    private AddUserListener listener;
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
-    Button btnRegister;
-    AddUserListener listener;
     private User user;
+    private CountryCodePicker ccp;
+    private int getCountryCode;
 
     public void setListener(AddUserListener listener) {
         this.listener = listener;
@@ -32,9 +42,23 @@ public class SignupFragment extends Fragment {
         txtLast = (EditText) view.findViewById(R.id.txtLast);
         txtEmail = (EditText) view.findViewById(R.id.txtEmail);
         txtPhoneNumber = (EditText) view.findViewById(R.id.txtPhoneNumber);
-        txtCountry = (EditText) view.findViewById(R.id.txtCountry);
         txtPassword = (EditText) view.findViewById(R.id.txtPassword);
+        ccp = (CountryCodePicker) view.findViewById(R.id.ccp);
 
+        // Get the Country Code from Country Piker and store the value in getCountryCode.
+        getCountryCode = ccp.getSelectedCountryCodeAsInt();
+
+        // Add to the EditText the Country Code that was Selected.
+        ccp.registerCarrierNumberEditText(txtPhoneNumber);
+        // If user wrong and Switch Country Code , the portal was update.
+        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                // update the portal.
+                getCountryCode = ccp.getSelectedCountryCodeAsInt();
+
+            }
+        });
         btnRegister = (Button) view.findViewById(R.id.btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,16 +82,11 @@ public class SignupFragment extends Fragment {
                     txtEmail.setHint("Invalid Email");
                     return;
                 }
-                user.setPhoneNumber(Integer.parseInt(txtPhoneNumber.getText().toString()));
+                user.setPhoneNumber(Long.parseLong((getCountryCode+txtPhoneNumber.getText().toString())));
                 if (user.checkValidPhoneNumber() == false){
                     txtPhoneNumber.setText("");
                     txtPhoneNumber.setHint("Phone Must have 7 numbers");
                     return;
-                }
-                user.setCountry(txtCountry.getText().toString());
-                if (user.checkValidCountryCode() == false){
-                    txtCountry.setText("");
-                    txtCountry.setHint("Invalid Country Code");
                 }
                 user.setPassword(txtPassword.getText().toString());
                 if (user.checkValidPassword() == false){
@@ -83,8 +102,4 @@ public class SignupFragment extends Fragment {
         return view;
     }
 
-}
-
-interface AddUserListener{
-    public void addUser(User user);
 }

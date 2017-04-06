@@ -13,7 +13,7 @@ public class User {
     private String name;
     private String lastName;
     private String mail;
-    private int phoneNumber;
+    private long phoneNumber;
     private String country;
     private String password;
     private IsAdmin isAdmin;
@@ -23,7 +23,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, String mail, int phoneNumber,
+    public User(String name, String lastName, String mail, long phoneNumber,
                 String country, String password) {
         this.name = name;
         this.lastName = lastName;
@@ -87,11 +87,11 @@ public class User {
         return false;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         if (phoneNumber < 6)
             return;
         this.phoneNumber = phoneNumber;
@@ -111,8 +111,6 @@ public class User {
     public void setCountry(String country) {
         if (country.length() != 2)
             return;
-        String realCountry = Phone2Country.getPhone(country);
-        this.country = realCountry;
     }
 
     public boolean checkValidCountryCode(){
