@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-public class MainActivity extends AppCompatActivity implements SendLogListener {
+public class MainActivity extends AppCompatActivity implements SendLogListener,LogInListener {
 
 
     private Toolbar toolbar;
@@ -36,7 +36,9 @@ public class MainActivity extends AppCompatActivity implements SendLogListener {
         SignupFragment signupFragment = new SignupFragment();
         signupFragment.setLogListener(this);
         pagerAdapter.addWindow(signupFragment,"SignUp");
-        pagerAdapter.addWindow(new LoginFragment(),"Login");
+        LoginFragment loginFragment = new LoginFragment();
+        loginFragment.setListener(this);
+        pagerAdapter.addWindow(loginFragment,"Login");
         viewPager.setAdapter(pagerAdapter);
 
         tableLayout.setupWithViewPager(viewPager);
@@ -46,6 +48,15 @@ public class MainActivity extends AppCompatActivity implements SendLogListener {
 
     @Override
     public void sendLog(boolean isLogIn) {
+        if (isLogIn == true){
+            Intent intent = new Intent(this,Home.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
+    public void logIn(boolean isLogIn) {
         if (isLogIn == true){
             Intent intent = new Intent(this,Home.class);
             startActivity(intent);

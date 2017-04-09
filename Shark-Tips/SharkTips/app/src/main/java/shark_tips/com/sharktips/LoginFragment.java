@@ -2,6 +2,8 @@ package shark_tips.com.sharktips;
 
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,7 +31,13 @@ public class LoginFragment extends Fragment {
 
     private EditText txtLoginEmail,txtLoginPassword;
     private Button btnLogin;
+    private boolean isLogIn = false;
+    private LogInListener listener;
+    private SharedPreferences preferences;
 
+    public void setListener(LogInListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -71,12 +79,26 @@ public class LoginFragment extends Fragment {
                         return null;
                     }
                 }.execute(txtLoginEmail.getText().toString(),txtLoginPassword.getText().toString());
+
+                isLogIn = true;
+                preferences = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
+                if (preferences != null) {
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("log", isLogIn);
+                    editor.commit();
+                }
+                if (listener != null){
+                    listener.logIn(isLogIn);
+                }
             }
         });
-
 
         return view;
     }
 
 
+}
+
+interface LogInListener{
+    void logIn(boolean isLogIn);
 }
