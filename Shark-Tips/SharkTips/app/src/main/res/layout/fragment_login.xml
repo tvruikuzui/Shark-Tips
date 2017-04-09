@@ -7,6 +7,7 @@
 
     <EditText
         android:id="@+id/txtLogimEmail"
+        android:inputType="textEmailAddress"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +27,7 @@
         android:padding="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:inputType="textPassword"
         android:hint="password"/>
 
     <Button
@@ -34,6 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#fff"
+        android:textSize="20sp"
         android:text="Login"/>
 
 </LinearLayout>
