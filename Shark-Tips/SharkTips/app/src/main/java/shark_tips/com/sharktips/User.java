@@ -112,6 +112,7 @@ public class User {
     public void setCountry(String country) {
         if (country.length() < 2)
             return;
+        this.country = country;
     }
 
     public boolean checkValidCountryCode(){

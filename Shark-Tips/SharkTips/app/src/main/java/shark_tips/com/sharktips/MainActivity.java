@@ -18,23 +18,13 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tableLayout;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
-    private SharedPreferences preferences;
-    private boolean checkUserLog = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        preferences = getSharedPreferences("UserData.txt",MODE_PRIVATE);
-        checkUserLog = preferences.getBoolean("isLogIn",false);
-        if (checkUserLog){
-            checkUserLog = true;
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("isLogIn",checkUserLog);
-            editor.commit();
-
-        }
 
         // Create the tool bar and The layout for the Tabs
         toolbar = (Toolbar) findViewById(R.id.toolBar);

@@ -31,6 +31,7 @@ public class SignupFragment extends Fragment {
     private boolean isLogIn = false;
     private String countryName;
     private Activity activity;
+    private SharedPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,6 +101,13 @@ public class SignupFragment extends Fragment {
                     txtCountry.setText("");
                     txtCountry.setHint("Invalid country name");
                     return;
+                }
+                isLogIn = true;
+                if (preferences != null) {
+                    preferences = activity.getBaseContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("log", isLogIn);
+                    editor.commit();
                 }
 
                 completeRegister();

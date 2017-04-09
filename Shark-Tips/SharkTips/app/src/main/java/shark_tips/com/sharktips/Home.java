@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class Home extends AppCompatActivity {
 
+
     private SharedPreferences preferences;
     private boolean checkUserLog = false;
 
@@ -15,11 +16,16 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        preferences = getSharedPreferences("UserData.txt",MODE_PRIVATE);
-        checkUserLog = preferences.getBoolean("isLogIn",false);
-        if (false){
 
+        preferences = getSharedPreferences("data",MODE_PRIVATE);
+        checkUserLog = preferences.getBoolean("log",false);
+        if (!checkUserLog){
+
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
         }
+
 
     }
 }
