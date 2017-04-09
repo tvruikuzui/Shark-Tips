@@ -1,5 +1,6 @@
 package shark_tips.com.sharktips;
 
+import android.content.Intent;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -83,8 +84,13 @@ public class ConnectToServerThread extends Thread {
             if (urlConnection != null){
                 urlConnection.disconnect();
             }
-            stop();
+
+            //stop();
+
+
         }
+
+
     }
 
 }

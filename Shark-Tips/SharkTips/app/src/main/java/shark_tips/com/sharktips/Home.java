@@ -9,7 +9,7 @@ public class Home extends AppCompatActivity {
 
 
     private SharedPreferences preferences;
-    private boolean checkUserLog = false;
+    private boolean checkUserLog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +19,7 @@ public class Home extends AppCompatActivity {
 
         preferences = getSharedPreferences("data",MODE_PRIVATE);
         checkUserLog = preferences.getBoolean("log",false);
-        if (!checkUserLog){
-
+        if (checkUserLog == false){
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();

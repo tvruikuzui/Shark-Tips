@@ -32,6 +32,11 @@ public class SignupFragment extends Fragment {
     private String countryName;
     private Activity activity;
     private SharedPreferences preferences;
+    private SendLogListener logListener;
+
+    public void setLogListener(SendLogListener logListener) {
+        this.logListener = logListener;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -102,13 +107,19 @@ public class SignupFragment extends Fragment {
                     txtCountry.setHint("Invalid country name");
                     return;
                 }
+
                 isLogIn = true;
+                preferences = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
                 if (preferences != null) {
-                    preferences = activity.getBaseContext().getSharedPreferences("data", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putBoolean("log", isLogIn);
                     editor.commit();
                 }
+
+                if (logListener != null){
+                    logListener.sendLog(isLogIn);
+                }
+
 
                 completeRegister();
             }
@@ -123,5 +134,10 @@ public class SignupFragment extends Fragment {
         c.setUser(user);
         c.start();
     }
+
+}
+
+ interface SendLogListener{
+    void sendLog(boolean isLogIn);
 
 }
