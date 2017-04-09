@@ -27,7 +27,6 @@
         android:padding="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:inputType="textPassword"
         android:hint="password"/>
 
     <Button
