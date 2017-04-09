@@ -40,6 +40,7 @@
         android:layout_marginRight="15dp"
         android:hint="email"/>
 
+
 <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -70,6 +71,17 @@
 
 
 </LinearLayout>
+
+    <EditText
+        android:id="@+id/txtCountry"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_output"
+        android:padding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="country"/>
 
     <EditText
         android:id="@+id/txtPassword"
