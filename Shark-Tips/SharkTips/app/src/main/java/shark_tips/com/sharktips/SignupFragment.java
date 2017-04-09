@@ -26,11 +26,10 @@ public class SignupFragment extends Fragment {
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
     private User user;
     private CountryCodePicker ccp;
-    private int getCountryCode;
+    private String getCountryCode;
     private boolean isAdmin = false;
     private boolean isLogIn = false;
     private String countryName;
-    private Activity activity;
     private SharedPreferences preferences;
     private SendLogListener logListener;
 
@@ -50,7 +49,7 @@ public class SignupFragment extends Fragment {
         ccp = (CountryCodePicker) view.findViewById(R.id.ccp);
 
         // Get the Country Code from Country Piker and store the value in getCountryCode.
-        getCountryCode = ccp.getSelectedCountryCodeAsInt();
+        getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
         countryName = ccp.getDefaultCountryName();
         txtCountry.setText(countryName);
         // Add to the EditText the Country Code that was Selected.
@@ -60,7 +59,7 @@ public class SignupFragment extends Fragment {
             @Override
             public void onCountrySelected() {
                 // update the portal.
-                getCountryCode = ccp.getSelectedCountryCodeAsInt();
+                getCountryCode = String.valueOf(ccp.getSelectedCountryCodeAsInt());
                 countryName = ccp.getSelectedCountryName();
                 txtCountry.setText(countryName);
 
@@ -95,6 +94,9 @@ public class SignupFragment extends Fragment {
                     txtPhoneNumber.setHint("Phone Must have 7 numbers");
                     return;
                 }
+
+                user.setCountryCode(String.valueOf(ccp.getSelectedCountryCodeAsInt()));
+
                 user.setPassword(txtPassword.getText().toString());
                 if (user.checkValidPassword() == false){
                     txtPassword.setText("");
@@ -118,10 +120,8 @@ public class SignupFragment extends Fragment {
 
                 if (logListener != null){
                     logListener.sendLog(isLogIn);
+                    completeRegister();
                 }
-
-
-                completeRegister();
             }
         });
 

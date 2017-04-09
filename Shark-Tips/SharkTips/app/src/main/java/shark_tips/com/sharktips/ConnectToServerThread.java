@@ -47,6 +47,7 @@ public class ConnectToServerThread extends Thread {
             jsonObject.put("name",user.getName());
             jsonObject.put("lastName",user.getLastName());
             jsonObject.put("country",user.getCountry());
+            jsonObject.put("countryCode",user.getCountryCode());
             jsonObject.put("password",user.getPassword());
             jsonObject.put("email",user.getMail());
             jsonObject.put("admin",user.getIsAdmin());

@@ -1,9 +1,7 @@
 package shark_tips.com.sharktips;
 
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +14,6 @@ import android.widget.EditText;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -49,7 +46,6 @@ public class LoginFragment extends Fragment {
                     protected Void doInBackground(String... params) {
                         HttpURLConnection urlConnection = null;
                         InputStream inputStream = null;
-                        OutputStream outputStream = null;
                         URL url = null;
                         try {
                             url = new URL("http://35.187.25.133/shark1/Users/logIn/"+params[0]+"/"+params[1]);

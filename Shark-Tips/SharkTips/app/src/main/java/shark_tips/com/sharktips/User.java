@@ -14,7 +14,7 @@ public class User {
     private String lastName;
     private String mail;
     private int phoneNumber;
-    private String country;
+    private String country,countryCode;
     private String password;
     private boolean isAdmin;
     private long registerTime;
@@ -24,11 +24,12 @@ public class User {
     }
 
     public User(String name, String lastName, String mail, int phoneNumber,
-                String country, String password) {
+                String countryCode,String country, String password) {
         this.name = name;
         this.lastName = lastName;
         this.mail = mail;
         this.phoneNumber = phoneNumber;
+        this.countryCode = countryCode;
         this.country = country;
         this.password = password;
         isAdmin = false;
@@ -36,6 +37,15 @@ public class User {
 //        isActive = 0;
     }
 
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        if (countryCode == null)
+            return;
+        this.countryCode = countryCode;
+    }
 
     public String getName() {
         return name;

@@ -51,6 +51,7 @@
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
         app:defaultNameCode="IL"
+        app:defaultCode="972"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"
         android:layout_width="0dp"
