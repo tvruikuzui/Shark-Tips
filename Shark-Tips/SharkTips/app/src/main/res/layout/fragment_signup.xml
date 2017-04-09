@@ -38,6 +38,7 @@
         android:padding="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:inputType="textEmailAddress"
         android:hint="email"/>
 
 <LinearLayout
@@ -80,6 +81,7 @@
         android:padding="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:inputType="textPassword"
         android:hint="password"/>
 
     <Button
@@ -88,6 +90,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#fff"
+        android:textSize="20sp"
         android:text="Submit"/>
 
 </LinearLayout>
