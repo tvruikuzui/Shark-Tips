@@ -13,17 +13,17 @@ public class User {
     private String name;
     private String lastName;
     private String mail;
-    private long phoneNumber;
+    private int phoneNumber;
     private String country;
     private String password;
-    private IsAdmin isAdmin;
+    private boolean isAdmin;
     private long registerTime;
     private int isActive;
 
     public User() {
     }
 
-    public User(String name, String lastName, String mail, long phoneNumber,
+    public User(String name, String lastName, String mail, int phoneNumber,
                 String country, String password) {
         this.name = name;
         this.lastName = lastName;
@@ -31,10 +31,11 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.country = country;
         this.password = password;
-        isAdmin = IsAdmin.notAdmin;
-        registerTime = System.currentTimeMillis();
-        isActive = 0;
+        isAdmin = false;
+//        registerTime = System.currentTimeMillis();
+//        isActive = 0;
     }
+
 
     public String getName() {
         return name;
@@ -87,11 +88,11 @@ public class User {
         return false;
     }
 
-    public long getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         if (phoneNumber < 6)
             return;
         this.phoneNumber = phoneNumber;
@@ -109,8 +110,9 @@ public class User {
     }
 
     public void setCountry(String country) {
-        if (country.length() != 2)
+        if (country.length() < 2)
             return;
+        this.country = country;
     }
 
     public boolean checkValidCountryCode(){
@@ -138,11 +140,11 @@ public class User {
     }
 
 
-    public IsAdmin getIsAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(IsAdmin isAdmin) {
+    public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 

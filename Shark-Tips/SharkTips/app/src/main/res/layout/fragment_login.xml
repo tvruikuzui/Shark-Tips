@@ -19,6 +19,7 @@
 
     <EditText
         android:id="@+id/txtLoginPassword"
+        android:inputType="textPassword"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +35,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center_horizontal|bottom"
         android:background="@color/colorPrimaryDark"
         android:textColor="#fff"
         android:textSize="20sp"

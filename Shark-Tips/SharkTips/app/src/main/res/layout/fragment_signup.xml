@@ -41,6 +41,7 @@
         android:inputType="textEmailAddress"
         android:hint="email"/>
 
+
 <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -73,6 +74,17 @@
 </LinearLayout>
 
     <EditText
+        android:id="@+id/txtCountry"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_output"
+        android:padding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:hint="country"/>
+
+    <EditText
         android:id="@+id/txtPassword"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
@@ -89,10 +101,10 @@
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center_horizontal|bottom"
         android:background="@color/colorPrimaryDark"
         android:textColor="#fff"
-        android:textSize="20sp"
+
         android:text="Submit"/>
 
 </LinearLayout>
