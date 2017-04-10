@@ -49,12 +49,13 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AsyncTask<String, Void, Void>() {
+                new AsyncTask<String, Void, String>() {
                     @Override
-                    protected Void doInBackground(String... params) {
+                    protected String doInBackground(String... params) {
                         HttpURLConnection urlConnection = null;
                         InputStream inputStream = null;
                         URL url = null;
+                        String result="";
                         try {
                             url = new URL("http://35.187.25.133/shark1/Users/logIn/"+params[0]+"/"+params[1]);
                             urlConnection = (HttpURLConnection) url.openConnection();
@@ -65,7 +66,7 @@ public class LoginFragment extends Fragment {
                             inputStream = urlConnection.getInputStream();
                             byte [] buffer = new byte[128];
                             int a = inputStream.read(buffer);
-                            String result = new String(buffer,0,a);
+                            result = new String(buffer,0,a);
                             Log.d("TAG",result);
                             inputStream.close();
                         } catch (MalformedURLException e) {
@@ -76,20 +77,35 @@ public class LoginFragment extends Fragment {
                             e.printStackTrace();
                         }
 
-                        return null;
+                        return result;
+                    }
+
+                    @Override
+                    protected void onPostExecute(String s) {
+                        switch (s){
+                            case "not registered":
+                                txtLoginEmail.setText(s);
+                                break;
+                            case "wrong password":
+                                txtLoginPassword.setHint(s);
+                                break;
+                            case "ok":
+                                isLogIn = true;
+                                preferences = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
+                                if (preferences != null) {
+                                    SharedPreferences.Editor editor = preferences.edit();
+                                    editor.putBoolean("log", isLogIn);
+                                    editor.commit();
+                                }
+                                break;
+                        }
                     }
                 }.execute(txtLoginEmail.getText().toString(),txtLoginPassword.getText().toString());
 
-                isLogIn = true;
-                preferences = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
-                if (preferences != null) {
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("log", isLogIn);
-                    editor.commit();
-                }
                 if (listener != null){
                     listener.logIn(isLogIn);
                 }
+
             }
         });
 
