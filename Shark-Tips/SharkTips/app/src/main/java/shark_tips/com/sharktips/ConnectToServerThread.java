@@ -86,7 +86,10 @@ public class ConnectToServerThread extends Thread {
                 urlConnection.disconnect();
             }
 
-            //stop();
+            // is this is can be use yo stop Thread?
+            ConnectToServerThread.interrupted();
+
+            // the stop method in no longer avilable to use.
 
 
         }

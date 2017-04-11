@@ -13,8 +13,6 @@ import android.util.Log;
 
 public class MainActivity extends AppCompatActivity implements SendLogListener,LogInListener {
 
-
-    private Toolbar toolbar;
     private TabLayout tableLayout;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
@@ -27,9 +25,6 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
 
 
         // Create the tool bar and The layout for the Tabs
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);
-
         tableLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());

@@ -21,7 +21,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     private SharedPreferences preferences;
     private boolean checkUserLog;
-    private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private PagerAdapter adapter;
@@ -30,9 +29,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        toolbar = (Toolbar) findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
