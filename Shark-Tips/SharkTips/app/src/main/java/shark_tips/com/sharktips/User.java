@@ -23,7 +23,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, String mail, int phoneNumber,
+    public User(String name, String lastName, String mail, long phoneNumber,
                 String countryCode,String country, String password) {
         this.name = name;
         this.lastName = lastName;
