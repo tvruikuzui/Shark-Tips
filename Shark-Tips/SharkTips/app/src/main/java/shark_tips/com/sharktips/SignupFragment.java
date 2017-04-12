@@ -1,19 +1,15 @@
 package shark_tips.com.sharktips;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.hbb20.CountryCodePicker;
 
@@ -88,7 +84,7 @@ public class SignupFragment extends Fragment {
                     txtEmail.setHint("Invalid Email");
                     return;
                 }
-                user.setPhoneNumber(Integer.parseInt((getCountryCode+txtPhoneNumber.getText().toString())));
+                user.setPhoneNumber(Long.parseLong((getCountryCode+txtPhoneNumber.getText().toString())));
                 if (user.checkValidPhoneNumber() == false){
                     txtPhoneNumber.setText("");
                     txtPhoneNumber.setHint("Phone Must have 7 numbers");
