@@ -13,7 +13,7 @@ public class User {
     private String name;
     private String lastName;
     private String mail;
-    private int phoneNumber;
+    private long phoneNumber;
     private String country,countryCode;
     private String password;
     private boolean isAdmin;
@@ -98,11 +98,11 @@ public class User {
         return false;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         if (phoneNumber < 6)
             return;
         this.phoneNumber = phoneNumber;
