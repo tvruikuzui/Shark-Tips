@@ -72,6 +72,20 @@
         android:hint="phone"/>
 </LinearLayout>
 
+    <Spinner
+        android:id="@+id/spnLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/spnLang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
     <EditText
         android:id="@+id/txtCountry"
         android:layout_marginTop="15dp"
@@ -96,14 +110,12 @@
         android:hint="password"/>
 
     <Button
-        android:layout_marginTop="20dp"
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
-        android:textColor="#fff"
-
-        android:text="Submit"/>
+        android:text="Submit"
+        android:textColor="#fff" />
 
 </LinearLayout>
