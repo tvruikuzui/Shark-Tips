@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     private TabLayout tableLayout;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
+    private boolean isUserLog;
+
 
 
     @Override
@@ -38,7 +40,18 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
 
         tableLayout.setupWithViewPager(viewPager);
 
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences preferences = getSharedPreferences("data",MODE_PRIVATE);
+        isUserLog = preferences.getBoolean("log",true);
+        if (isUserLog == true){
+            Intent intent = new Intent(this,Home.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override

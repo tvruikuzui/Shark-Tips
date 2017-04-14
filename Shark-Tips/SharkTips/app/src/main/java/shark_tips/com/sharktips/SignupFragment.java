@@ -8,10 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.hbb20.CountryCodePicker;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +33,8 @@ public class SignupFragment extends Fragment {
     private String countryName;
     private SharedPreferences preferences;
     private SendLogListener logListener;
+    private Spinner spnLang,spnLevel;
+    private ArrayAdapter<CharSequence> langAdapter,levelAdapter;
 
     public void setLogListener(SendLogListener logListener) {
         this.logListener = logListener;
@@ -42,8 +49,15 @@ public class SignupFragment extends Fragment {
         txtEmail = (EditText) view.findViewById(R.id.txtEmail);
         txtPhoneNumber = (EditText) view.findViewById(R.id.txtPhoneNumber);
         txtPassword = (EditText) view.findViewById(R.id.txtPassword);
+        spnLang = (Spinner) view.findViewById(R.id.spnLang);
+        spnLevel = (Spinner) view.findViewById(R.id.spnLevel);
         ccp = (CountryCodePicker) view.findViewById(R.id.ccp);
-
+        langAdapter = ArrayAdapter.createFromResource(getContext(),R.array.language,android.R.layout.simple_spinner_item);
+        langAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnLang.setAdapter(langAdapter);
+        levelAdapter = ArrayAdapter.createFromResource(getContext(),R.array.TradingLevel,android.R.layout.simple_spinner_item);
+        levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnLevel.setAdapter(levelAdapter);
         // Get the Country Code from Country Piker and store the value in getCountryCode.
         getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
         countryName = ccp.getDefaultCountryName();

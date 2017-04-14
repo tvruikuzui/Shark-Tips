@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="language">
+        <item>Choose Language</item>
+        <item>Arabic</item>
+        <item>English</item>
+        <item>Russian</item>
+        <item>German</item>
+    </string-array>
+
+    <string-array name="TradingLevel">
+        <item>new</item>
+        <item>old</item>
+        <item>classy</item>
+        <item>top</item>
+    </string-array>
+
+</resources>

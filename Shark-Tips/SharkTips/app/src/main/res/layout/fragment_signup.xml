@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/txtName"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
@@ -72,19 +72,6 @@
         android:hint="phone"/>
 </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spnLevel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </Spinner>
-
-    <Spinner
-        android:id="@+id/spnLang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </Spinner>
 
     <EditText
         android:id="@+id/txtCountry"
@@ -109,11 +96,33 @@
         android:inputType="textPassword"
         android:hint="password"/>
 
+    <TextView
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:text="just to help you"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:padding="5dp"
+        android:id="@+id/spnLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
+    <Spinner
+        android:padding="5dp"
+        android:id="@+id/spnLang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@color/colorPrimaryDark"
         android:text="Submit"
         android:textColor="#fff" />
