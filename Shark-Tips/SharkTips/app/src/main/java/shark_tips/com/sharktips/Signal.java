@@ -8,13 +8,13 @@ public class Signal {
 
     private String status,time,currency,action,price;
     private String sellStop,sl,tp1,tp2,note;
-    public boolean isExpanded, isBuy, isOpen;
+    public boolean isExpanded;
 
 
     public Signal() {
     }
 
-    public Signal(String status, String time, String currency, String action, String price, String sellStop, String sl, String tp1, String tp2, String note, boolean isBuy, boolean isOpen) {
+    public Signal(String status, String time, String currency, String action, String price, String sellStop, String sl, String tp1, String tp2, String note) {
         this.status = status;
         this.time = time;
         this.currency = currency;
@@ -25,8 +25,6 @@ public class Signal {
         this.tp1 = tp1;
         this.tp2 = tp2;
         this.note = note;
-        this.isBuy = isBuy;
-        this.isOpen = isOpen;
     }
 
     public String getStatus() {
@@ -107,21 +105,5 @@ public class Signal {
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-    public boolean isBuy() {
-        return isBuy;
-    }
-
-    public void setBuy(boolean buy) {
-        this.isBuy = buy;
-    }
-
-    public boolean isOpen() {
-        return isOpen;
-    }
-
-    public void setOpen(boolean open) {
-        this.isOpen = open;
     }
 }

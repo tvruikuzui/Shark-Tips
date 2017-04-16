@@ -1,6 +1,7 @@
 package shark_tips.com.sharktips;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,20 @@ public class ExpandListAdapter extends BaseAdapter {
             row.table.setVisibility(View.VISIBLE);
         }else {
             row.table.setVisibility(View.GONE);
+        }
+
+        //check the status value and paint the color - green = open / red = close
+        if (item.getStatus().equals("open")){
+            row.lblStatus.setTextColor(Color.argb(255,67,206,01));
+        }else {
+            row.lblStatus.setTextColor(Color.argb(255,450,11,15));
+        }
+
+        //check the action value and paint the color - green = buy / red = sell
+        if (item.getAction().equals("buy")){
+            row.lblAction.setTextColor(Color.argb(255,67,206,01));
+        }else {
+            row.lblAction.setTextColor(Color.argb(255,450,11,15));
         }
 
         row.lblStatus.setText(item.getStatus());
