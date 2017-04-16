@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -51,6 +52,8 @@ public class Offers extends Fragment {
                 imgOfferTwo.setVisibility(View.GONE);
                 frame.setVisibility(View.VISIBLE);
                 loadWeb.setVisibility(View.VISIBLE);
+                WebSettings webSettings = loadWeb.getSettings();
+                webSettings.setJavaScriptEnabled(true);
                 loadWeb.loadUrl("https://www.trade-24.com/content/lp/sharks-tips.html?lName=2297&tag1=SharkTips");
             }
         });
@@ -61,6 +64,8 @@ public class Offers extends Fragment {
                 imgOfferTwo.setVisibility(View.GONE);
                 frame.setVisibility(View.VISIBLE);
                 loadWeb.setVisibility(View.VISIBLE);
+                WebSettings webSettings = loadWeb.getSettings();
+                webSettings.setJavaScriptEnabled(true);
                 loadWeb.loadUrl("https://www.shark-tips.com/shark-tips-registration/");
             }
         });
