@@ -26,6 +26,19 @@
 
  </ImageView>
 
+ <FrameLayout
+     android:id="@+id/webFrame"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+  <WebView
+      android:id="@+id/loadWeb"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+  </WebView>
+ </FrameLayout>
+
 </LinearLayout>
 
 </ScrollView>
