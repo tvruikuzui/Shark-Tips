@@ -2,7 +2,7 @@
 <resources>
 
     <string-array name="language">
-        <item>Choose Language</item>
+        <item>Spoken language</item>
         <item>Arabic</item>
         <item>English</item>
         <item>Russian</item>
@@ -10,10 +10,10 @@
     </string-array>
 
     <string-array name="TradingLevel">
-        <item>new</item>
-        <item>old</item>
-        <item>classy</item>
-        <item>top</item>
+        <item>Pro</item>
+        <item>Advanced</item>
+        <item>Beginner</item>
+        <item>Trading level</item>
     </string-array>
 
 </resources>
