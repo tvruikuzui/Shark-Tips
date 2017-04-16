@@ -15,8 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,WebClickedListener{
 
 
     private SharedPreferences preferences;
@@ -24,6 +25,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private PagerAdapter adapter;
+    private boolean getClick;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addWindow(new MainHome(),"Home");
         adapter.addWindow(new Signals(),"Signals");
-        adapter.addWindow(new Offers(),"Offers");
+        Offers offers = new Offers();
+        offers.setListener(this);
+        adapter.addWindow(offers,"Offers");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
 
         preferences = getSharedPreferences("data",MODE_PRIVATE);
         checkUserLog = preferences.getBoolean("log",false);
@@ -67,7 +73,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        } else if (getClick){
+            Intent intent = new Intent(this,Home.class);
+            startActivity(intent);
+            finish();
+        }else {
             super.onBackPressed();
         }
     }
@@ -120,5 +130,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+
+    @Override
+    public void handleClick(boolean click) {
+        getClick = click;
     }
 }
