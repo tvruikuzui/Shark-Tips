@@ -13,8 +13,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -27,38 +30,23 @@ import java.net.URL;
  */
 public class Offers extends Fragment {
 
-    private WebView offerOne,offerTwo;
-    private Context context;
-
+    private ImageView imgOfferOne;
+    private FrameLayout frame;
+    private WebView webView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_offers, container, false);
-        offerOne = (WebView) view.findViewById(R.id.offerOne);
-        offerTwo = (WebView) view.findViewById(R.id.offerTwo);
-        offerOne.loadUrl("http://pointshop.co.il/sharkTips/one.png");
-        offerOne.setOnTouchListener(new View.OnTouchListener() {
+        frame = (FrameLayout) view.findViewById(R.id.webFrame);
+        frame.setVisibility(View.GONE);
+        webView = (WebView) view.findViewById(R.id.webFrame);
+        imgOfferOne = (ImageView) view.findViewById(R.id.imgofferOne);
+        Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/one.png").into(imgOfferOne);
+        imgOfferOne.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (v.getId() == R.id.offerOne) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.shark-tips.com/shark-tips-registration/"));
-                    startActivity(intent);
-                }
-                return false;
+            public void onClick(View v) {
+
             }
         });
-        offerTwo.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (v.getId() == R.id.offerTwo) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.trade-24.com/content/lp/sharks-tips.html?lName=2297&tag1=SharkTips"));
-                    startActivity(intent);
-
-                }
-                return false;
-            }
-        });
-
-
         return view;
     }
 

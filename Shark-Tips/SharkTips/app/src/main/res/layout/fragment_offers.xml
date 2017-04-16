@@ -1,3 +1,8 @@
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -6,19 +11,34 @@
     android:layout_height="match_parent"
     tools:context="shark_tips.com.sharktips.Offers">
 
- <WebView
-     android:id="@+id/offerOne"
+ <ImageView
+     android:id="@+id/imgofferOne"
      android:layout_width="match_parent"
      android:layout_height="wrap_content">
 
- </WebView>
+ </ImageView>
 
 
- <WebView
-     android:id="@+id/offerTwo"
+ <ImageView
+     android:id="@+id/imgofferTwo"
      android:layout_width="match_parent"
      android:layout_height="wrap_content">
 
- </WebView>
+ </ImageView>
+
+ <FrameLayout
+     android:id="@+id/webFrame"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+  <WebView
+      android:id="@+id/loadWeb"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+  </WebView>
+ </FrameLayout>
 
 </LinearLayout>
+
+</ScrollView>
