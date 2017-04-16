@@ -96,28 +96,32 @@
         android:inputType="textPassword"
         android:hint="password"/>
 
-    <TextView
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:text="just to help you"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp">
 
-    <Spinner
-        android:padding="5dp"
-        android:id="@+id/spnLevel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <Spinner
+            android:padding="5dp"
+            android:id="@+id/spnLevel"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
 
-    </Spinner>
+        </Spinner>
 
-    <Spinner
-        android:padding="5dp"
-        android:id="@+id/spnLang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <Spinner
+            android:padding="5dp"
+            android:id="@+id/spnLang"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
 
-    </Spinner>
+        </Spinner>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnRegister"
