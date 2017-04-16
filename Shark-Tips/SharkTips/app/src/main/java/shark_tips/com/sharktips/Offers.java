@@ -38,7 +38,6 @@ public class Offers extends Fragment {
         View view = inflater.inflate(R.layout.fragment_offers, container, false);
         frame = (FrameLayout) view.findViewById(R.id.webFrame);
         frame.setVisibility(View.GONE);
-        webView = (WebView) view.findViewById(R.id.webFrame);
         imgOfferOne = (ImageView) view.findViewById(R.id.imgofferOne);
         Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/one.png").into(imgOfferOne);
         imgOfferOne.setOnClickListener(new View.OnClickListener() {
