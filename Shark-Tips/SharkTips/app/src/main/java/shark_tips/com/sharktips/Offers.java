@@ -30,20 +30,38 @@ import java.net.URL;
  */
 public class Offers extends Fragment {
 
-    private ImageView imgOfferOne;
+    private ImageView imgOfferOne,imgOfferTwo;
     private FrameLayout frame;
-    private WebView webView;
+    private WebView loadWeb;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_offers, container, false);
         frame = (FrameLayout) view.findViewById(R.id.webFrame);
         frame.setVisibility(View.GONE);
+        loadWeb = (WebView) view.findViewById(R.id.loadWeb);
+        loadWeb.setVisibility(View.GONE);
         imgOfferOne = (ImageView) view.findViewById(R.id.imgofferOne);
+        imgOfferTwo = (ImageView) view.findViewById(R.id.imgofferTwo);
+        Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/two.png").into(imgOfferTwo);
         Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/one.png").into(imgOfferOne);
         imgOfferOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                imgOfferOne.setVisibility(View.GONE);
+                imgOfferTwo.setVisibility(View.GONE);
+                frame.setVisibility(View.VISIBLE);
+                loadWeb.setVisibility(View.VISIBLE);
+                loadWeb.loadUrl("https://www.trade-24.com/content/lp/sharks-tips.html?lName=2297&tag1=SharkTips");
+            }
+        });
+        imgOfferTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imgOfferOne.setVisibility(View.GONE);
+                imgOfferTwo.setVisibility(View.GONE);
+                frame.setVisibility(View.VISIBLE);
+                loadWeb.setVisibility(View.VISIBLE);
+                loadWeb.loadUrl("https://www.shark-tips.com/shark-tips-registration/");
             }
         });
         return view;
