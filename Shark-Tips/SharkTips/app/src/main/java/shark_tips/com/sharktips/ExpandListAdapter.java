@@ -76,11 +76,11 @@ public class ExpandListAdapter extends BaseAdapter {
             row.table.setVisibility(View.GONE);
         }
 
-        row.lblStatus.setText("Status "+item.getStatus());
-        row.lblTime.setText("Time "+item.getTime());
-        row.lblCurrency.setText("Currency "+item.getCurrency());
-        row.lblAction.setText("Action "+item.getAction());
-        row.lblPrice.setText("Price " +item.getPrice());
+        row.lblStatus.setText(item.getStatus());
+        row.lblTime.setText(item.getTime());
+        row.lblCurrency.setText(item.getCurrency());
+        row.lblAction.setText(item.getAction());
+        row.lblPrice.setText(item.getPrice());
         row.lblSellStop.setText("SellStop "+item.getSellStop());
         row.lblsl.setText("Sl "+item.getSl());
         row.lbltp1.setText("Tp1 "+item.getTp1());
