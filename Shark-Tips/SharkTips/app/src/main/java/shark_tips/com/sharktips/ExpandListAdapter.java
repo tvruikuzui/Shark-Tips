@@ -78,6 +78,7 @@ public class ExpandListAdapter extends BaseAdapter {
         }
 
         //check the status value and paint the color - green = open / red = close
+        /*
         if (item.getStatus().equals("open")){
             row.lblStatus.setTextColor(Color.argb(255,67,206,01));
         }else {
@@ -90,16 +91,19 @@ public class ExpandListAdapter extends BaseAdapter {
         }else {
             row.lblAction.setTextColor(Color.argb(255,450,11,15));
         }
+*/
 
         row.lblStatus.setText(item.getStatus());
         row.lblTime.setText(item.getTime());
         row.lblCurrency.setText(item.getCurrency());
         row.lblAction.setText(item.getAction());
-        row.lblPrice.setText(item.getPrice());
+        row.lblPrice.setText((int) item.getPrice());
         row.lblSellStop.setText("SellStop "+item.getSellStop());
         row.lblsl.setText("Sl "+item.getSl());
         row.lbltp1.setText("Tp1 "+item.getTp1());
         row.lbltp2.setText("Tp2 "+item.getTp2());
+
+
 
         return convertView;
     }

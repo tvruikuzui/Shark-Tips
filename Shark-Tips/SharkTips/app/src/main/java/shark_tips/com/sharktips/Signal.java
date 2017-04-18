@@ -6,19 +6,36 @@ package shark_tips.com.sharktips;
 
 public class Signal {
 
-    private String status,time,currency,action,price;
-    private String sellStop,sl,tp1,tp2,note;
+    // Check List Status
+    private String status,action;
     public boolean isExpanded;
+
+    // Signal
+
+    boolean isOpen;
+    int time;
+    String currency;
+    boolean isBuy;
+    double price;
+    double sellStop;
+    double sl;
+    double tp1;
+    double tp2;
+    String note;
 
 
     public Signal() {
     }
 
-    public Signal(String status, String time, String currency, String action, String price, String sellStop, String sl, String tp1, String tp2, String note) {
-        this.status = status;
+    public Signal(String note) {
+        this.note = note;
+    }
+
+    public Signal(boolean isOpen, int time, String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note) {
+        this.isOpen = isOpen;
         this.time = time;
         this.currency = currency;
-        this.action = action;
+        this.isBuy = isBuy;
         this.price = price;
         this.sellStop = sellStop;
         this.sl = sl;
@@ -27,19 +44,19 @@ public class Signal {
         this.note = note;
     }
 
-    public String getStatus() {
-        return status;
+    public boolean isOpen() {
+        return isOpen;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setOpen(boolean open) {
+        isOpen = open;
     }
 
-    public String getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(int time) {
         this.time = time;
     }
 
@@ -51,51 +68,51 @@ public class Signal {
         this.currency = currency;
     }
 
-    public String getAction() {
-        return action;
+    public boolean isBuy() {
+        return isBuy;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setBuy(boolean buy) {
+        isBuy = buy;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getSellStop() {
+    public double getSellStop() {
         return sellStop;
     }
 
-    public void setSellStop(String sellStop) {
+    public void setSellStop(double sellStop) {
         this.sellStop = sellStop;
     }
 
-    public String getSl() {
+    public double getSl() {
         return sl;
     }
 
-    public void setSl(String sl) {
+    public void setSl(double sl) {
         this.sl = sl;
     }
 
-    public String getTp1() {
+    public double getTp1() {
         return tp1;
     }
 
-    public void setTp1(String tp1) {
+    public void setTp1(double tp1) {
         this.tp1 = tp1;
     }
 
-    public String getTp2() {
+    public double getTp2() {
         return tp2;
     }
 
-    public void setTp2(String tp2) {
+    public void setTp2(double tp2) {
         this.tp2 = tp2;
     }
 
@@ -106,4 +123,24 @@ public class Signal {
     public void setNote(String note) {
         this.note = note;
     }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+
 }

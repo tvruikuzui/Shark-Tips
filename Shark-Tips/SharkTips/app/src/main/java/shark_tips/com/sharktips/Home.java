@@ -112,12 +112,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id){
+            case R.id.nav_home:
+                Intent intent = new Intent(this,Home.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.nav_signals:
+                adapter.getItem(1);
+                break;
             case R.id.nav_logout:
                logOut();
                 break;
             case R.id.nav_contact:
                 sendEmail();
                 break;
+
+            case R.id.nav_share:
+                shareToWhatsapp();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -125,7 +136,18 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         return true;
     }
 
-    // log out From the app
+    //Share to Whatsapp
+    private void shareToWhatsapp() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+        sendIntent.setType("text/plain");
+        sendIntent.setPackage("com.whatsapp");
+        startActivity(sendIntent);
+        finish();
+    }
+
+    // Log out From the app
     private void logOut() {
         checkUserLog = false;
         SharedPreferences prf = getSharedPreferences("data",MODE_PRIVATE);
@@ -138,6 +160,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         finish();
     }
 
+    // Send Mail To Admin
     protected void sendEmail() {
         String[] TO = {"Office@shark-tips.com"};
         String[] CC = {""};
@@ -157,6 +180,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Toast.makeText(this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
 
 
     @Override
