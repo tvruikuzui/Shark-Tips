@@ -130,6 +130,12 @@ public class Signal {
     }
 
     public void setStatus(String status) {
+        if (isOpen == true){
+            status = "open";
+        }else {
+            status = "close";
+        }
+
         this.status = status;
     }
 
@@ -139,6 +145,11 @@ public class Signal {
     }
 
     public void setAction(String action) {
+        if (isBuy == true){
+            action = "buy";
+        }else {
+            action = "sell";
+        }
         this.action = action;
     }
 
