@@ -1,13 +1,62 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="shark_tips.com.sharktips.MainHome">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/imgMainPhoto"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/trial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/imgOne"
+                android:src="@drawable/noone"
+                android:layout_height="60dp"
+                android:layout_width="60dp"/>
+
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Average over 300 pips of profit per month."/>
+
+
+            <ImageView
+                android:id="@+id/imgTwo"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/notwo"
+                android:layout_height="60dp"
+                android:layout_width="60dp"/>
+
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Zero fees and commissions to worry about!"/>
+
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/imgThree"
+                android:src="@drawable/nothree"
+                android:layout_height="60dp"
+                android:layout_width="60dp"
+                />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Far less wasted time, wasted effort and headaches for quick and easy trading."/>
+
+
+</LinearLayout>
