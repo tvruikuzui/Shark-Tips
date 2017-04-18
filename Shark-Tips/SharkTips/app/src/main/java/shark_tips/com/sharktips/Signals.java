@@ -48,6 +48,7 @@ public class Signals extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
+
         signals = new ArrayList<>();
         adapter = new ExpandListAdapter(getContext(),signals);
         listView.setAdapter(adapter);
