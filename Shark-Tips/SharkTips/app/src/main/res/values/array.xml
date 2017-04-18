@@ -10,10 +10,10 @@
     </string-array>
 
     <string-array name="TradingLevel">
-        <item>Pro</item>
-        <item>Advanced</item>
-        <item>Beginner</item>
         <item>Trading level</item>
+        <item>Beginner</item>
+        <item>Advanced</item>
+        <item>Pro</item>
     </string-array>
 
 </resources>
