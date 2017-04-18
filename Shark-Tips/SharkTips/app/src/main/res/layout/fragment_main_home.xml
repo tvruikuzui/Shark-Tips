@@ -14,49 +14,92 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+        <LinearLayout
+            android:layout_marginTop="70dp"
+            android:padding="25dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_marginLeft="5dp"
-                android:id="@+id/imgOne"
-                android:src="@drawable/noone"
-                android:layout_height="60dp"
-                android:layout_width="60dp"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Average over 300 pips of profit per month."/>
-
-
-            <ImageView
-                android:id="@+id/imgTwo"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/notwo"
-                android:layout_height="60dp"
-                android:layout_width="60dp"/>
+                        <ImageView
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/imgOne"
+                            android:src="@drawable/noone"
+                            android:layout_height="80dp"
+                            android:layout_width="80dp"/>
 
 
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Zero fees and commissions to worry about!"/>
+                        <TextView
+                            android:textSize="16sp"
+                            android:maxLines="4"
+                            android:lines="4"
+                            android:gravity="center_horizontal"
+                            android:layout_marginLeft="5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:text="Average over 300 pips of profit per month."/>
 
-            <ImageView
-                android:layout_marginLeft="5dp"
-                android:id="@+id/imgThree"
-                android:src="@drawable/nothree"
-                android:layout_height="60dp"
-                android:layout_width="60dp"
-                />
+                </LinearLayout>
 
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Far less wasted time, wasted effort and headaches for quick and easy trading."/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="16sp"
+                            android:maxLines="4"
+                            android:lines="4"
+                            android:gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:text="Zero fees and commissions to worry about!"/>
+
+                        <ImageView
+                            android:id="@+id/imgTwo"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/notwo"
+                            android:layout_height="80dp"
+                            android:layout_width="80dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/imgThree"
+                            android:src="@drawable/nothree"
+                            android:layout_height="80dp"
+                            android:layout_width="80dp"
+                            />
+
+                        <TextView
+                            android:maxLines="4"
+                            android:lines="4"
+                            android:layout_marginLeft="5dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:gravity="center_horizontal"
+                            android:text="Far less wasted time, wasted effort and headaches for quick and easy trading."/>
+                </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
 
 
 </LinearLayout>

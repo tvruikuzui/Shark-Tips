@@ -57,7 +57,7 @@ public class LoginFragment extends Fragment {
                         URL url = null;
                         String result="";
                         try {
-                            url = new URL("http://35.187.25.133/shark1/Users/logIn/"+params[0]+"/"+params[1]);
+                            url = new URL("http://35.187.25.133/shark1/logIn/"+params[0]+"/"+params[1]);
                             urlConnection = (HttpURLConnection) url.openConnection();
                             urlConnection.setUseCaches(false);
                             urlConnection.setRequestMethod("GET");
