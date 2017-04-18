@@ -32,10 +32,10 @@ public class Signal {
     }
 
     public Signal(boolean isOpen, int time, String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note) {
-        this.isOpen = isOpen;
+        setOpen(isOpen);
         this.time = time;
         this.currency = currency;
-        this.isBuy = isBuy;
+        setBuy(isBuy);
         this.price = price;
         this.sellStop = sellStop;
         this.sl = sl;
