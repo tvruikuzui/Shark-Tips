@@ -13,7 +13,7 @@
     tools:context="shark_tips.com.sharktips.Offers">
 
  <TextView
-     android:padding="15dp"
+     android:padding="10dp"
      android:text="Remaining time for trial 14 days"
      android:gravity="center_horizontal"
      android:textSize="20sp"
@@ -23,7 +23,6 @@
      android:layout_height="wrap_content" />
 
  <ImageView
-     android:layout_marginTop="10dp"
      android:id="@+id/imgofferOne"
      android:layout_width="match_parent"
      android:layout_height="wrap_content">
@@ -32,7 +31,7 @@
 
 
  <ImageView
-     android:layout_marginTop="10dp"
+     android:layout_marginTop="5dp"
      android:layout_marginBottom="10dp"
      android:id="@+id/imgofferTwo"
      android:layout_width="match_parent"
@@ -41,8 +40,8 @@
  </ImageView>
 
  <FrameLayout
-     android:layout_marginTop="10dp"
-     android:layout_marginBottom="10dp"
+     android:layout_marginTop="5dp"
+     android:layout_marginBottom="5dp"
      android:id="@+id/webFrame"
      android:layout_width="match_parent"
      android:layout_height="match_parent">

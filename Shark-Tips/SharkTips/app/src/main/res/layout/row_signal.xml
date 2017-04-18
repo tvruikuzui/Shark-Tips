@@ -79,7 +79,7 @@
             <TextView
                 android:id="@+id/lblSellStop"
                 android:textSize="15sp"
-                android:text="sell stop"
+                android:text="Sell Stop - "
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -88,7 +88,7 @@
             <TextView
                 android:id="@+id/lblsl"
                 android:textSize="15sp"
-                android:text="sl"
+                android:text="Sl - "
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -102,7 +102,7 @@
             <TextView
                 android:id="@+id/lbltp1"
                 android:textSize="15sp"
-                android:text="tp1"
+                android:text="TP1 - "
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -111,7 +111,7 @@
             <TextView
                 android:id="@+id/lbltp2"
                 android:textSize="15sp"
-                android:text="tp2"
+                android:text="TP2 - "
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight="1"
