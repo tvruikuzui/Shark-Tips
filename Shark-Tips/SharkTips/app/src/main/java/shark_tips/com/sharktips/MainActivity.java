@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     private boolean isUserLog;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
 
 
@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         // Create the tool bar and The layout for the Tabs
         tableLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -46,33 +45,30 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     @Override
     protected void onStart() {
         super.onStart();
-        if (preferences == null){
             preferences = getSharedPreferences("data",MODE_PRIVATE);
-            isUserLog = preferences.getBoolean("log",true);
-            return;
-        }
-        if (isUserLog == true){
-            Intent intent = new Intent(this,Home.class);
-            startActivity(intent);
-            finish();
-        }
+            isUserLog = preferences.getBoolean("log",false);
+            if (isUserLog == true){
+                moveToHomeActivity();
+            }
     }
 
     @Override
     public void sendLog(boolean isLogIn) {
         if (isLogIn == true){
-            Intent intent = new Intent(this,Home.class);
-            startActivity(intent);
-            finish();
+            moveToHomeActivity();
         }
     }
 
     @Override
     public void logIn(boolean isLogIn) {
         if (isLogIn == true){
-            Intent intent = new Intent(this,Home.class);
-            startActivity(intent);
-            finish();
+            moveToHomeActivity();
         }
+    }
+
+    public void moveToHomeActivity(){
+        Intent intent = new Intent(this,Home.class);
+        startActivity(intent);
+        finish();
     }
 }
