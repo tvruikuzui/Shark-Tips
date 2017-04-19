@@ -19,7 +19,7 @@ import java.net.URL;
 
 public class ConnectToServerThread extends Thread {
 
-    private static final String BASE_URL = "http://35.187.25.133/shark1/login/";
+    private static final String BASE_URL = "http://35.184.144.226/shark1/";
 
     private User user;
 
