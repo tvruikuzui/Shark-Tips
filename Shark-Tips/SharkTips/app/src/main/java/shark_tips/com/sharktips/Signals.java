@@ -34,7 +34,7 @@ public class Signals extends Fragment {
     private ExpandListAdapter adapter;
     private List<Signal> signals;
     private Signal signal;
-    private static final String BASE_URL = "http://35.187.25.133/shark1/signals/";
+    private static final String BASE_URL = "http://35.184.144.226/shark1/signals/";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signals, container, false);
