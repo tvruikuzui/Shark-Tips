@@ -3,8 +3,10 @@ package shark_tips.com.sharktips;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +17,29 @@ import android.widget.Spinner;
 
 import com.hbb20.CountryCodePicker;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+ interface SendLogListener{
+    void sendLog(boolean isLogIn);
+
+}
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SignupFragment extends Fragment {
 
+    private static final String BASE_URL = "http://35.184.144.226/shark1/";
     private Button btnRegister;
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
     private User user;
@@ -38,6 +55,10 @@ public class SignupFragment extends Fragment {
 
     public void setLogListener(SendLogListener logListener) {
         this.logListener = logListener;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -130,7 +151,75 @@ public class SignupFragment extends Fragment {
 
                 if (logListener != null){
                     logListener.sendLog(isLogIn);
-                    completeRegister();
+                    new AsyncTask<Void, Void, String>() {
+                        @Override
+                        protected String doInBackground(Void... params) {
+                            HttpURLConnection urlConnection = null;
+                            InputStream inputStream = null;
+                            OutputStream outputStream = null;
+                            String result = "";
+                            try {
+                                URL url = new URL(BASE_URL);
+                                urlConnection = (HttpURLConnection) url.openConnection();
+                                urlConnection.setRequestMethod("POST");
+                                urlConnection.setUseCaches(false);
+                                urlConnection.setDoOutput(true);
+                                urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                                urlConnection.connect();
+                                outputStream = urlConnection.getOutputStream();
+                                JSONObject jsonObject = new JSONObject();
+                                jsonObject.put("phoneNumber",user.getPhoneNumber());
+                                jsonObject.put("name",user.getName());
+                                jsonObject.put("lastName",user.getLastName());
+                                jsonObject.put("country",user.getCountry());
+                                jsonObject.put("countryCode",user.getCountryCode());
+                                jsonObject.put("password",user.getPassword());
+                                jsonObject.put("email",user.getMail());
+                                jsonObject.put("admin",user.getIsAdmin());
+                                outputStream.write(jsonObject.toString().getBytes());
+                                outputStream.close();
+                                inputStream = urlConnection.getInputStream();
+                                byte [] buffer = new byte[128];
+                                int a = inputStream.read(buffer);
+                                result = new String(buffer,0,a);
+                                Log.d("TAG",result);
+                                inputStream.close();
+
+                            } catch (MalformedURLException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }finally {
+                                if (outputStream != null){
+                                    try {
+                                        outputStream.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                if (inputStream != null){
+                                    try {
+                                        inputStream.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                if (urlConnection != null){
+                                    urlConnection.disconnect();
+                                }
+                            }
+
+                            return result;
+                        }
+
+                        @Override
+                        protected void onPostExecute(String result) {
+                            super.onPostExecute(result);
+                        }
+                    }.execute();
                 }
             }
         });
@@ -138,16 +227,5 @@ public class SignupFragment extends Fragment {
         return view;
     }
 
-    private void completeRegister() {
-
-        ConnectToServerThread c = new ConnectToServerThread();
-        c.setUser(user);
-        c.start();
-    }
-
-}
-
- interface SendLogListener{
-    void sendLog(boolean isLogIn);
 
 }

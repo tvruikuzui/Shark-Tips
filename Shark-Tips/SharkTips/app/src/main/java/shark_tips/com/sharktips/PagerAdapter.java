@@ -1,5 +1,6 @@
 package shark_tips.com.sharktips;
 
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -21,6 +22,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     }
 
+
     public PagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -39,4 +41,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return titles.get(position);
     }
+
+
 }
