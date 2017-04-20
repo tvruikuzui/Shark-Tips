@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     private TabLayout tableLayout;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
-    private boolean isUserLog;
-    private SharedPreferences preferences;
+    private boolean getDataFrom = false;
+
 
 
 
@@ -45,11 +45,10 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     @Override
     protected void onStart() {
         super.onStart();
-            preferences = getSharedPreferences("data",MODE_PRIVATE);
-            isUserLog = preferences.getBoolean("log",false);
-            if (isUserLog == true){
-                moveToHomeActivity();
-            }
+        getDataFrom = MyHelper.getDataFromSharedPreferences(this);
+        if (getDataFrom == true){
+            moveToHomeActivity();
+        }
     }
 
     @Override

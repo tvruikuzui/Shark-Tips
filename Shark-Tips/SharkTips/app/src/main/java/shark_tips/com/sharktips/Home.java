@@ -24,13 +24,12 @@ import android.widget.Toast;
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,WebClickedListener{
 
 
-    private SharedPreferences preferences;
-    private boolean checkUserLog;
+
+
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private PagerAdapter adapter;
-    private boolean getClick;
-
+    private boolean checkIfNotLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +48,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         tabLayout.setupWithViewPager(viewPager);
 
 
-        preferences = getSharedPreferences("data",MODE_PRIVATE);
-        checkUserLog = preferences.getBoolean("log",false);
-
-        if (checkUserLog == false) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -77,11 +68,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if (getClick){
-            Intent intent = new Intent(this,Home.class);
-            startActivity(intent);
-            finish();
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
@@ -120,10 +107,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 finish();
                 break;
             case R.id.nav_signals:
-                adapter.getItem(1);
+
                 break;
             case R.id.nav_logout:
-               logOut();
+                logOut();
                 break;
             case R.id.nav_contact:
                 sendEmail();
@@ -151,13 +138,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     // Log out From the app
     private void logOut() {
-        checkUserLog = false;
-        SharedPreferences prf = getSharedPreferences("data",MODE_PRIVATE);
-        SharedPreferences.Editor editor = prf.edit();
-        editor.putBoolean("log",checkUserLog);
-        editor.commit();
-
-        Intent intent = new Intent(this, MainActivity.class);
+        checkIfNotLogout = false;
+        MyHelper.saveToSharedPreferences(this,checkIfNotLogout);
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         finish();
     }
@@ -183,12 +166,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
     }
 
-
-
-
-
     @Override
     public void handleClick(boolean click) {
-        getClick = click;
+
     }
 }

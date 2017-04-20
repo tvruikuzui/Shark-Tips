@@ -31,9 +31,8 @@ public class LoginFragment extends Fragment {
 
     private EditText txtLoginEmail,txtLoginPassword;
     private Button btnLogin;
-    private boolean isLogIn = false;
     private LogInListener listener;
-    private SharedPreferences preferences;
+    private boolean userlogin = false;
 
     public void setListener(LogInListener listener) {
         this.listener = listener;
@@ -90,20 +89,15 @@ public class LoginFragment extends Fragment {
                                 txtLoginPassword.setHint(s);
                                 break;
                             case "ok":
-                                isLogIn = true;
-                                preferences = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
-                                if (preferences != null) {
-                                    SharedPreferences.Editor editor = preferences.edit();
-                                    editor.putBoolean("log", isLogIn);
-                                    editor.commit();
-                                }
+                                userlogin = true;
+                                MyHelper.saveToSharedPreferences(getContext(),userlogin);
                                 break;
                         }
                     }
                 }.execute(txtLoginEmail.getText().toString(),txtLoginPassword.getText().toString());
 
                 if (listener != null){
-                    listener.logIn(isLogIn);
+                    listener.logIn(userlogin);
                 }
 
             }

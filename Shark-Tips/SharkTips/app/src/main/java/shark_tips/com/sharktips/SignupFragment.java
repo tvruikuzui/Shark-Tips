@@ -45,8 +45,7 @@ public class SignupFragment extends Fragment {
     private User user;
     private CountryCodePicker ccp;
     private String getCountryCode;
-    private boolean isAdmin = false;
-    private boolean isLogIn = false;
+    private boolean isAdmin = false,isSignUp;
     private String countryName;
     private SharedPreferences preferences;
     private SendLogListener logListener;
@@ -141,16 +140,11 @@ public class SignupFragment extends Fragment {
                     return;
                 }
 
-                isLogIn = true;
-                preferences = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
-                if (preferences != null) {
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putBoolean("log", isLogIn);
-                    editor.commit();
-                }
 
                 if (logListener != null){
-                    logListener.sendLog(isLogIn);
+                    isSignUp = true;
+                    MyHelper.saveToSharedPreferences(getContext(),isSignUp);
+                    logListener.sendLog(isSignUp);
                     new AsyncTask<Void, Void, String>() {
                         @Override
                         protected String doInBackground(Void... params) {
