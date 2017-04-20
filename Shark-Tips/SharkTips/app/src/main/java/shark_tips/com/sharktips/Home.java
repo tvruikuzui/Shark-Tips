@@ -106,9 +106,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.nav_signals:
-
-                break;
             case R.id.nav_logout:
                 logOut();
                 break;
