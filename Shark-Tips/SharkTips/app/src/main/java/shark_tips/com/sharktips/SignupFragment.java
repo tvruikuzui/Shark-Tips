@@ -1,8 +1,7 @@
 package shark_tips.com.sharktips;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,8 +25,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+
 
  interface SendLogListener{
     void sendLog(boolean isLogIn);
@@ -44,10 +42,9 @@ public class SignupFragment extends Fragment {
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
     private User user;
     private CountryCodePicker ccp;
-    private String getCountryCode;
+    private String getCountryCode,userEmail;
     private boolean isAdmin = false,isSignUp;
     private String countryName;
-    private SharedPreferences preferences;
     private SendLogListener logListener;
     private Spinner spnLang,spnLevel;
     private ArrayAdapter<CharSequence> langAdapter,levelAdapter;
@@ -118,6 +115,9 @@ public class SignupFragment extends Fragment {
                     txtEmail.setHint("Invalid Email");
                     return;
                 }
+                userEmail = txtEmail.getText().toString();
+                MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
+
                 user.setPhoneNumber(Long.parseLong((getCountryCode+txtPhoneNumber.getText().toString())));
                 if (user.checkValidPhoneNumber() == false){
                     txtPhoneNumber.setText("");

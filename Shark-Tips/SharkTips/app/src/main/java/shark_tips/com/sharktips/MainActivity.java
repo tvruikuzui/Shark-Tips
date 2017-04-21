@@ -1,15 +1,12 @@
 package shark_tips.com.sharktips;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.telephony.TelephonyManager;
-import android.util.Log;
+
 
 public class MainActivity extends AppCompatActivity implements SendLogListener,LogInListener {
 

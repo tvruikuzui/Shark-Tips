@@ -2,8 +2,7 @@ package shark_tips.com.sharktips;
 
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,7 +20,6 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-import static android.content.Context.MODE_PRIVATE;
 
 
 /**
