@@ -145,7 +145,7 @@ public class SignupFragment extends Fragment {
                 user.setLangSpeak(lang);
                 String level = spnLevel.getSelectedItem().toString();
                 user.setTrdLevel(level);
-
+                //just for commit
                 if (logListener != null){
                     isSignUp = true;
                     MyHelper.saveToSharedPreferences(getContext(),isSignUp);
