@@ -170,6 +170,9 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("password",user.getPassword());
                                 jsonObject.put("email",user.getMail());
                                 jsonObject.put("admin",user.getIsAdmin());
+                                jsonObject.put("langSpeak",user.getSpeakLang());
+                                jsonObject.put("tradeLvl",user.getTrdeLvl());
+                                jsonObject.put("paid",false);
                                 outputStream.write(jsonObject.toString().getBytes());
                                 outputStream.close();
                                 inputStream = urlConnection.getInputStream();

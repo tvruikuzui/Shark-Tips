@@ -16,9 +16,11 @@ public class User {
     private long phoneNumber;
     private String country,countryCode;
     private String password;
-    private boolean isAdmin;
+    private boolean isAdmin,isPaid;
+    private String speakLang,trdeLvl;
     private long registerTime;
     private int isActive;
+
 
     public User() {
     }
@@ -35,6 +37,20 @@ public class User {
         isAdmin = false;
 //        registerTime = System.currentTimeMillis();
 //        isActive = 0;
+    }
+
+    public User(String name, String lastName, String mail, long phoneNumber, String country, String countryCode, String password, boolean isAdmin, boolean isPaid, String speakLang, String trdeLvl) {
+        this.name = name;
+        this.lastName = lastName;
+        this.mail = mail;
+        this.phoneNumber = phoneNumber;
+        this.country = country;
+        this.countryCode = countryCode;
+        this.password = password;
+        this.isAdmin = isAdmin;
+        this.isPaid = isPaid;
+        this.speakLang = speakLang;
+        this.trdeLvl = trdeLvl;
     }
 
     public String getCountryCode() {
@@ -149,6 +165,29 @@ public class User {
         return false;
     }
 
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
+
+    public String getSpeakLang() {
+        return speakLang;
+    }
+
+    public void setSpeakLang(String speakLang) {
+        this.speakLang = speakLang;
+    }
+
+    public String getTrdeLvl() {
+        return trdeLvl;
+    }
+
+    public void setTrdeLvl(String trdeLvl) {
+        this.trdeLvl = trdeLvl;
+    }
 
     public boolean getIsAdmin() {
         return isAdmin;

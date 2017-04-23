@@ -7,17 +7,31 @@
     android:background="#ffffff"
     tools:context="shark_tips.com.sharktips.MainHome">
 
-<pl.droidsonroids.gif.GifImageView
+<pl.droidsonroids.gif.GifTextView
     android:layout_marginTop="15dp"
     android:layout_gravity="center_horizontal"
     android:id="@+id/imgGif"
-    android:src="@drawable/six"
+    android:text="60%"
+    android:textColor="@android:color/white"
+    android:gravity="center_horizontal"
+    android:paddingTop="100dp"
+    android:textSize="30sp"
+    android:textStyle="bold"
+    android:background="@drawable/six"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
 
+        <TextView
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:text="Success Rate!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
-            android:layout_marginTop="50dp"
-            android:padding="25dp"
+            android:padding="15dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
