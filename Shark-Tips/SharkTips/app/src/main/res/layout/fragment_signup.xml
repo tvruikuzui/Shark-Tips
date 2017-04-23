@@ -50,17 +50,6 @@
         android:hint="email"/>
 
     <EditText
-        android:id="@+id/txtCountry"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:hint="country"/>
-
-    <EditText
         android:id="@+id/txtPassword"
         android:layout_marginTop="15dp"
         android:layout_width="match_parent"
@@ -108,9 +97,27 @@
         android:hint="phone"/>
 </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/countryLayout"
+        android:layout_below="@+id/midl"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txtCountry"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_output"
+            android:padding="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:hint="country"/>
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@+id/midl"
+        android:layout_below="@+id/countryLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
