@@ -75,6 +75,7 @@ public class SignupFragment extends Fragment {
         levelAdapter = ArrayAdapter.createFromResource(getContext(),R.array.TradingLevel,android.R.layout.simple_spinner_item);
         levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnLevel.setAdapter(levelAdapter);
+
         // Get the Country Code from Country Piker and store the value in getCountryCode.
         getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
         countryName = ccp.getDefaultCountryName();
@@ -140,6 +141,10 @@ public class SignupFragment extends Fragment {
                     return;
                 }
 
+                String lang = spnLang.getSelectedItem().toString();
+                user.setLangSpeak(lang);
+                String level = spnLevel.getSelectedItem().toString();
+                user.setTrdLevel(level);
 
                 if (logListener != null){
                     isSignUp = true;
@@ -169,6 +174,9 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("countryCode",user.getCountryCode());
                                 jsonObject.put("password",user.getPassword());
                                 jsonObject.put("email",user.getMail());
+                                jsonObject.put("tradeLvl",user.getTrdLevel());
+                                jsonObject.put("langSpeak",user.getLangSpeak());
+                                jsonObject.put("paid",false);
                                 jsonObject.put("admin",user.getIsAdmin());
                                 outputStream.write(jsonObject.toString().getBytes());
                                 outputStream.close();
