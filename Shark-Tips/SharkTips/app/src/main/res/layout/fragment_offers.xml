@@ -16,13 +16,13 @@
 
  <TextView
      android:padding="10dp"
-     android:text="Remaining time for trial 14 days"
      android:gravity="center_horizontal"
      android:textSize="20sp"
      android:textStyle="bold"
      android:textColor="@android:color/black"
      android:layout_width="match_parent"
-     android:layout_height="wrap_content" />
+     android:layout_height="wrap_content"
+     android:id="@+id/lblTrailDays"/>
 
  <ImageView
      android:id="@+id/imgofferOne"
