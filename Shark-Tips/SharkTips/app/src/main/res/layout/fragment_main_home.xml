@@ -7,6 +7,13 @@
     android:background="#ffffff"
     tools:context="shark_tips.com.sharktips.MainHome">
 
+        <WebView
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/webView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></WebView>
+
 
         <LinearLayout
             android:layout_marginTop="50dp"
