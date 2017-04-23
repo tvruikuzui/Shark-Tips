@@ -26,7 +26,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private boolean checkIfNotLogout;
     private String getUserEmail;
     private TextView lblSetUserEmail;
-    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +45,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         getUserEmail = MyHelper.getUserEmailFromSharedPreferences(this);
 
-        webView = (WebView) findViewById(R.id.webView);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("http://pointshop.co.il/sharkTips/anim.gif");
-
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,6 +60,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         View view  = navigationView.getHeaderView(0);
         lblSetUserEmail = (TextView)view.findViewById(R.id.lblSetUserEmail);
         lblSetUserEmail.setText(getUserEmail);
+
 
     }
 
