@@ -28,6 +28,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.android.support:design:25.2.0'
     compile 'com.hbb20:ccp:1.7.2'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.6'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.0'
