@@ -12,8 +12,6 @@ public class Signal {
 
     // Signal
 
-    boolean isOpen;
-    int time;
     String currency;
     boolean isBuy;
     double price;
@@ -22,6 +20,8 @@ public class Signal {
     double tp1;
     double tp2;
     String note;
+    boolean isOpen;
+    int time;
 
 
     public Signal() {
@@ -36,6 +36,16 @@ public class Signal {
         this.time = time;
         this.currency = currency;
         setBuy(isBuy);
+        this.price = price;
+        this.sellStop = sellStop;
+        this.sl = sl;
+        this.tp1 = tp1;
+        this.tp2 = tp2;
+        this.note = note;
+    }
+
+    public Signal(String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note) {
+        this.currency = currency;
         this.price = price;
         this.sellStop = sellStop;
         this.sl = sl;

@@ -1,13 +1,80 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="shark_tips.com.sharktips.SignalsManager">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Signal Manager" />
+        <TextView
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="Create new signal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</FrameLayout>
+        <Spinner
+            android:paddingTop="10dp"
+            android:id="@+id/spnAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Spinner>
+
+        <EditText
+            android:id="@+id/txtCurrency"
+            android:paddingLeft="10dp"
+            android:hint="Currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txtPrice"
+            android:paddingLeft="10dp"
+            android:hint="Price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txtSellStop"
+            android:paddingLeft="10dp"
+            android:hint="Sell Stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txtSl"
+            android:paddingLeft="10dp"
+            android:hint="Sl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txtTp1"
+            android:paddingLeft="10dp"
+            android:hint="Tp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txtTp2"
+            android:paddingLeft="10dp"
+            android:hint="Tp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txtNote"
+            android:paddingLeft="10dp"
+            android:hint="Note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnSendSignal"
+            android:text="Send Signal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+</LinearLayout>
