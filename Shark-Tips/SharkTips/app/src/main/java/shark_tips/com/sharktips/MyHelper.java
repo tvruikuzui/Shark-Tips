@@ -2,6 +2,8 @@ package shark_tips.com.sharktips;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -51,6 +53,11 @@ public class MyHelper {
             return getEmail;
         }
         return String.valueOf(Log.d("TAG","ERROR"));
+    }
+
+    // crate
+    static public void createFragment(Context context, Fragment fragment){
+
     }
 
 }
