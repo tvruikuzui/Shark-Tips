@@ -32,13 +32,10 @@ public class SignalsManager extends Fragment {
     private Spinner spnAction;
     private EditText txtCurrency,txtPrice,txtSellStop,txtSl,txtTp1,txtTp2,txtNote;
     private ArrayAdapter<CharSequence> actionAdapter;
-    private Signal signal;
+    //private Signal signal;
     private Button btnSendSignal;
     private String setCurrency,setPrice,setSellStop,setSl,setTp1,setTp2,setNote,userPassword,userEmail;
 
-    public void setSignal(Signal signal) {
-        this.signal = signal;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -59,17 +56,30 @@ public class SignalsManager extends Fragment {
         txtTp2 = (EditText) view.findViewById(R.id.txtTp2);
         txtNote = (EditText) view.findViewById(R.id.txtNote);
 
+        setCurrency = txtCurrency.getText().toString();
+        setPrice = txtPrice.getText().toString();
+        setSellStop = txtSellStop.getText().toString();
+        setSl = txtSl.getText().toString();
+        setTp1 = txtTp1.getText().toString();
+        setTp2 = txtTp2.getText().toString();
+        setNote = txtNote.getText().toString();
+
 
         btnSendSignal = (Button) view.findViewById(R.id.btnSendSignal);
         btnSendSignal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createNewSignal();
                 new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... params) {
-                        params[0] = userEmail;
-                        params[1] = userPassword;
+                        Signal signal = new Signal();
+                        signal.setCurrency(setCurrency);
+                        signal.setPrice(Double.parseDouble(setPrice));
+                        signal.setSellStop(Double.parseDouble(setSellStop));
+                        signal.setSl(Double.parseDouble(setSl));
+                        signal.setTp1(Double.parseDouble(setTp1));
+                        signal.setTp2(Double.parseDouble(setTp2));
+                        signal.setNote(setNote);
                         HttpURLConnection urlConnection = null;
                         OutputStream outputStream = null;
                         InputStream inputStream = null;
@@ -93,7 +103,7 @@ public class SignalsManager extends Fragment {
                             outputStream.write(signalObject.toString().getBytes());
                             outputStream.close();
                             inputStream = urlConnection.getInputStream();
-                            byte[] buffer = new byte[64];
+                            byte[] buffer = new byte[128];
                             int actuallyRead = inputStream.read(buffer);
                             result = new String(buffer,0,actuallyRead);
                             inputStream.close();
@@ -110,6 +120,13 @@ public class SignalsManager extends Fragment {
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
+                                if (inputStream != null){
+                                    try {
+                                        inputStream.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
                             }
                             if (urlConnection != null){
                                 urlConnection.disconnect();
@@ -118,17 +135,7 @@ public class SignalsManager extends Fragment {
                         return result;
                     }
 
-                    @Override
-                    protected void onPostExecute(String result) {
-                        switch (result){
-                            case "ok":
-                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
-                                break;
-                            case "error":
-                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }.execute();
+                }.execute(userEmail,userPassword);
             }
         });
 
@@ -136,24 +143,12 @@ public class SignalsManager extends Fragment {
 
         return view;
     }
+    private Signal createVewSignal(){
+        Signal signal = new Signal();
 
 
-    private void createNewSignal(){
-        setCurrency = txtCurrency.getText().toString();
-        setPrice = txtPrice.getText().toString();
-        setSellStop = txtSellStop.getText().toString();
-        setSl = txtSl.getText().toString();
-        setTp1 = txtTp1.getText().toString();
-        setTp2 = txtTp2.getText().toString();
-        setNote = txtNote.getText().toString();
-        signal = new Signal();
-        signal.setCurrency(setCurrency);
-        signal.setPrice(Double.parseDouble(setPrice));
-        signal.setSellStop(Double.parseDouble(setSellStop));
-        signal.setSl(Double.parseDouble(setSl));
-        signal.setTp1(Double.parseDouble(setTp1));
-        signal.setTp2(Double.parseDouble(setTp2));
-        signal.setNote(setNote);
+        return signal;
+
     }
 
 }
