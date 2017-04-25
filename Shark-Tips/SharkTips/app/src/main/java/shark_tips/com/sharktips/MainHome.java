@@ -23,7 +23,7 @@ import pl.droidsonroids.gif.GifTextView;
 public class MainHome extends Fragment {
 
     private GifTextView gifTextView;
-    private static final String BASE_URL = "http://35.184.144.226/shark2/performance/";
+    private static final String BASE_URL = "http://35.184.144.226/shark1/performance/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
