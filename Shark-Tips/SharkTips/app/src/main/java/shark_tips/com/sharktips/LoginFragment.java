@@ -42,15 +42,11 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         txtLoginEmail = (EditText) view.findViewById(R.id.txtLogimEmail);
         txtLoginPassword = (EditText) view.findViewById(R.id.txtLoginPassword);
-
+        MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userEmail = txtLoginEmail.getText().toString();
-                userPassword = txtLoginPassword.getText().toString();
-                MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
-                MyHelper.saveUserPasswordToSharedPreferences(getContext(),userPassword);
 
                 new AsyncTask<String, Void, String>() {
                     @Override

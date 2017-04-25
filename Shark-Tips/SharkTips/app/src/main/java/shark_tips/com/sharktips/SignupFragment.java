@@ -133,8 +133,6 @@ public class SignupFragment extends Fragment {
                     txtPassword.setHint("Invalid Password");
                     return;
                 }
-                userPassword = txtPassword.getText().toString();
-                MyHelper.saveUserPasswordToSharedPreferences(getContext(),userPassword);
                 user.setCountry(countryName);
                 if (user.checkValidCountryCode() == false){
                     txtCountry.setText("");
