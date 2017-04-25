@@ -74,7 +74,8 @@ public class Signals extends Fragment {
                                     ,signalObject.getDouble("price")
                                     ,signalObject.getDouble("sellStop")
                                     ,signalObject.getDouble("sl")
-                                    ,signalObject.getDouble("tp1"),signalObject.getDouble("tp2")
+                                    ,signalObject.getDouble("tp1")
+                                    ,signalObject.getDouble("tp2")
                                     ,signalObject.getString("note"));
                             signals.add(signal);
                         }
