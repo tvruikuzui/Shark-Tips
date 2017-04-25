@@ -6,13 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
-
-import pl.droidsonroids.gif.GifDrawable;
 
 
 /**
