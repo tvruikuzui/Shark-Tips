@@ -16,4 +16,10 @@
         <item>Pro</item>
     </string-array>
 
+    <string-array name="action">
+        <item>Choose action</item>
+        <item>Buy</item>
+        <item>Sell</item>
+    </string-array>
+
 </resources>

@@ -2,6 +2,8 @@ package shark_tips.com.sharktips;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -51,6 +53,33 @@ public class MyHelper {
             return getEmail;
         }
         return String.valueOf(Log.d("TAG","ERROR"));
+    }
+    // save user email.
+    static public void saveUserPasswordToSharedPreferences(Context context,String password){
+        SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
+        if (preferences != null){
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("password",password);
+            editor.commit();
+        }else {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    // retrieve user email.
+    static public String getUserPasswordFromSharedPreferences(Context context){
+        SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
+        if (preferences != null){
+            String password = preferences.getString("password","");
+            return password;
+        }
+        return String.valueOf(Log.d("TAG","ERROR"));
+    }
+
+    // crate
+    static public void createFragment(Context context, Fragment fragment){
+
     }
 
 }

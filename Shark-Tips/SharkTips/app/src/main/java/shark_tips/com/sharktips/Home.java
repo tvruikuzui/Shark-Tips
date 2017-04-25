@@ -119,6 +119,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_share:
                 shareToWhatsapp();
                 break;
+
+            case R.id.nav_admin:
+                Intent adminIntent = new Intent(this,AdminPanel.class);
+                startActivity(adminIntent);
+                finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

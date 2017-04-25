@@ -42,7 +42,7 @@ public class SignupFragment extends Fragment {
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
     private User user;
     private CountryCodePicker ccp;
-    private String getCountryCode,userEmail;
+    private String getCountryCode,userEmail,userPassword;
     private boolean isAdmin = false,isSignUp;
     private String countryName;
     private SendLogListener logListener;
@@ -133,6 +133,8 @@ public class SignupFragment extends Fragment {
                     txtPassword.setHint("Invalid Password");
                     return;
                 }
+                userPassword = txtPassword.getText().toString();
+                MyHelper.saveUserPasswordToSharedPreferences(getContext(),userPassword);
                 user.setCountry(countryName);
                 if (user.checkValidCountryCode() == false){
                     txtCountry.setText("");
@@ -170,6 +172,9 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("password",user.getPassword());
                                 jsonObject.put("email",user.getMail());
                                 jsonObject.put("admin",user.getIsAdmin());
+                                jsonObject.put("langSpeak",user.getSpeakLang());
+                                jsonObject.put("tradeLvl",user.getTrdeLvl());
+                                jsonObject.put("paid",false);
                                 outputStream.write(jsonObject.toString().getBytes());
                                 outputStream.close();
                                 inputStream = urlConnection.getInputStream();
