@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -29,11 +30,11 @@ import java.net.URL;
 public class SignalsManager extends Fragment {
 
     private Spinner spnAction;
-    private EditText txtCurrency,txtPrice,txtSellStop,txtSl1,txtTp1,txtTp2,txtNote;
+    private EditText txtCurrency,txtPrice,txtSellStop,txtSl,txtTp1,txtTp2,txtNote;
     private ArrayAdapter<CharSequence> actionAdapter;
     private Signal signal;
     private Button btnSendSignal;
-    private int position;
+    private String setCurrency,setPrice,setSellStop,setSl,setTp1,setTp2,setNote,userPassword,userEmail;
 
     public void setSignal(Signal signal) {
         this.signal = signal;
@@ -47,42 +48,55 @@ public class SignalsManager extends Fragment {
         actionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnAction.setAdapter(actionAdapter);
 
+        userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
+        userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
+
         txtCurrency = (EditText) view.findViewById(R.id.txtCurrency);
         txtPrice = (EditText) view.findViewById(R.id.txtPrice);
         txtSellStop = (EditText) view.findViewById(R.id.txtSellStop);
-        txtSl1 = (EditText) view.findViewById(R.id.txtSl);
+        txtSl = (EditText) view.findViewById(R.id.txtSl);
         txtTp1 = (EditText) view.findViewById(R.id.txtTp1);
         txtTp2 = (EditText) view.findViewById(R.id.txtTp2);
         txtNote = (EditText) view.findViewById(R.id.txtNote);
+
 
         btnSendSignal = (Button) view.findViewById(R.id.btnSendSignal);
         btnSendSignal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signal = new Signal();
-                new AsyncTask<Void, Void, Void>() {
+                createNewSignal();
+                new AsyncTask<String, Void, String>() {
                     @Override
-                    protected Void doInBackground(Void... params) {
+                    protected String doInBackground(String... params) {
+                        params[0] = userEmail;
+                        params[1] = userPassword;
                         HttpURLConnection urlConnection = null;
                         OutputStream outputStream = null;
+                        InputStream inputStream = null;
+                        String result = "";
                         try {
-                            URL url = new URL("");
+                            URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]);
                             urlConnection = (HttpURLConnection) url.openConnection();
-                            urlConnection.setRequestMethod("GET");
+                            urlConnection.setRequestMethod("PUT");
                             urlConnection.setUseCaches(false);
                             urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
                             urlConnection.connect();
                             outputStream = urlConnection.getOutputStream();
                             JSONObject signalObject = new JSONObject();
-                            signalObject.put("",signal.getCurrency());
-                            signalObject.put("",signal.getPrice());
-                            signalObject.put("",signal.getSellStop());
-                            signalObject.put("",signal.getSl());
-                            signalObject.put("",signal.getTp1());
-                            signalObject.put("",signal.getTp2());
-                            signalObject.put("",signal.getNote());
+                            signalObject.put("currency",signal.getCurrency());
+                            signalObject.put("price",signal.getPrice());
+                            signalObject.put("sellStop",signal.getSellStop());
+                            signalObject.put("sl",signal.getSl());
+                            signalObject.put("tp1",signal.getTp1());
+                            signalObject.put("tp2",signal.getTp2());
+                            signalObject.put("note",signal.getNote());
                             outputStream.write(signalObject.toString().getBytes());
                             outputStream.close();
+                            inputStream = urlConnection.getInputStream();
+                            byte[] buffer = new byte[64];
+                            int actuallyRead = inputStream.read(buffer);
+                            result = new String(buffer,0,actuallyRead);
+                            inputStream.close();
                         } catch (MalformedURLException e) {
                             e.printStackTrace();
                         } catch (IOException e) {
@@ -101,7 +115,18 @@ public class SignalsManager extends Fragment {
                                 urlConnection.disconnect();
                             }
                         }
-                        return null;
+                        return result;
+                    }
+
+                    @Override
+                    protected void onPostExecute(String result) {
+                        switch (result){
+                            case "ok":
+                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+                                break;
+                            case "error":
+                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }.execute();
             }
@@ -110,6 +135,25 @@ public class SignalsManager extends Fragment {
 
 
         return view;
+    }
+
+
+    private void createNewSignal(){
+        setCurrency = txtCurrency.getText().toString();
+        setPrice = txtPrice.getText().toString();
+        setSellStop = txtSellStop.getText().toString();
+        setSl = txtSl.getText().toString();
+        setTp1 = txtTp1.getText().toString();
+        setTp2 = txtTp2.getText().toString();
+        setNote = txtNote.getText().toString();
+        signal = new Signal();
+        signal.setCurrency(setCurrency);
+        signal.setPrice(Double.parseDouble(setPrice));
+        signal.setSellStop(Double.parseDouble(setSellStop));
+        signal.setSl(Double.parseDouble(setSl));
+        signal.setTp1(Double.parseDouble(setTp1));
+        signal.setTp2(Double.parseDouble(setTp2));
+        signal.setNote(setNote);
     }
 
 }

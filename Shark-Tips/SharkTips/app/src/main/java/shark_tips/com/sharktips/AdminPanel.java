@@ -1,5 +1,6 @@
 package shark_tips.com.sharktips;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -21,6 +24,7 @@ public class AdminPanel extends AppCompatActivity {
         setContentView(R.layout.activity_admin_panel);
 
         lblChooseAction = (TextView) findViewById(R.id.lblChooseAction);
+
 
     }
 
@@ -58,5 +62,9 @@ public class AdminPanel extends AppCompatActivity {
         transaction.replace(R.id.adminFrame,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void backToMain(View view) {
+        Intent intent = new Intent(this,Home.class);
     }
 }

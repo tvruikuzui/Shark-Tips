@@ -12,7 +12,25 @@
     tools:context="shark_tips.com.sharktips.Home"
     tools:showIn="@layout/app_bar_home">
 
+    <LinearLayout
+        android:id="@+id/navAdminTop"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:onClick="backToMain"
+            android:id="@+id/imgToMain"
+            android:src="@mipmap/ic_home_white"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
     <FrameLayout
+        android:layout_below="@id/navAdminTop"
         android:id="@+id/adminFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

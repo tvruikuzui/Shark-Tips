@@ -31,6 +31,7 @@ public class LoginFragment extends Fragment {
     private Button btnLogin;
     private LogInListener listener;
     private boolean userlogin = false;
+    private String userEmail,userPassword;
 
     public void setListener(LogInListener listener) {
         this.listener = listener;
@@ -46,6 +47,11 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userEmail = txtLoginEmail.getText().toString();
+                userPassword = txtLoginPassword.getText().toString();
+                MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
+                MyHelper.saveUserPasswordToSharedPreferences(getContext(),userPassword);
+
                 new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... params) {
@@ -54,7 +60,7 @@ public class LoginFragment extends Fragment {
                         URL url = null;
                         String result="";
                         try {
-                            url = new URL("http://35.184.144.226/shark1/logIn/"+params[0]+"/"+params[1]);
+                            url = new URL("http://35.184.144.226/shark2/"+params[0]+"/"+params[1]+"/");
                             urlConnection = (HttpURLConnection) url.openConnection();
                             urlConnection.setUseCaches(false);
                             urlConnection.setRequestMethod("GET");
