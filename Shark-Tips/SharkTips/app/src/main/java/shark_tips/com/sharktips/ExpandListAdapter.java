@@ -104,6 +104,7 @@ public class ExpandListAdapter extends BaseAdapter {
         row.lblsl.setText("Sl "+item.getSl());
         row.lbltp1.setText("Tp1 "+item.getTp1());
         row.lbltp2.setText("Tp2 "+item.getTp2());
+        row.lblNote.setText(item.getNote());
 
 
 

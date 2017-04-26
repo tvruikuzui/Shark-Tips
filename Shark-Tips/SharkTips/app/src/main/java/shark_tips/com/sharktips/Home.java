@@ -101,7 +101,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         switch (id){
-
             case R.id.nav_home:
                 Intent intent = new Intent(this,Home.class);
                 startActivity(intent);
@@ -123,6 +122,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_admin:
                 Intent adminIntent = new Intent(this,AdminPanel.class);
                 startActivity(adminIntent);
+                finish();
 
         }
 

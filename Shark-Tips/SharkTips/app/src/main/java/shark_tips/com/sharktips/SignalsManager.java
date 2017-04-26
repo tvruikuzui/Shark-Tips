@@ -32,9 +32,10 @@ public class SignalsManager extends Fragment {
     private Spinner spnAction;
     private EditText txtCurrency,txtPrice,txtSellStop,txtSl,txtTp1,txtTp2,txtNote;
     private ArrayAdapter<CharSequence> actionAdapter;
-    //private Signal signal;
     private Button btnSendSignal;
-    private String setCurrency,setPrice,setSellStop,setSl,setTp1,setTp2,setNote,userPassword,userEmail;
+    private double setPrice,setSellStop,setSl,setTp1,setTp2;
+    private String setNote,userPassword,userEmail,setCurrency;
+
 
 
     @Override
@@ -56,29 +57,31 @@ public class SignalsManager extends Fragment {
         txtTp2 = (EditText) view.findViewById(R.id.txtTp2);
         txtNote = (EditText) view.findViewById(R.id.txtNote);
 
-        setCurrency = txtCurrency.getText().toString();
-        setPrice = txtPrice.getText().toString();
-        setSellStop = txtSellStop.getText().toString();
-        setSl = txtSl.getText().toString();
-        setTp1 = txtTp1.getText().toString();
-        setTp2 = txtTp2.getText().toString();
-        setNote = txtNote.getText().toString();
 
 
         btnSendSignal = (Button) view.findViewById(R.id.btnSendSignal);
         btnSendSignal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                setCurrency = txtCurrency.getText().toString();
+                setPrice = Double.parseDouble(txtPrice.getText().toString());
+                setSellStop = Double.parseDouble(txtSellStop.getText().toString());
+                setSl = Double.parseDouble(txtSl.getText().toString());
+                setTp1 = Double.parseDouble(txtTp1.getText().toString());
+                setTp2 = Double.parseDouble(txtTp2.getText().toString());
+                setNote = txtNote.getText().toString();
+
                 new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... params) {
                         Signal signal = new Signal();
                         signal.setCurrency(setCurrency);
-                        signal.setPrice(Double.parseDouble(setPrice));
-                        signal.setSellStop(Double.parseDouble(setSellStop));
-                        signal.setSl(Double.parseDouble(setSl));
-                        signal.setTp1(Double.parseDouble(setTp1));
-                        signal.setTp2(Double.parseDouble(setTp2));
+                        signal.setPrice(setPrice);
+                        signal.setSellStop(setSellStop);
+                        signal.setSl(setSl);
+                        signal.setTp1(setTp1);
+                        signal.setTp2(setTp2);
                         signal.setNote(setNote);
                         HttpURLConnection urlConnection = null;
                         OutputStream outputStream = null;
@@ -99,7 +102,7 @@ public class SignalsManager extends Fragment {
                             signalObject.put("sl",signal.getSl());
                             signalObject.put("tp1",signal.getTp1());
                             signalObject.put("tp2",signal.getTp2());
-                            signalObject.put("note",signal.getNote());
+                            signalObject.put("not",signal.getNote());
                             outputStream.write(signalObject.toString().getBytes());
                             outputStream.close();
                             inputStream = urlConnection.getInputStream();
@@ -142,13 +145,6 @@ public class SignalsManager extends Fragment {
 
 
         return view;
-    }
-    private Signal createVewSignal(){
-        Signal signal = new Signal();
-
-
-        return signal;
-
     }
 
 }

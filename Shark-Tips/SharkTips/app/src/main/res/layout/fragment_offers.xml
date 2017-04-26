@@ -15,12 +15,13 @@
     tools:context="shark_tips.com.sharktips.Offers">
 
  <TextView
+     android:id="@+id/lblShowTs"
      android:padding="10dp"
-     android:text="Remaining time for trial 14 days"
+     android:text=""
      android:gravity="center_horizontal"
      android:textSize="20sp"
      android:textStyle="bold"
-     android:textColor="@android:color/black"
+     android:textColor="@android:color/holo_red_dark"
      android:layout_width="match_parent"
      android:layout_height="wrap_content" />
 

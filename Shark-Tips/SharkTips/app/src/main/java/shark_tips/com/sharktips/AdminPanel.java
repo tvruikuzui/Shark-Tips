@@ -66,5 +66,7 @@ public class AdminPanel extends AppCompatActivity {
 
     public void backToMain(View view) {
         Intent intent = new Intent(this,Home.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -33,7 +33,7 @@ public class Signals extends Fragment {
     private ExpandListAdapter adapter;
     private List<Signal> signals;
     private Signal signal;
-    private static final String BASE_URL = "http://35.184.144.226/shark1/signals/";
+    private static final String BASE_URL = "http://35.184.144.226/shark2/signals/";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signals, container, false);
@@ -55,7 +55,6 @@ public class Signals extends Fragment {
                     urlConnection.setRequestMethod("GET");
                     urlConnection.setUseCaches(false);
                     urlConnection.connect();
-
                     inputStream = urlConnection.getInputStream();
                     int actuallyRead;
                     byte [] buffer = new byte[256];
@@ -68,6 +67,7 @@ public class Signals extends Fragment {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject signalObject = jsonArray.getJSONObject(i);
                             signal = new Signal(signalObject.getBoolean("open")
+                                    ,signalObject.getInt("id")
                                     ,signalObject.getInt("time")
                                     ,signalObject.getString("currency")
                                     ,signalObject.getBoolean("buy")
@@ -76,7 +76,7 @@ public class Signals extends Fragment {
                                     ,signalObject.getDouble("sl")
                                     ,signalObject.getDouble("tp1")
                                     ,signalObject.getDouble("tp2")
-                                    ,signalObject.getString("note"));
+                                    ,signalObject.getString("not"));
                             signals.add(signal);
                         }
                     }
