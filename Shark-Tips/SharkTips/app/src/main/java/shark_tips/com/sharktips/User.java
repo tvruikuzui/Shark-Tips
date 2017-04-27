@@ -1,6 +1,8 @@
 package shark_tips.com.sharktips;
 
 
+import java.util.Date;
+
 /**
  * Created by User on 03/04/2017.
  */
@@ -20,13 +22,21 @@ public class User {
     private String speakLang,trdeLvl;
     private long registerTime;
     private int isActive;
+    private long timeStamp;
 
 
     public User() {
     }
 
+    public User(String name, String lastName, String mail, long timeStamp) {
+        this.name = name;
+        this.lastName = lastName;
+        this.mail = mail;
+        this.timeStamp = timeStamp;
+    }
+
     public User(String name, String lastName, String mail, long phoneNumber,
-                String countryCode,String country, String password) {
+                String countryCode, String country, String password) {
         this.name = name;
         this.lastName = lastName;
         this.mail = mail;
@@ -215,5 +225,13 @@ public class User {
 
     public void setIsActive(int isActive) {
         this.isActive = isActive;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }
