@@ -22,6 +22,10 @@ import java.net.URL;
 
 
 
+interface LogInListener{
+    void logIn(boolean isLogIn);
+}
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -31,7 +35,7 @@ public class LoginFragment extends Fragment {
     private Button btnLogin;
     private LogInListener listener;
     private boolean userlogin = false;
-    private String userEmail,userPassword;
+
 
     public void setListener(LogInListener listener) {
         this.listener = listener;
@@ -42,7 +46,6 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         txtLoginEmail = (EditText) view.findViewById(R.id.txtLogimEmail);
         txtLoginPassword = (EditText) view.findViewById(R.id.txtLoginPassword);
-        MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,12 +106,9 @@ public class LoginFragment extends Fragment {
             }
         });
 
+
         return view;
     }
 
 
-}
-
-interface LogInListener{
-    void logIn(boolean isLogIn);
 }

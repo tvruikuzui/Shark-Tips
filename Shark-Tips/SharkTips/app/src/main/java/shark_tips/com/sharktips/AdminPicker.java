@@ -57,11 +57,18 @@ public class AdminPicker extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
-                    Toast.makeText(getContext(), "Invalid action", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (position == 1){
                     lblDescription.setVisibility(View.VISIBLE);
+                }
+                if (position == 2){
+                    lblDescription.setVisibility(View.GONE);
+                }
+                if (position == 3){
+                    lblDescription.setVisibility(View.VISIBLE);
+                    lblDescription.setTextColor(Color.BLUE);
+                    lblDescription.setText("NOTE: Remove User From Admin.");
                 }
             }
 
@@ -75,11 +82,6 @@ public class AdminPicker extends Fragment {
             @Override
             public void onClick(View v) {
                 Integer id = spinnerAdmin.getSelectedItemPosition();
-                if (id.equals("0")) {
-                    Toast.makeText(getContext(), "Invalid action", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                 userToBeAdmin = txtMakeAdmin.getText().toString();
                 if (txtMakeAdmin.length() == 0){
                     txtMakeAdmin.setText("");

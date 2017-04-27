@@ -42,7 +42,7 @@ public class SignupFragment extends Fragment {
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
     private User user;
     private CountryCodePicker ccp;
-    private String getCountryCode,userEmail;
+    private String getCountryCode,userEmail,userPassword;
     private  boolean isSignUp = false;
     private String countryName;
     private SendLogListener logListener;
@@ -132,6 +132,8 @@ public class SignupFragment extends Fragment {
                     txtPassword.setHint("Invalid Password");
                     return;
                 }
+                userPassword = txtPassword.getText().toString();
+
                 user.setCountry(countryName);
                 if (user.checkValidCountryCode() == false){
                     txtCountry.setText("");
@@ -218,6 +220,8 @@ public class SignupFragment extends Fragment {
                     }.execute();
 
                     MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
+                    MyHelper.saveUserPasswordToSharedPreferences(getContext(),userPassword);
+
                 }
             }
         });
