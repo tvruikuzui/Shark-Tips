@@ -42,8 +42,8 @@ public class SignupFragment extends Fragment {
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
     private User user;
     private CountryCodePicker ccp;
-    private String getCountryCode,userEmail,userPassword;
-    private boolean isAdmin = false,isSignUp;
+    private String getCountryCode,userEmail;
+    private  boolean isSignUp = false;
     private String countryName;
     private SendLogListener logListener;
     private Spinner spnLang,spnLevel;
@@ -116,7 +116,6 @@ public class SignupFragment extends Fragment {
                     return;
                 }
                 userEmail = txtEmail.getText().toString();
-                MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
 
                 user.setPhoneNumber(Long.parseLong((getCountryCode+txtPhoneNumber.getText().toString())));
                 if (user.checkValidPhoneNumber() == false){
@@ -169,10 +168,10 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("countryCode",user.getCountryCode());
                                 jsonObject.put("password",user.getPassword());
                                 jsonObject.put("email",user.getMail());
-                                jsonObject.put("admin",user.getIsAdmin());
                                 jsonObject.put("langSpeak",user.getSpeakLang());
                                 jsonObject.put("tradeLvl",user.getTrdeLvl());
                                 jsonObject.put("paid",false);
+                                jsonObject.put("token","king");
                                 outputStream.write(jsonObject.toString().getBytes());
                                 outputStream.close();
                                 inputStream = urlConnection.getInputStream();
@@ -217,6 +216,8 @@ public class SignupFragment extends Fragment {
                             super.onPostExecute(result);
                         }
                     }.execute();
+
+                    MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
                 }
             }
         });

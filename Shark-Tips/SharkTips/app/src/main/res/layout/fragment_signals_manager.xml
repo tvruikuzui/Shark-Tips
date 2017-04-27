@@ -1,4 +1,5 @@
 <LinearLayout
+    android:layout_margin="10dp"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -73,7 +74,7 @@
 
         <Button
             android:id="@+id/btnSendSignal"
-            android:text="Send Signal"
+            android:text="Submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

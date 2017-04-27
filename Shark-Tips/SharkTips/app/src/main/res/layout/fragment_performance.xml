@@ -1,13 +1,65 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="shark_tips.com.sharktips.Performance">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Update Success Rate"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Performance" />
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txtPerformance"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="30sp"
+            android:hint="0"
+            android:textColor="@android:color/holo_blue_dark"
+            android:inputType="number"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="30sp"
+            android:text="%"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:id="@+id/btnUpdate"
+            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>

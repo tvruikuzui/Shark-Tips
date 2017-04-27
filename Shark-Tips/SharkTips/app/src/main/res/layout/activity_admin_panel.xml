@@ -9,8 +9,7 @@
     android:background="#ffffff"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="shark_tips.com.sharktips.Home"
-    tools:showIn="@layout/app_bar_home">
+    tools:context="shark_tips.com.sharktips.Home">
 
     <LinearLayout
         android:id="@+id/navAdminTop"
@@ -31,6 +30,7 @@
 
     <FrameLayout
         android:layout_below="@id/navAdminTop"
+        android:layout_above="@+id/footerBar"
         android:id="@+id/adminFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -49,6 +49,7 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/footerBar"
         android:background="#f2f5f9"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"

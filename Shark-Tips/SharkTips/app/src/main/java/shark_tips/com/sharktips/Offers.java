@@ -67,7 +67,7 @@ public class Offers extends Fragment {
                     urlConnection.setUseCaches(false);
                     urlConnection.connect();
                     inputStream = urlConnection.getInputStream();
-                    byte [] buffer = new byte[32];
+                    byte [] buffer = new byte[64];
                     int actuallyRead = inputStream.read(buffer);
                     daysResult = Integer.parseInt(new String(buffer,0,actuallyRead));
                     inputStream.close();

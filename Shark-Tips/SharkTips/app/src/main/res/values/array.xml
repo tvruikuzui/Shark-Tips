@@ -22,4 +22,11 @@
         <item>Sell</item>
     </string-array>
 
+    <string-array name="admin">
+        <item>Choose action</item>
+        <item>Super Admin</item>
+        <item>Signal Admin</item>
+        <item>Remove Admin</item>
+    </string-array>
+
 </resources>

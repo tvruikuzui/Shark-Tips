@@ -1,13 +1,56 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="shark_tips.com.sharktips.AdminPicker">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Add/Remove admin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Admin Picker" />
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="You must enter a valid Email to add or remove Admin."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/spinnerAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:id="@+id/lblDescription"
+        android:text="Your Going To Create Super Admin!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/txtMakeAdmin"
+        android:hint="enter email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/btnUpdateUserAdmin"
+            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+</LinearLayout>

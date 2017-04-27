@@ -13,6 +13,10 @@ import android.widget.Toast;
 
 public class MyHelper {
 
+    // ---------------------------------------------------------------------------------------------
+    // Start here User Log Handel
+    // ---------------------------------------------------------------------------------------------
+
     // Save user log.
     static public void saveToSharedPreferences(Context context, boolean log){
         SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
@@ -31,6 +35,15 @@ public class MyHelper {
         boolean getData = preferences.getBoolean("log",false);
         return getData;
     }
+
+    // ---------------------------------------------------------------------------------------------
+    // END
+    // ---------------------------------------------------------------------------------------------
+
+
+    // ---------------------------------------------------------------------------------------------
+    // Start here User Email Handel
+    // ---------------------------------------------------------------------------------------------
 
     // save user email.
     static public void saveUserEmailToSharedPreferences(Context context,String email){
@@ -54,7 +67,17 @@ public class MyHelper {
         }
         return String.valueOf(Log.d("TAG","ERROR"));
     }
-    // save user email.
+
+    // ---------------------------------------------------------------------------------------------
+    // END
+    // ---------------------------------------------------------------------------------------------
+
+
+    // ---------------------------------------------------------------------------------------------
+    // Start here User Password Handel
+    // ---------------------------------------------------------------------------------------------
+
+    // save user Password.
     static public void saveUserPasswordToSharedPreferences(Context context,String password){
         SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
         if (preferences != null){
@@ -67,7 +90,7 @@ public class MyHelper {
 
     }
 
-    // retrieve user email.
+    // retrieve user Password
     static public String getUserPasswordFromSharedPreferences(Context context){
         SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
         if (preferences != null){
@@ -77,9 +100,10 @@ public class MyHelper {
         return String.valueOf(Log.d("TAG","ERROR"));
     }
 
-    // crate
-    static public void createFragment(Context context, Fragment fragment){
+    // ---------------------------------------------------------------------------------------------
+    // END
+    // ---------------------------------------------------------------------------------------------
 
-    }
+
 
 }
