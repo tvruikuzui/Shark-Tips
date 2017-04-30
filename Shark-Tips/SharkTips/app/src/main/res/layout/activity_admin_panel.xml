@@ -20,7 +20,7 @@
         <ImageView
             android:onClick="backToMain"
             android:id="@+id/imgToMain"
-            android:src="@mipmap/ic_home_white"
+            android:src="@drawable/home"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
             android:layout_width="wrap_content"
@@ -37,13 +37,14 @@
 
         <TextView
             android:id="@+id/lblChooseAction"
-            android:text="Choose Action"
-            android:textColor="@android:color/black"
+            android:text="Welcome To Admin Panel. Please Choose Your Action."
             android:textStyle="bold"
             android:textSize="22sp"
+            android:lines="2"
+            android:maxLines="2"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_width="300dp"
             android:layout_height="wrap_content" />
 
     </FrameLayout>

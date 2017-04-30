@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 /**
@@ -45,7 +45,6 @@ public class UsersManager extends Fragment {
         users = new ArrayList<>();
         adapter = new UsersManagerAdapter(getContext(),users);
         listUsersAdminPanel.setAdapter(adapter);
-
 
         new AsyncTask<String, Void, ArrayList<User>>() {
             @Override

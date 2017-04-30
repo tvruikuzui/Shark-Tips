@@ -4,6 +4,7 @@ package shark_tips.com.sharktips;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,6 +61,11 @@ public class SignupFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
+
+        final String token = Settings.Secure.getString(getContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        Log.d("LIRAN","token is :" + token);
+
         txtName = (EditText) view.findViewById(R.id.txtName);
         txtLast = (EditText) view.findViewById(R.id.txtLast);
         txtCountry = (EditText) view.findViewById(R.id.txtCountry);
@@ -173,7 +179,7 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("langSpeak",user.getSpeakLang());
                                 jsonObject.put("tradeLvl",user.getTrdeLvl());
                                 jsonObject.put("paid",false);
-                                jsonObject.put("token","king");
+                                jsonObject.put("token",token);
                                 outputStream.write(jsonObject.toString().getBytes());
                                 outputStream.close();
                                 inputStream = urlConnection.getInputStream();

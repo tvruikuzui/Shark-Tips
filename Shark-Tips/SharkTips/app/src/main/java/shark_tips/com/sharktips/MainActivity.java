@@ -2,10 +2,12 @@ package shark_tips.com.sharktips;
 
 
 import android.content.Intent;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 
 public class MainActivity extends AppCompatActivity implements SendLogListener,LogInListener {
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // Create the tool bar and The layout for the Tabs
         tableLayout = (TabLayout) findViewById(R.id.tabLayout);

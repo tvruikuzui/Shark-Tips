@@ -25,6 +25,10 @@ public class UsersManagerAdapter extends BaseAdapter {
         this.users = users;
     }
 
+    public Context getContext() {
+        return context;
+    }
+
     @Override
     public int getCount() {
         return users.size();

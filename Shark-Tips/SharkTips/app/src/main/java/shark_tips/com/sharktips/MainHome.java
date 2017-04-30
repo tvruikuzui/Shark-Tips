@@ -28,6 +28,9 @@ public class MainHome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_home, container, false);
+
+
+
         gifTextView = (GifTextView) view.findViewById(R.id.imgGif);
         new AsyncTask<Void, Void, String>() {
             @Override
