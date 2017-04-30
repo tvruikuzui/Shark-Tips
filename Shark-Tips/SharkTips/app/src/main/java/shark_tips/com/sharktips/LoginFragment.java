@@ -23,7 +23,7 @@ import java.net.URL;
 
 
 interface LogInListener{
-    void logIn(boolean isLogIn);
+    void checkUserLogFromLogin(boolean log);
 }
 
 /**
@@ -34,7 +34,8 @@ public class LoginFragment extends Fragment {
     private EditText txtLoginEmail,txtLoginPassword;
     private Button btnLogin;
     private LogInListener listener;
-    private boolean userlogin = false;
+    private boolean isLogin = false;
+    private String getUserEmail,getUserPassword;
 
 
     public void setListener(LogInListener listener) {
@@ -46,12 +47,12 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         txtLoginEmail = (EditText) view.findViewById(R.id.txtLogimEmail);
         txtLoginPassword = (EditText) view.findViewById(R.id.txtLoginPassword);
-        userlogin = MyHelper.getDataFromSharedPreferences(getContext());
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getUserEmail = txtLoginEmail.getText().toString();
+                getUserPassword = txtLoginPassword.getText().toString();
                 new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... params) {
@@ -93,16 +94,17 @@ public class LoginFragment extends Fragment {
                                 txtLoginPassword.setText(s);
                                 break;
                             case "ok":
-                                userlogin = true;
-                                MyHelper.saveToSharedPreferences(getContext(),userlogin);
+                                if (listener != null){
+                                    isLogin = true;
+                                    MyHelper.saveUserEmailToSharedPreferences(getContext(),getUserEmail);
+                                    MyHelper.saveUserPasswordToSharedPreferences(getContext(),getUserPassword);
+                                    MyHelper.saveToSharedPreferences(getContext(),isLogin);
+                                }
+
                                 break;
                         }
                     }
-                }.execute(txtLoginEmail.getText().toString(),txtLoginPassword.getText().toString());
-
-                if (listener != null){
-                    listener.logIn(userlogin);
-                }
+                }.execute(getUserEmail,getUserPassword);
 
             }
         });

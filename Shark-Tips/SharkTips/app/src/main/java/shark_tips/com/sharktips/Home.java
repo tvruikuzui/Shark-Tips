@@ -22,7 +22,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private PagerAdapter adapter;
-    private boolean checkIfNotLogout;
     private String getUserEmail;
     private TextView lblSetUserEmail;
 
@@ -143,8 +142,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     // Log out From the app
     private void logOut() {
-        checkIfNotLogout = false;
-        MyHelper.saveToSharedPreferences(this,checkIfNotLogout);
+        MyHelper.saveToSharedPreferences(this,false);
+        MyHelper.saveUserEmailToSharedPreferences(this,null);
+        MyHelper.saveUserPasswordToSharedPreferences(this,null);
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         finish();

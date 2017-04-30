@@ -10,15 +10,12 @@ import android.os.Bundle;
 import android.util.Log;
 
 
-public class MainActivity extends AppCompatActivity implements SendLogListener,LogInListener {
+public class MainActivity extends AppCompatActivity implements LogInListener,SignUpListener {
 
     private TabLayout tableLayout;
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
-    private boolean getDataFrom = false;
-
-
-
+    private boolean isLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         SignupFragment signupFragment = new SignupFragment();
-        signupFragment.setLogListener(this);
+        signupFragment.setListener(this);
         pagerAdapter.addWindow(signupFragment,"SignUp");
         LoginFragment loginFragment = new LoginFragment();
         loginFragment.setListener(this);
@@ -45,27 +42,30 @@ public class MainActivity extends AppCompatActivity implements SendLogListener,L
     @Override
     protected void onStart() {
         super.onStart();
-        getDataFrom = MyHelper.getDataFromSharedPreferences(this);
-        if (getDataFrom == true){
+        isLogin = MyHelper.getDataFromSharedPreferences(this);
+        if (isLogin == true){
             moveToHomeActivity();
+        }
+    }
+
+
+    @Override
+    public void checkUserLogFromLogin(boolean log) {
+        if (log == true){
+            moveToHomeActivity();
+            return;
         }
     }
 
     @Override
-    public void sendLog(boolean isLogIn) {
-        if (isLogIn == true){
+    public void checkUserLogFromSignUp(boolean log) {
+        if (log == true){
             moveToHomeActivity();
+            return;
         }
     }
 
-    @Override
-    public void logIn(boolean isLogIn) {
-        if (isLogIn == true){
-            moveToHomeActivity();
-        }
-    }
-
-    public void moveToHomeActivity(){
+    private void moveToHomeActivity(){
         Intent intent = new Intent(this,Home.class);
         startActivity(intent);
         finish();

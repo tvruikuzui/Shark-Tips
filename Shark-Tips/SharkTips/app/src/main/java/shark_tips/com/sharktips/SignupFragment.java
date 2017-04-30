@@ -28,8 +28,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
- interface SendLogListener{
-    void sendLog(boolean isLogIn);
+ interface SignUpListener{
+    void checkUserLogFromSignUp(boolean log);
 
 }
 
@@ -44,14 +44,14 @@ public class SignupFragment extends Fragment {
     private User user;
     private CountryCodePicker ccp;
     private String getCountryCode,userEmail,userPassword;
-    private  boolean isSignUp = false;
+    private  boolean isLogin = false;
     private String countryName;
-    private SendLogListener logListener;
+    private SignUpListener listener;
     private Spinner spnLang,spnLevel;
     private ArrayAdapter<CharSequence> langAdapter,levelAdapter;
 
-    public void setLogListener(SendLogListener logListener) {
-        this.logListener = logListener;
+    public void setListener(SignUpListener listener) {
+        this.listener = listener;
     }
 
     public void setUser(User user) {
@@ -148,10 +148,9 @@ public class SignupFragment extends Fragment {
                 }
 
 
-                if (logListener != null){
-                    isSignUp = true;
-                    MyHelper.saveToSharedPreferences(getContext(),isSignUp);
-                    logListener.sendLog(isSignUp);
+                if (listener != null){
+                    isLogin = true;
+                    listener.checkUserLogFromSignUp(isLogin);
                     new AsyncTask<Void, Void, String>() {
                         @Override
                         protected String doInBackground(Void... params) {
@@ -227,6 +226,7 @@ public class SignupFragment extends Fragment {
 
                     MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
                     MyHelper.saveUserPasswordToSharedPreferences(getContext(),userPassword);
+                    MyHelper.saveToSharedPreferences(getContext(),isLogin);
 
                 }
             }
