@@ -64,16 +64,19 @@ public class AdminPicker extends Fragment {
                     lblDescription.setVisibility(View.VISIBLE);
                     lblDescription.setTextColor(Color.parseColor("#aa0036"));
                     lblDescription.setText("NOTE: Your Going To Create Super Admin!");
+                    return;
                 }
                 if (position == 2){
                     lblDescription.setVisibility(View.VISIBLE);
                     lblDescription.setTextColor(Color.parseColor("#8bba00"));
                     lblDescription.setText("NOTE: Your Going To Create Signal Admin!");
+                    return;
                 }
                 if (position == 3){
                     lblDescription.setVisibility(View.VISIBLE);
                     lblDescription.setTextColor(Color.parseColor("#042d44"));
                     lblDescription.setText("NOTE: Remove User From Admin.");
+                    return;
                 }
             }
 

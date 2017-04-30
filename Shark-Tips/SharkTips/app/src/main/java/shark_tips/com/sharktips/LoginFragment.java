@@ -46,6 +46,7 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         txtLoginEmail = (EditText) view.findViewById(R.id.txtLogimEmail);
         txtLoginPassword = (EditText) view.findViewById(R.id.txtLoginPassword);
+        userlogin = MyHelper.getDataFromSharedPreferences(getContext());
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +90,7 @@ public class LoginFragment extends Fragment {
                                 txtLoginEmail.setText(s);
                                 break;
                             case "wrong password":
-                                txtLoginPassword.setHint(s);
+                                txtLoginPassword.setText(s);
                                 break;
                             case "ok":
                                 userlogin = true;
