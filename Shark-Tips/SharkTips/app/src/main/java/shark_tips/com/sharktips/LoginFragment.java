@@ -94,11 +94,13 @@ public class LoginFragment extends Fragment {
                                 txtLoginPassword.setText(s);
                                 break;
                             case "ok":
+                                Log.d("LIRAN",s);
                                 if (listener != null){
                                     isLogin = true;
                                     MyHelper.saveUserEmailToSharedPreferences(getContext(),getUserEmail);
                                     MyHelper.saveUserPasswordToSharedPreferences(getContext(),getUserPassword);
                                     MyHelper.saveToSharedPreferences(getContext(),isLogin);
+                                    listener.checkUserLogFromLogin(isLogin);
                                 }
 
                                 break;

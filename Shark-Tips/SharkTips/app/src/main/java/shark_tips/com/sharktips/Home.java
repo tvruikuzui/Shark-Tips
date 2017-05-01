@@ -2,6 +2,7 @@ package shark_tips.com.sharktips;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -17,6 +18,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,WebClickedListener{
 
     private ViewPager viewPager;
@@ -24,6 +34,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private PagerAdapter adapter;
     private String getUserEmail;
     private TextView lblSetUserEmail;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +64,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View view  = navigationView.getHeaderView(0);
         lblSetUserEmail = (TextView)view.findViewById(R.id.lblSetUserEmail);
         lblSetUserEmail.setText(getUserEmail);
 
+        checkIfUserAdmin();
 
     }
 
@@ -174,5 +186,71 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void handleClick(boolean click) {
 
+    }
+    // Check if the user is an admin.
+    private void checkIfUserAdmin() {
+        new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... params) {
+                HttpURLConnection urlConnection = null;
+                InputStream inputStream = null;
+                StringBuilder stringBuilder = new StringBuilder();
+                try {
+                    URL url = new URL("http://35.184.144.226/shark2/"+ params[0] + "/" );
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setUseCaches(false);
+                    urlConnection.connect();
+                    inputStream = urlConnection.getInputStream();
+                    byte [] buffer = new byte[256];
+                    int actuallyRead;
+                    while ((actuallyRead = inputStream.read(buffer)) != -1){
+                            stringBuilder.append(new String(buffer,0,actuallyRead));
+                    }
+                    inputStream.close();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally {
+                    if (inputStream != null){
+                        try {
+                            inputStream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (urlConnection != null){
+                        urlConnection.disconnect();
+                    }
+                }
+
+                try {
+                    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
+                    return jsonObject.getString("admin");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                Menu nav_Menu;
+                switch (s){
+                    case "SUPER_ADMIN":
+                        nav_Menu = navigationView.getMenu();
+                        nav_Menu.findItem(R.id.nav_admin).setVisible(true);
+                        break;
+
+                    case "SIGNAL_ADMIN":
+                        nav_Menu = navigationView.getMenu();
+                        nav_Menu.findItem(R.id.nav_admin).setVisible(true);
+                        break;
+
+                }
+            }
+        }.execute(getUserEmail);
     }
 }
