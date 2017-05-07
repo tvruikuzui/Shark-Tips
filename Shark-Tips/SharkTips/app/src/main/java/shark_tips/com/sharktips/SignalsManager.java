@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,25 +30,82 @@ import java.net.URL;
  */
 public class SignalsManager extends Fragment {
 
-    private Spinner spnAction;
+    private Spinner spnAction,spinnerMarket;
     private EditText txtCurrency,txtPrice,txtSellStop,txtSl,txtTp1,txtTp2,txtNote;
-    private ArrayAdapter<CharSequence> actionAdapter;
+    private ArrayAdapter<CharSequence> actionAdapter,marketAdapter;
     private Button btnSendSignal;
     private double setPrice,setSellStop,setSl,setTp1,setTp2;
-    private String setNote,userPassword,userEmail,setCurrency;
+    private String setNote,userPassword,userEmail,setCurrency,marketExecution;
+    private  boolean isBuy;
 
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signals_manager, container, false);
+
+        userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
+        userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
+
         spnAction = (Spinner) view.findViewById(R.id.spnAction);
         actionAdapter = ArrayAdapter.createFromResource(getContext(),R.array.action,android.R.layout.simple_spinner_item);
         actionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnAction.setAdapter(actionAdapter);
+        spnAction.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        break;
+                    case 1:
+                        isBuy = true;
+                        break;
+                    case 2:
+                       isBuy = false;
+                        break;
 
-        userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
-        userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
+                    default:
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinnerMarket = (Spinner) view.findViewById(R.id.spinnerMarket);
+        marketAdapter = ArrayAdapter.createFromResource(getContext(),R.array.market,android.R.layout.simple_spinner_item);
+        marketAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMarket.setAdapter(marketAdapter);
+        spinnerMarket.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        break;
+                    case 1:
+                        marketExecution = "Buy Limit";
+                        break;
+                    case 2:
+                        marketExecution = "Sell Limit";
+                        break;
+                    case 3:
+                        marketExecution = "Buy Stop";
+                        break;
+                    case 4:
+                        marketExecution = "Sell Stop";
+                        default:
+                            break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         txtCurrency = (EditText) view.findViewById(R.id.txtCurrency);
         txtPrice = (EditText) view.findViewById(R.id.txtPrice);
@@ -96,6 +154,7 @@ public class SignalsManager extends Fragment {
                             urlConnection.connect();
                             outputStream = urlConnection.getOutputStream();
                             JSONObject signalObject = new JSONObject();
+                            signalObject.put("buy",isBuy);
                             signalObject.put("currency",signal.getCurrency());
                             signalObject.put("price",signal.getPrice());
                             signalObject.put("sellStop",signal.getSellStop());

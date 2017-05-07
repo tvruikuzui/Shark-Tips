@@ -88,9 +88,11 @@ public class LoginFragment extends Fragment {
                     protected void onPostExecute(String s) {
                         switch (s){
                             case "not registered":
+                                txtLoginEmail.setText("");
                                 txtLoginEmail.setText(s);
                                 break;
                             case "wrong password":
+                                txtLoginEmail.setText("");
                                 txtLoginPassword.setText(s);
                                 break;
                             case "ok":

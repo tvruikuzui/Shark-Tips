@@ -23,6 +23,7 @@ public class User {
     private long registerTime;
     private int isActive;
     private long timeStamp;
+    private int addTimeToUser;
 
 
     public User() {
@@ -233,5 +234,13 @@ public class User {
 
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public int getAddTimeToUser() {
+        return addTimeToUser;
+    }
+
+    public void setAddTimeToUser(int addTimeToUser) {
+        this.addTimeToUser = addTimeToUser;
     }
 }

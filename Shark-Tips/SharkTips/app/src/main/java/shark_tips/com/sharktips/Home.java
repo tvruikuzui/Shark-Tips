@@ -56,7 +56,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.getAction().equals(GcmRegisterIntentService.REGISTRATION_OK)){
-                    String token = intent.getStringExtra("token");
+                   String token = intent.getStringExtra("token");
                     Log.d("TOKEN",token);
                 }else if (intent.getAction().equals(GcmRegisterIntentService.REGISTRATION_ERROR)){
                     Log.d("TOKEN","ERROR");
@@ -72,7 +72,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             if (apiAvailability.isUserResolvableError(resultCode)){
                 Log.d("SERVER","Service not Installd /Enabled");
             }else {
-               Log.d("SERVER","Device Not Soppurt google play servises");
+                Log.d("SERVER","Device Not Soppurt google play servises");
             }
         }else {
             Intent intent = new Intent(this,GcmRegisterIntentService.class);
@@ -114,7 +114,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         Log.d("HOME","OnResume");
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,new IntentFilter(GcmRegisterIntentService.REGISTRATION_OK));
@@ -122,11 +122,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         Log.d("HOME","OnPause");
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
     }
+
 
     @Override
     public void onBackPressed() {
@@ -237,10 +238,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
     }
 
-    @Override
-    public void handleClick(boolean click) {
-
-    }
     // Check if the user is an admin.
     private void checkIfUserAdmin() {
         new AsyncTask<String, Void, String>() {
@@ -306,6 +303,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 }
             }
         }.execute(getUserEmail);
+    }
+
+    @Override
+    public void handleClick(boolean click) {
+
     }
     
 }

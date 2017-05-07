@@ -2,19 +2,28 @@ package shark_tips.com.sharktips;
 
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.hbb20.CountryCodePicker;
 
 import org.json.JSONException;
@@ -38,17 +47,18 @@ import java.net.URL;
  */
 public class SignupFragment extends Fragment {
 
-    private static final String BASE_URL = "http://35.184.144.226/shark2/";
+    public static final String BASE_URL = "http://35.184.144.226/shark2/";
     private Button btnRegister;
     private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
     private User user;
     private CountryCodePicker ccp;
-    private String getCountryCode,userEmail,userPassword;
+    private String getCountryCode,userEmail,userPassword,langSpeak,tradeLevel;
     private  boolean isLogin = false;
     private String countryName;
     private SignUpListener listener;
     private Spinner spnLang,spnLevel;
     private ArrayAdapter<CharSequence> langAdapter,levelAdapter;
+
 
     public void setListener(SignUpListener listener) {
         this.listener = listener;
@@ -61,10 +71,6 @@ public class SignupFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
-
-        final String token = Settings.Secure.getString(getContext().getContentResolver(),
-                Settings.Secure.ANDROID_ID);
-        Log.d("LIRAN","token is :" + token);
 
         txtName = (EditText) view.findViewById(R.id.txtName);
         txtLast = (EditText) view.findViewById(R.id.txtLast);
@@ -81,6 +87,55 @@ public class SignupFragment extends Fragment {
         levelAdapter = ArrayAdapter.createFromResource(getContext(),R.array.TradingLevel,android.R.layout.simple_spinner_item);
         levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnLevel.setAdapter(levelAdapter);
+
+        spnLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    return;
+                }else if (position == 1){
+                    langSpeak = "Arabic";
+                    return;
+                }else if (position == 2){
+                    langSpeak = "English";
+                    return;
+                }else if (position == 3){
+                    langSpeak = "Russian";
+                    return;
+                }else if(position == 4){
+                    langSpeak = "German";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spnLevel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    return;
+                }else if (position == 1){
+                    tradeLevel = "Beginner";
+                    return;
+                }else if (position == 2){
+                    tradeLevel = "Advanced";
+                    return;
+                }else if (position == 3){
+                    tradeLevel = "Pro";
+                    return;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         // Get the Country Code from Country Piker and store the value in getCountryCode.
         getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
         countryName = ccp.getDefaultCountryName();
@@ -175,10 +230,10 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("countryCode",user.getCountryCode());
                                 jsonObject.put("password",user.getPassword());
                                 jsonObject.put("email",user.getMail());
-                                jsonObject.put("langSpeak",user.getSpeakLang());
-                                jsonObject.put("tradeLvl",user.getTrdeLvl());
+                                jsonObject.put("langSpeak",langSpeak);
+                                jsonObject.put("tradeLvl",tradeLevel);
                                 jsonObject.put("paid",false);
-                                jsonObject.put("token",token);
+                                jsonObject.put("token","");
                                 outputStream.write(jsonObject.toString().getBytes());
                                 outputStream.close();
                                 inputStream = urlConnection.getInputStream();
@@ -234,6 +289,5 @@ public class SignupFragment extends Fragment {
 
         return view;
     }
-
 
 }

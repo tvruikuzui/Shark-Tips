@@ -29,4 +29,12 @@
         <item>Remove Admin</item>
     </string-array>
 
+    <string-array name="market">
+        <item>Market Execution</item>
+        <item>Buy Limit</item>
+        <item>Sell Limit</item>
+        <item>Buy Stop</item>
+        <item>Sell Stop</item>
+    </string-array>
+
 </resources>

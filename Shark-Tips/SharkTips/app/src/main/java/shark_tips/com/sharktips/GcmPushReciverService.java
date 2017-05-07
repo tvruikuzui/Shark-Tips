@@ -8,9 +8,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.ContextCompat;
-
 import com.google.android.gms.gcm.GcmListenerService;
 
 /**
@@ -27,6 +24,7 @@ public class GcmPushReciverService extends GcmListenerService {
 
 
     private void sendNotification(String message){
+
         Intent intent = new Intent(this,Home.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -43,7 +41,6 @@ public class GcmPushReciverService extends GcmListenerService {
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0,builder.build());
-
 
     }
 }
