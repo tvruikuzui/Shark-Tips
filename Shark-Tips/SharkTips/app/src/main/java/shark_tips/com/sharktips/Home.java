@@ -204,7 +204,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         sendIntent.setType("text/plain");
         sendIntent.setPackage("com.whatsapp");
         startActivity(sendIntent);
-        finish();
     }
 
     // Log out From the app

@@ -12,6 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imgPaid"
+            android:src="@drawable/payoff"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
         <TextView
             android:id="@+id/lblUserNameAdminPanel"
             android:text="User Name"

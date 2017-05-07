@@ -161,7 +161,7 @@
             android:layout_alignParentBottom="true"
             android:text="Submit"
             android:textSize="20sp"
-            android:textColor="#fff" />
+            android:textColor="#ffffff" />
     </RelativeLayout>
 
 </RelativeLayout>

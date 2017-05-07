@@ -158,7 +158,7 @@ public class SignalsManager extends Fragment {
                             signalObject.put("currency",signal.getCurrency());
                             signalObject.put("price",signal.getPrice());
                             signalObject.put("sellStop",signal.getSellStop());
-                            signalObject.put("sl",signal.getSl());
+                            signalObject.put("sl",marketExecution);
                             signalObject.put("tp1",signal.getTp1());
                             signalObject.put("tp2",signal.getTp2());
                             signalObject.put("not",signal.getNote());

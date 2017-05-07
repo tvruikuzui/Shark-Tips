@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class UsersManagerAdapter extends BaseAdapter {
                 ,lblUserLastAdminPanel
                 ,lblUserEmailAdminPanel
                 ,lblUserDaysAdminPanel;
+        ImageView imgPaid;
     }
 
     @Override
@@ -57,6 +59,7 @@ public class UsersManagerAdapter extends BaseAdapter {
         if (convertView == null) {
             userRow = new UserRow();
             convertView = LayoutInflater.from(context).inflate(R.layout.users_row_admin, parent, false);
+            userRow.imgPaid = (ImageView) convertView.findViewById(R.id.imgPaid);
             userRow.lblUserNameAdminPanel = (TextView) convertView.findViewById(R.id.lblUserNameAdminPanel);
             userRow.lblUserLastAdminPanel = (TextView) convertView.findViewById(R.id.lblUserLastAdminPanel);
             userRow.lblUserEmailAdminPanel = (TextView) convertView.findViewById(R.id.lblUserEmailAdminPanel);
@@ -68,6 +71,11 @@ public class UsersManagerAdapter extends BaseAdapter {
         }
 
         User user = users.get(position);
+        if (user.isPaid() == false){
+            userRow.imgPaid.setImageResource(R.drawable.payoff);
+        }else {
+            userRow.imgPaid.setImageResource(R.drawable.payon);
+        }
         userRow.lblUserNameAdminPanel.setText(user.getName());
         userRow.lblUserLastAdminPanel.setText(user.getLastName());
         userRow.lblUserEmailAdminPanel.setText(user.getMail());

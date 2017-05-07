@@ -4,9 +4,11 @@ package shark_tips.com.sharktips;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -26,13 +28,18 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UsersManager extends Fragment {
+public class UsersManager extends Fragment implements UserEditPanel.UserNameEditListener {
 
     private ListView listUsersAdminPanel;
     private EditText lblSearchUsers;
     private UsersManagerAdapter adapter;
     private ArrayList<User> users;
     private String userEmail,userPassword;
+    private User user;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -96,7 +103,8 @@ public class UsersManager extends Fragment {
                             User user = new User(userObject.getString("name")
                                     ,userObject.getString("lastName")
                                     ,userObject.getString("email")
-                                    ,userObject.getLong("ts"));
+                                    ,userObject.getLong("ts")
+                                    ,userObject.getBoolean("paid"));
                             users.add(user);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -113,7 +121,24 @@ public class UsersManager extends Fragment {
             }
         }.execute(userEmail,userPassword);
 
+
+        listUsersAdminPanel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager manager = getFragmentManager();
+                UserEditPanel userEditPanel = new UserEditPanel();
+                userEditPanel.setCancelable(true);
+                userEditPanel.setUser(users.get(position));
+                userEditPanel.setListener(UsersManager.this);
+                userEditPanel.show(manager,"SHOW");
+            }
+        });
+
         return view;
     }
 
+    @Override
+    public void editUser() {
+        adapter.notifyDataSetChanged();
+    }
 }

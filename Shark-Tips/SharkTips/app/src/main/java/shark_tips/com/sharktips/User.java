@@ -29,11 +29,12 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, String mail, long timeStamp) {
+    public User(String name, String lastName, String mail, long timeStamp,boolean isPaid) {
         this.name = name;
         this.lastName = lastName;
         this.mail = mail;
         this.timeStamp = timeStamp;
+        this.isPaid = isPaid;
     }
 
     public User(String name, String lastName, String mail, long phoneNumber,
@@ -63,6 +64,8 @@ public class User {
         this.speakLang = speakLang;
         this.trdeLvl = trdeLvl;
     }
+
+
 
     public String getCountryCode() {
         return countryCode;
