@@ -26,7 +26,6 @@ public class UserEditPanel extends DialogFragment {
     private CheckBox chkYes,chkNo;
     private EditText txtUpdateUserDays;
     private Button btnSaveUserPanel,btnExitUserPanel;
-    private ArrayList<User> users;
     private User user;
     private UserNameEditListener listener;
     private boolean isPaid;

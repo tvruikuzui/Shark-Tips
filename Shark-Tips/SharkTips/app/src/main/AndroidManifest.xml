@@ -4,9 +4,7 @@
     package="shark_tips.com.sharktips">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="shark_tips.com.sharktips.permission.C2D.MESSAGE"/>
-    <permission android:name="shark_tips.com.sharktips.permission.C2D.MESSAGE" android:protectionLevel="signature"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
 
     <application
         android:allowBackup="true"
@@ -28,27 +26,19 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme"></activity>
         <activity android:name=".AdminPanel"></activity>
-        
-        <receiver android:name="com.google.android.gms.gcm.GcmReceiver"
-            android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"></action>
-                <category android:name="shark_tips.com.sharktips"></category>
 
-            </intent-filter>
-        </receiver>
-        <service android:name=".GcmPushReciverService" android:exported="false">
+        <service
+            android:name=".FcmServiceIdToken">
             <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE"></action>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
-        <service android:name=".GcmRegisterIntentService" android:exported="false">
+        <service
+            android:name=".FcmMessaginServiceHandle">
             <intent-filter>
-                <action android:name="com.google.android.gms.iid.InstanceID"></action>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
-        
     </application>
 
 </manifest>

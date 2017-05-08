@@ -1,20 +1,35 @@
 {
   "project_info": {
-    "project_number": "386639560862",
-    "project_id": "firebase-shark-tips"
+    "project_number": "371165457220",
+    "firebase_url": "https://sharktips-f6a40.firebaseio.com",
+    "project_id": "sharktips-f6a40",
+    "storage_bucket": "sharktips-f6a40.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:386639560862:android:d9ce6676e0e6ab7a",
+        "mobilesdk_app_id": "1:371165457220:android:d9ce6676e0e6ab7a",
         "android_client_info": {
           "package_name": "shark_tips.com.sharktips"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "371165457220-9vsdnr0094dm8423c8qaj9phrba12mvm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "shark_tips.com.sharktips",
+            "certificate_hash": "bdb2857baf805529a540920547729af3c4b13afd"
+          }
+        },
+        {
+          "client_id": "371165457220-jvsmdnbm9vrhojp9evrqbn10fm2810r3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBpNOAwMdGD7-nR4AtlC1NJTw60y1L4QlE"
+          "current_key": "AIzaSyBx1IQ2Ouz-Xq2cMaLfR5hbEYkBOxCCPkg"
         }
       ],
       "services": {
@@ -22,11 +37,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371165457220-jvsmdnbm9vrhojp9evrqbn10fm2810r3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

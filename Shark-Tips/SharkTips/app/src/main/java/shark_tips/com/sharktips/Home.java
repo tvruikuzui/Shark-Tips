@@ -1,35 +1,24 @@
 package shark_tips.com.sharktips;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
+
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.content.LocalBroadcastManager;
+
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -44,41 +33,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private String getUserEmail;
     private TextView lblSetUserEmail;
     private NavigationView navigationView;
-    private BroadcastReceiver broadcastReceiver;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                if (intent.getAction().equals(GcmRegisterIntentService.REGISTRATION_OK)){
-                   String token = intent.getStringExtra("token");
-                    Log.d("TOKEN",token);
-                }else if (intent.getAction().equals(GcmRegisterIntentService.REGISTRATION_ERROR)){
-                    Log.d("TOKEN","ERROR");
-                }else {
-
-                }
-            }
-        };
-
-        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
-        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
-        if (ConnectionResult.SUCCESS != resultCode){
-            if (apiAvailability.isUserResolvableError(resultCode)){
-                Log.d("SERVER","Service not Installd /Enabled");
-            }else {
-                Log.d("SERVER","Device Not Soppurt google play servises");
-            }
-        }else {
-            Intent intent = new Intent(this,GcmRegisterIntentService.class);
-            startService(intent);
-        }
-
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -116,16 +77,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("HOME","OnResume");
-        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,new IntentFilter(GcmRegisterIntentService.REGISTRATION_OK));
-        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,new IntentFilter(GcmRegisterIntentService.REGISTRATION_ERROR));
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("HOME","OnPause");
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
+
     }
 
 
@@ -245,6 +203,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 HttpURLConnection urlConnection = null;
                 InputStream inputStream = null;
                 StringBuilder stringBuilder = new StringBuilder();
+                String result = "";
                 try {
                     URL url = new URL("http://35.184.144.226/shark2/"+ params[0] + "/" );
                     urlConnection = (HttpURLConnection) url.openConnection();
@@ -275,14 +234,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     }
                 }
 
-                try {
-                    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
-                    return jsonObject.getString("admin");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                return null;
+                return stringBuilder.toString();
             }
 
             @Override
@@ -297,6 +249,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     case "SIGNAL_ADMIN":
                         nav_Menu = navigationView.getMenu();
                         nav_Menu.findItem(R.id.nav_admin).setVisible(true);
+                        break;
+
+                    default:
+                        nav_Menu = navigationView.getMenu();
+                        nav_Menu.findItem(R.id.nav_admin).setVisible(false);
                         break;
 
                 }

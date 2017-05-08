@@ -1,17 +1,8 @@
 package shark_tips.com.sharktips;
 
-
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.hbb20.CountryCodePicker;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -233,7 +221,7 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("langSpeak",langSpeak);
                                 jsonObject.put("tradeLvl",tradeLevel);
                                 jsonObject.put("paid",false);
-                                jsonObject.put("token","");
+                                jsonObject.put("token",FirebaseInstanceId.getInstance().getToken());
                                 outputStream.write(jsonObject.toString().getBytes());
                                 outputStream.close();
                                 inputStream = urlConnection.getInputStream();
