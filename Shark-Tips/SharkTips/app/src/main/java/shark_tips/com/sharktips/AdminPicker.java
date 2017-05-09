@@ -34,11 +34,12 @@ import java.net.URL;
 public class AdminPicker extends Fragment {
 
     private Spinner spinnerAdmin;
-    private Button btnUpdateUserAdmin;
-    private String userEmail,userPassword,userToBeAdmin;
+    private Button btnUpdateUserAdmin,btnUpdateAd;
+    private String userEmail,userPassword,userToBeAdmin,adText,adPhoto;
     private ArrayAdapter<CharSequence> adminAdapter;
-    private EditText txtMakeAdmin;
+    private EditText txtMakeAdmin,txtUpdatePhotoAd,txtUpdateTextAd;
     private TextView lblDescription;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -48,6 +49,9 @@ public class AdminPicker extends Fragment {
         lblDescription = (TextView) view.findViewById(R.id.lblDescription);
         lblDescription.setVisibility(View.GONE);
         txtMakeAdmin = (EditText) view.findViewById(R.id.txtMakeAdmin);
+        txtUpdatePhotoAd = (EditText) view.findViewById(R.id.txtUpdatePhotoAd);
+        txtUpdateTextAd = (EditText) view.findViewById(R.id.txtUpdateTextAd);
+        btnUpdateAd = (Button) view.findViewById(R.id.btnUpdateAd);
         spinnerAdmin = (Spinner) view.findViewById(R.id.spinnerAdmin);
         adminAdapter = ArrayAdapter.createFromResource(getContext(),R.array.admin,android.R.layout.simple_spinner_item);
         adminAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -141,6 +145,42 @@ public class AdminPicker extends Fragment {
                 }.execute(userEmail,userPassword,userToBeAdmin, String.valueOf(id));
             }
         });
+
+
+        btnUpdateAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adPhoto = txtUpdatePhotoAd.getText().toString();
+                adText = txtUpdateTextAd.getText().toString();
+                if (adPhoto.length() == 0 || adText.length() == 0){
+                    lblDescription.setVisibility(View.VISIBLE);
+                    lblDescription.setTextColor(Color.parseColor("#aa0036"));
+                    lblDescription.setText("No Data Was Entered.");
+                    return;
+                }else if (!adPhoto.isEmpty() && !adText.isEmpty()){
+
+                    lblDescription.setVisibility(View.VISIBLE);
+                    lblDescription.setTextColor(Color.parseColor("#aa0036"));
+                    lblDescription.setText("Please Clear One Field.");
+                    return;
+                }else {
+                    new AsyncTask<String, Void, String>() {
+                        @Override
+                        protected String doInBackground(String... params) {
+                            // DATA HERE
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(String s) {
+                            super.onPostExecute(s);
+                        }
+                    }.execute();
+                }
+            }
+        });
+
+
         return view;
     }
 

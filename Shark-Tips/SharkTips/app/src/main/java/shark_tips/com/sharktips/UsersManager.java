@@ -35,11 +35,6 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
     private UsersManagerAdapter adapter;
     private ArrayList<User> users;
     private String userEmail,userPassword;
-    private User user;
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {

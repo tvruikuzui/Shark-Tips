@@ -251,9 +251,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                         nav_Menu.findItem(R.id.nav_admin).setVisible(true);
                         break;
 
-                    default:
+                    case 3:
                         nav_Menu = navigationView.getMenu();
-                        nav_Menu.findItem(R.id.nav_admin).setVisible(true);
+                        nav_Menu.findItem(R.id.nav_admin).setVisible(false);
                         break;
 
                 }
