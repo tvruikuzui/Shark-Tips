@@ -62,7 +62,7 @@ public class MyHelper {
     static public String getUserEmailFromSharedPreferences(Context context){
         SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
         if (preferences != null){
-            String getEmail = preferences.getString("email","Office@shark-tips.com");
+            String getEmail = preferences.getString("email","");
             return getEmail;
         }
         return String.valueOf(Log.d("TAG","ERROR"));

@@ -197,13 +197,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     // Check if the user is an admin.
     private void checkIfUserAdmin() {
-        new AsyncTask<String, Void, String>() {
+        new AsyncTask<String, Void, Integer>() {
             @Override
-            protected String doInBackground(String... params) {
+            protected Integer doInBackground(String... params) {
                 HttpURLConnection urlConnection = null;
                 InputStream inputStream = null;
                 StringBuilder stringBuilder = new StringBuilder();
-                String result = "";
                 try {
                     URL url = new URL("http://35.184.144.226/shark2/"+ params[0] + "/" );
                     urlConnection = (HttpURLConnection) url.openConnection();
@@ -217,6 +216,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                             stringBuilder.append(new String(buffer,0,actuallyRead));
                     }
                     inputStream.close();
+                    return Integer.valueOf(stringBuilder.toString());
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -234,26 +234,26 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                     }
                 }
 
-                return stringBuilder.toString();
+                return null;
             }
 
             @Override
-            protected void onPostExecute(String s) {
+            protected void onPostExecute(Integer result) {
                 Menu nav_Menu;
-                switch (s){
-                    case "SUPER_ADMIN":
+                switch (result){
+                    case 1:
                         nav_Menu = navigationView.getMenu();
                         nav_Menu.findItem(R.id.nav_admin).setVisible(true);
                         break;
 
-                    case "SIGNAL_ADMIN":
+                    case 2:
                         nav_Menu = navigationView.getMenu();
                         nav_Menu.findItem(R.id.nav_admin).setVisible(true);
                         break;
 
                     default:
                         nav_Menu = navigationView.getMenu();
-                        nav_Menu.findItem(R.id.nav_admin).setVisible(false);
+                        nav_Menu.findItem(R.id.nav_admin).setVisible(true);
                         break;
 
                 }

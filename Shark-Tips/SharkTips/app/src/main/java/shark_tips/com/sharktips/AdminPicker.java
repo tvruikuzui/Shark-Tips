@@ -98,7 +98,6 @@ public class AdminPicker extends Fragment {
                     return;
                 }
 
-
                 new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... params) {
@@ -146,37 +145,3 @@ public class AdminPicker extends Fragment {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
- */
