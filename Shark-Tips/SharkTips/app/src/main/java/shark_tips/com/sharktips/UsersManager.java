@@ -1,6 +1,7 @@
 package shark_tips.com.sharktips;
 
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +34,7 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
 
     private ListView listUsersAdminPanel;
     private EditText lblSearchUsers;
+    private TextView lblShowResult;
     private UsersManagerAdapter adapter;
     private ArrayList<User> users;
     private String userEmail,userPassword;
@@ -41,7 +44,7 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
         View view = inflater.inflate(R.layout.fragment_users_manager, container, false);
         lblSearchUsers = (EditText) view.findViewById(R.id.lblSearchUsers);
         listUsersAdminPanel = (ListView) view.findViewById(R.id.listUsersAdminPanel);
-
+        lblShowResult = (TextView) view.findViewById(R.id.lblShowResult);
         userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
         userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
         users = new ArrayList<>();
@@ -98,7 +101,7 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
                             User user = new User(userObject.getString("name")
                                     ,userObject.getString("lastName")
                                     ,userObject.getString("email")
-                                    ,userObject.getLong("ts")
+                                    ,userObject.getLong("addTimeToUser")
                                     ,userObject.getBoolean("paid"));
                             users.add(user);
                         } catch (JSONException e) {
@@ -135,5 +138,12 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
     @Override
     public void editUser() {
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showResult(String result) {
+        lblShowResult.setVisibility(View.VISIBLE);
+        lblShowResult.setTextColor(Color.parseColor("#042d44"));
+        lblShowResult.setText("User has been:" + result);
     }
 }

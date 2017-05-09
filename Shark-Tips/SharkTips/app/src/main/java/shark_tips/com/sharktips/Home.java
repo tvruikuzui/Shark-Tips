@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -33,6 +35,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private String getUserEmail;
     private TextView lblSetUserEmail;
     private NavigationView navigationView;
+
 
 
 
@@ -112,6 +115,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            return true;
+        }else if (id == R.id.action_notification){
+            viewPager.setCurrentItem(1);
             return true;
         }
 
@@ -125,9 +132,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         int id = item.getItemId();
         switch (id){
             case R.id.nav_home:
-                Intent intent = new Intent(this,Home.class);
-                startActivity(intent);
-                finish();
+                viewPager.setCurrentItem(0);
                 break;
 
             case R.id.nav_logout:

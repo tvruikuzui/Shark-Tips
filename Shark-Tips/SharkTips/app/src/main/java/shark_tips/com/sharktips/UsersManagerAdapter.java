@@ -79,7 +79,12 @@ public class UsersManagerAdapter extends BaseAdapter {
         userRow.lblUserNameAdminPanel.setText(user.getName());
         userRow.lblUserLastAdminPanel.setText(user.getLastName());
         userRow.lblUserEmailAdminPanel.setText(user.getMail());
-        userRow.lblUserDaysAdminPanel.setText(String.valueOf(user.getTimeStamp()));
+        if (user.getTimeStamp() <=  1){
+            userRow.lblUserDaysAdminPanel.setText(String.valueOf(user.getTimeStamp() + "day"));
+        }else {
+            userRow.lblUserDaysAdminPanel.setText(String.valueOf(user.getTimeStamp() + "days"));
+        }
+
 
         return convertView;
     }
