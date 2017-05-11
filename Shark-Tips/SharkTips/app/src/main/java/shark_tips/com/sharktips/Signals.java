@@ -42,6 +42,15 @@ public class Signals extends Fragment {
         adapter = new ExpandListAdapter(getContext(),signals);
         listView.setAdapter(adapter);
 
+        //if its admin should get this method
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                //TODO:(dev) add dialog fragment
+                return false;
+            }
+        });
+
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
@@ -76,6 +85,7 @@ public class Signals extends Fragment {
                                     ,signalObject.getDouble("sl")
                                     ,signalObject.getDouble("tp1"),signalObject.getDouble("tp2")
                                     ,signalObject.getString("note"));
+                            signal.setId(signalObject.getInt("id"));
                             signals.add(signal);
                         }
                     }
