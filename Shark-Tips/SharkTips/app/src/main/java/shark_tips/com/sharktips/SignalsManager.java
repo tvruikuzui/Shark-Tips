@@ -129,6 +129,9 @@ public class SignalsManager extends Fragment {
                         }
                     }
                 }.execute();
+                SignalsAsyncTask signalsAsyncTask = new SignalsAsyncTask();
+                signalsAsyncTask.setC(getContext());
+                signalsAsyncTask.execute(signal);
             }
         });
 

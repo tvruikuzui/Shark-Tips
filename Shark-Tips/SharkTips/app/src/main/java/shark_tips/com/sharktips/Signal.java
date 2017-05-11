@@ -12,16 +12,17 @@ public class Signal {
 
     // Signal
 
-    String currency;
-    boolean isBuy;
-    double price;
-    double sellStop;
-    double sl;
-    double tp1;
-    double tp2;
-    String note;
-    boolean isOpen;
-    int time;
+    private String currency;
+    private boolean isBuy;
+    private double price;
+    private double sellStop;
+    private double sl;
+    private double tp1;
+    private double tp2;
+    private String note;
+    private boolean isOpen;
+    private int time;
+    private Integer id;
 
 
     public Signal() {
@@ -52,6 +53,14 @@ public class Signal {
         this.tp1 = tp1;
         this.tp2 = tp2;
         this.note = note;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public boolean isOpen() {
