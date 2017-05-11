@@ -65,70 +65,70 @@ public class SignalsManager extends Fragment {
             @Override
             public void onClick(View v) {
                 createNewSignal();
-                new AsyncTask<String, Void, String>() {
-                    @Override
-                    protected String doInBackground(String... params) {
-                        params[0] = userEmail;
-                        params[1] = userPassword;
-                        HttpURLConnection urlConnection = null;
-                        OutputStream outputStream = null;
-                        InputStream inputStream = null;
-                        String result = "";
-                        try {
-                            URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]);
-                            urlConnection = (HttpURLConnection) url.openConnection();
-                            urlConnection.setRequestMethod("PUT");
-                            urlConnection.setUseCaches(false);
-                            urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                            urlConnection.connect();
-                            outputStream = urlConnection.getOutputStream();
-                            JSONObject signalObject = new JSONObject();
-                            signalObject.put("currency",signal.getCurrency());
-                            signalObject.put("price",signal.getPrice());
-                            signalObject.put("sellStop",signal.getSellStop());
-                            signalObject.put("sl",signal.getSl());
-                            signalObject.put("tp1",signal.getTp1());
-                            signalObject.put("tp2",signal.getTp2());
-                            signalObject.put("note",signal.getNote());
-                            outputStream.write(signalObject.toString().getBytes());
-                            outputStream.close();
-                            inputStream = urlConnection.getInputStream();
-                            byte[] buffer = new byte[64];
-                            int actuallyRead = inputStream.read(buffer);
-                            result = new String(buffer,0,actuallyRead);
-                            inputStream.close();
-                        } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }finally {
-                            if (outputStream != null){
-                                try {
-                                    outputStream.close();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                            if (urlConnection != null){
-                                urlConnection.disconnect();
-                            }
-                        }
-                        return result;
-                    }
-
-                    @Override
-                    protected void onPostExecute(String result) {
-                        switch (result){
-                            case "ok":
-                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
-                                break;
-                            case "error":
-                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }.execute();
+//                new AsyncTask<String, Void, String>() {
+//                    @Override
+//                    protected String doInBackground(String... params) {
+//                        params[0] = userEmail;
+//                        params[1] = userPassword;
+//                        HttpURLConnection urlConnection = null;
+//                        OutputStream outputStream = null;
+//                        InputStream inputStream = null;
+//                        String result = "";
+//                        try {
+//                            URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]);
+//                            urlConnection = (HttpURLConnection) url.openConnection();
+//                            urlConnection.setRequestMethod("PUT");
+//                            urlConnection.setUseCaches(false);
+//                            urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+//                            urlConnection.connect();
+//                            outputStream = urlConnection.getOutputStream();
+//                            JSONObject signalObject = new JSONObject();
+//                            signalObject.put("currency",signal.getCurrency());
+//                            signalObject.put("price",signal.getPrice());
+//                            signalObject.put("sellStop",signal.getSellStop());
+//                            signalObject.put("sl",signal.getSl());
+//                            signalObject.put("tp1",signal.getTp1());
+//                            signalObject.put("tp2",signal.getTp2());
+//                            signalObject.put("note",signal.getNote());
+//                            outputStream.write(signalObject.toString().getBytes());
+//                            outputStream.close();
+//                            inputStream = urlConnection.getInputStream();
+//                            byte[] buffer = new byte[64];
+//                            int actuallyRead = inputStream.read(buffer);
+//                            result = new String(buffer,0,actuallyRead);
+//                            inputStream.close();
+//                        } catch (MalformedURLException e) {
+//                            e.printStackTrace();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }finally {
+//                            if (outputStream != null){
+//                                try {
+//                                    outputStream.close();
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                            if (urlConnection != null){
+//                                urlConnection.disconnect();
+//                            }
+//                        }
+//                        return result;
+//                    }
+//
+//                    @Override
+//                    protected void onPostExecute(String result) {
+//                        switch (result){
+//                            case "ok":
+//                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+//                                break;
+//                            case "error":
+//                                Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                }.execute();
                 SignalsAsyncTask signalsAsyncTask = new SignalsAsyncTask();
                 signalsAsyncTask.setC(getContext());
                 signalsAsyncTask.execute(signal);
