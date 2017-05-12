@@ -39,6 +39,7 @@ public class AdminPicker extends Fragment {
     private ArrayAdapter<CharSequence> adminAdapter;
     private EditText txtMakeAdmin,txtUpdatePhotoAd,txtUpdateTextAd;
     private TextView lblDescription;
+    private boolean isAdmin = false;
 
 
     @Override
@@ -140,7 +141,19 @@ public class AdminPicker extends Fragment {
 
                     @Override
                     protected void onPostExecute(String result) {
-                        Toast.makeText(getContext(),"Action was : " + result , Toast.LENGTH_SHORT).show();
+                        switch (result){
+                            case "ok":
+                                isAdmin = true;
+                                MyHelper.saveIfIsAdminToSharedPreferences(getContext(),isAdmin);
+                                Toast.makeText(getContext(),"Action was : " + result , Toast.LENGTH_SHORT).show();
+                                break;
+                            case "error":
+                                isAdmin = false;
+                                MyHelper.saveIfIsAdminToSharedPreferences(getContext(),isAdmin);
+                                Toast.makeText(getContext(),"Action was : " + result , Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+
                     }
                 }.execute(userEmail,userPassword,userToBeAdmin, String.valueOf(id));
             }

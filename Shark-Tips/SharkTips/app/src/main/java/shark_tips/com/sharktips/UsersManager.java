@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,6 @@ import java.util.ArrayList;
 public class UsersManager extends Fragment implements UserEditPanel.UserNameEditListener {
 
     private ListView listUsersAdminPanel;
-    private EditText lblSearchUsers;
     private TextView lblShowResult;
     private UsersManagerAdapter adapter;
     private ArrayList<User> users;
@@ -42,7 +42,6 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_users_manager, container, false);
-        lblSearchUsers = (EditText) view.findViewById(R.id.lblSearchUsers);
         listUsersAdminPanel = (ListView) view.findViewById(R.id.listUsersAdminPanel);
         lblShowResult = (TextView) view.findViewById(R.id.lblShowResult);
         userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());

@@ -55,7 +55,7 @@ public class AdminPanel extends AppCompatActivity {
     }
 
     // Create Fragment
-    private void createFragment(Fragment fragment){
+    private  void createFragment(Fragment fragment){
         lblChooseAction.setVisibility(View.GONE);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

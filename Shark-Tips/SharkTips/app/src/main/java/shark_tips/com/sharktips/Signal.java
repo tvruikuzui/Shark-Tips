@@ -21,7 +21,8 @@ public class Signal {
     double tp2;
     String note;
     boolean isOpen;
-    int time,id;
+    Integer id;
+    int time;
 
 
     public Signal() {
@@ -164,11 +165,11 @@ public class Signal {
         this.action = action;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

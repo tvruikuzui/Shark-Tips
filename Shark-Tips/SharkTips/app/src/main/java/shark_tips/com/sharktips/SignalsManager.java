@@ -130,6 +130,34 @@ public class SignalsManager extends Fragment {
                 setTp2 = Double.parseDouble(txtTp2.getText().toString());
                 setNote = txtNote.getText().toString();
 
+                Signal signal = new Signal();
+                signal.setCurrency(setCurrency);
+                signal.setPrice(setPrice);
+                signal.setSellStop(setSellStop);
+                signal.setSl(setSl);
+                signal.setTp1(setTp1);
+                signal.setTp2(setTp2);
+                signal.setNote(setNote);
+
+                SignalsAsyncTask signalsAsyncTask = new SignalsAsyncTask();
+                signalsAsyncTask.setC(getContext());
+                signalsAsyncTask.execute(signal);
+
+            }
+
+        });
+
+
+
+        return view;
+    }
+
+}
+
+
+
+
+                /*
                 new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... params) {
@@ -199,12 +227,4 @@ public class SignalsManager extends Fragment {
                     }
 
                 }.execute(userEmail,userPassword);
-            }
-        });
-
-
-
-        return view;
-    }
-
-}
+                */

@@ -35,9 +35,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private String getUserEmail;
     private TextView lblSetUserEmail;
     private NavigationView navigationView;
-
-
-
+    private boolean isAdmin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +54,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         tabLayout.setupWithViewPager(viewPager);
 
         getUserEmail = MyHelper.getUserEmailFromSharedPreferences(this);
+        isAdmin = MyHelper.getIfIsAdminFromSharedPreferences(this);
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -247,16 +246,22 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 Menu nav_Menu;
                 switch (result){
                     case 1:
+                        isAdmin = true;
+                        MyHelper.saveIfIsAdminToSharedPreferences(getApplicationContext(),isAdmin);
                         nav_Menu = navigationView.getMenu();
                         nav_Menu.findItem(R.id.nav_admin).setVisible(true);
                         break;
 
                     case 2:
+                        isAdmin = true;
+                        MyHelper.saveIfIsAdminToSharedPreferences(getApplicationContext(),isAdmin);
                         nav_Menu = navigationView.getMenu();
                         nav_Menu.findItem(R.id.nav_admin).setVisible(true);
                         break;
 
                     case 3:
+                        isAdmin = false;
+                        MyHelper.saveIfIsAdminToSharedPreferences(getApplicationContext(),isAdmin);
                         nav_Menu = navigationView.getMenu();
                         nav_Menu.findItem(R.id.nav_admin).setVisible(false);
                         break;
@@ -270,5 +275,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public void handleClick(boolean click) {
 
     }
+
     
 }

@@ -106,4 +106,33 @@ public class MyHelper {
 
 
 
+    // ---------------------------------------------------------------------------------------------
+    // Check if User Is Admin
+    // ---------------------------------------------------------------------------------------------
+
+    // save user Password.
+    static public void saveIfIsAdminToSharedPreferences(Context context,boolean isAdmin){
+        SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
+        if (preferences != null){
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("isAdmin",isAdmin);
+            editor.commit();
+        }else {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    // retrieve user Password
+    static public boolean getIfIsAdminFromSharedPreferences(Context context){
+        SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
+            boolean isAdmin = preferences.getBoolean("isAdmin",false);
+            return isAdmin;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // END
+    // ---------------------------------------------------------------------------------------------
+
+
 }
