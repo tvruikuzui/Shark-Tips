@@ -4,6 +4,7 @@ package shark_tips.com.sharktips;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,19 @@ public class Signals extends Fragment {
         signals = new ArrayList<>();
         adapter = new ExpandListAdapter(getContext(),signals);
         listView.setAdapter(adapter);
+
+        if (Home.isAdmin){
+            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    FragmentManager manager = getFragmentManager();
+                    EditSignalsAdmin signalsAdmin = new EditSignalsAdmin();
+                    signalsAdmin.setSignal(signals.get(position));
+                    signalsAdmin.show(manager,"TAG");
+                    return false;
+                }
+            });
+        }
 
         new AsyncTask<Void, Void, String>() {
             @Override

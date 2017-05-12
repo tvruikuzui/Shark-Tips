@@ -101,7 +101,7 @@ public class ExpandListAdapter extends BaseAdapter {
         row.lblCurrency.setText(item.getCurrency());
         row.lblPrice.setText(String.valueOf(item.getPrice()));
         row.lblSellStop.setText("SellStop - "+item.getSellStop());
-        row.lblsl.setText(" - "+item.getSl());
+        row.lblsl.setText(item.getNameOfSl() +" - "+item.getSl());
         row.lbltp1.setText("Tp1 - "+item.getTp1());
         row.lbltp2.setText("Tp2 - "+item.getTp2());
         row.lblNote.setText(item.getNote());

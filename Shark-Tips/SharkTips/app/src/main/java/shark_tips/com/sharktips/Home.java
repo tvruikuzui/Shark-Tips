@@ -35,7 +35,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private String getUserEmail;
     private TextView lblSetUserEmail;
     private NavigationView navigationView;
-    private boolean isAdmin = false;
+    public static boolean isAdmin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

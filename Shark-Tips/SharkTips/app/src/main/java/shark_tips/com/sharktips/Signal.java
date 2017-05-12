@@ -12,7 +12,7 @@ public class Signal {
 
     // Signal
 
-    String currency;
+    String currency,nameOfSl;
     boolean isBuy;
     double price;
     double sellStop;
@@ -171,5 +171,13 @@ public class Signal {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNameOfSl() {
+        return nameOfSl;
+    }
+
+    public void setNameOfSl(String nameOfSl) {
+        this.nameOfSl = nameOfSl;
     }
 }

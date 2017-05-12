@@ -134,6 +134,7 @@ public class SignalsManager extends Fragment {
                 signal.setCurrency(setCurrency);
                 signal.setPrice(setPrice);
                 signal.setSellStop(setSellStop);
+                signal.setNameOfSl(marketExecution);
                 signal.setSl(setSl);
                 signal.setTp1(setTp1);
                 signal.setTp2(setTp2);

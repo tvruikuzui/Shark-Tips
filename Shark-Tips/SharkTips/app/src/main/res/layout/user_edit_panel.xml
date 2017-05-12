@@ -35,7 +35,7 @@
         <CheckBox
             android:id="@+id/chkYes"
             android:text="Yes"
-            android:buttonTint="@color/colorForAction"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -43,7 +43,7 @@
         <CheckBox
             android:id="@+id/chkNo"
             android:text="No"
-            android:buttonTint="@color/colorForAction"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -72,8 +72,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:inputType="number"
-            android:hint="0"
-            android:backgroundTint="@color/colorForAction"
+            android:text="0"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_height="wrap_content" />
 
 
