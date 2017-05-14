@@ -180,4 +180,6 @@ public class Signal {
     public void setNameOfSl(String nameOfSl) {
         this.nameOfSl = nameOfSl;
     }
+
+
 }

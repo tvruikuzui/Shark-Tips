@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Signals extends Fragment {
+public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAlertListener {
 
     private ListView listView;
     private ExpandListAdapter adapter;
@@ -49,6 +49,7 @@ public class Signals extends Fragment {
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     FragmentManager manager = getFragmentManager();
                     EditSignalsAdmin signalsAdmin = new EditSignalsAdmin();
+                    signalsAdmin.setListener(Signals.this);
                     signalsAdmin.setSignal(signals.get(position));
                     signalsAdmin.show(manager,"TAG");
                     return false;
@@ -140,4 +141,8 @@ public class Signals extends Fragment {
         return view;
     }
 
+    @Override
+    public void signalUpdate() {
+        adapter.notifyDataSetChanged();
+    }
 }

@@ -20,7 +20,13 @@ public class EditSignalsAdmin extends DialogFragment {
             ,txtEditSignalPrice,txtEditSignalSellStop,txtEditSignalTp1
             ,txtEditSignalTp2,txtEditSignalSl,txtEditSignalNote;
     private Button btnUpdateSignal;
+    private UpdateSignalAlertListener listener;
+    //private int id = signal.getId();
 
+
+    public void setListener(UpdateSignalAlertListener listener) {
+        this.listener = listener;
+    }
 
     public void setSignal(Signal signal) {
         this.signal = signal;
@@ -54,10 +60,33 @@ public class EditSignalsAdmin extends DialogFragment {
         btnUpdateSignal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: get The Action from fileds end send it to server using AsyncTask.
-
+                updateSignal(signal);
+                SignalsAsyncTask signalsAsyncTask = new SignalsAsyncTask();
+                signalsAsyncTask.setC(getContext());
+                signalsAsyncTask.execute(signal);
+                if (listener != null){
+                    listener.signalUpdate();
+                }
+                dismiss();
             }
         });
         return view;
+    }
+
+    private void updateSignal(Signal signal) {
+        signal.setNote(txtEditSignalNote.getText().toString());
+        signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));
+        signal.setCurrency(txtEditSignalCurrency.getText().toString());
+        signal.setAction(txtEditSignalAction.getText().toString());
+        signal.setPrice(Double.parseDouble(txtEditSignalPrice.getText().toString()));
+        signal.setSellStop(Double.parseDouble(txtEditSignalSellStop.getText().toString()));
+        signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));
+        signal.setSl(Double.parseDouble(txtEditSignalSl.getText().toString()));
+
+
+    }
+
+    public interface UpdateSignalAlertListener{
+        void signalUpdate();
     }
 }
