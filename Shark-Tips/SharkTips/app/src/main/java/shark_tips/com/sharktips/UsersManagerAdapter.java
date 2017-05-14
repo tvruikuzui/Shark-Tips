@@ -1,10 +1,14 @@
 package shark_tips.com.sharktips;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +29,7 @@ public class UsersManagerAdapter extends BaseAdapter {
         this.context = context;
         this.users = users;
     }
+
 
     public Context getContext() {
         return context;
@@ -80,9 +85,9 @@ public class UsersManagerAdapter extends BaseAdapter {
         userRow.lblUserLastAdminPanel.setText(user.getLastName());
         userRow.lblUserEmailAdminPanel.setText(user.getMail());
         if (user.getTimeStamp() <=  1){
-            userRow.lblUserDaysAdminPanel.setText(String.valueOf(user.getTimeStamp() + "day"));
+            userRow.lblUserDaysAdminPanel.setText(String.valueOf(user.getTimeStamp() + " day"));
         }else {
-            userRow.lblUserDaysAdminPanel.setText(String.valueOf(user.getTimeStamp() + "days"));
+            userRow.lblUserDaysAdminPanel.setText(String.valueOf(user.getTimeStamp() + " days"));
         }
 
 

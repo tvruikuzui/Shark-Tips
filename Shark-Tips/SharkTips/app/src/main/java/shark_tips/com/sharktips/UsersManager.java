@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -143,6 +144,6 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
     public void showResult(String result) {
         lblShowResult.setVisibility(View.VISIBLE);
         lblShowResult.setTextColor(Color.parseColor("#042d44"));
-        lblShowResult.setText("User has been:" + result);
+        lblShowResult.setText("User has been: " + result);
     }
 }

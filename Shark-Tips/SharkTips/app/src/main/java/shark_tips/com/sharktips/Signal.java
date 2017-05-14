@@ -32,7 +32,7 @@ public class Signal {
         this.note = note;
     }
 
-    public Signal(boolean isOpen,int id, int time, String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note) {
+    public Signal(boolean isOpen,int id, int time, String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note,String nameOfSl) {
         this.id = id;
         setOpen(isOpen);
         this.time = time;
@@ -40,6 +40,7 @@ public class Signal {
         setBuy(isBuy);
         this.price = price;
         this.sellStop = sellStop;
+        this.nameOfSl = nameOfSl;
         this.sl = sl;
         this.tp1 = tp1;
         this.tp2 = tp2;

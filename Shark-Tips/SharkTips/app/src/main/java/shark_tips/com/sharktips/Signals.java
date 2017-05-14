@@ -91,7 +91,8 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                                     ,signalObject.getDouble("sl")
                                     ,signalObject.getDouble("tp1")
                                     ,signalObject.getDouble("tp2")
-                                    ,signalObject.getString("not"));
+                                    ,signalObject.getString("note")
+                                    ,signalObject.getString("nameOfSl"));
                             signals.add(signal);
                         }
                     }

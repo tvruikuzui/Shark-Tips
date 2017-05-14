@@ -20,17 +20,8 @@ import java.net.URL;
 
 public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
 
-    private boolean shouldUpdate;
     private Context c;
-    private Signal s;
 
-    public void setS(Signal s) {
-        this.s = s;
-    }
-
-    public void setShouldUpdate(boolean shouldUpdate) {
-        this.shouldUpdate = shouldUpdate;
-    }
 
     public void setC(Context c) {
         this.c = c;
@@ -62,7 +53,8 @@ public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
             signalObject.put("sl",signal.getSl());
             signalObject.put("tp1",signal.getTp1());
             signalObject.put("tp2",signal.getTp2());
-            signalObject.put("note",signal.getNote());
+            signalObject.put("not",signal.getNote());
+            signalObject.put("nameOfSl",signal.getNameOfSl());
             outputStream.write(signalObject.toString().getBytes());
             outputStream.close();
             inputStream = urlConnection.getInputStream();

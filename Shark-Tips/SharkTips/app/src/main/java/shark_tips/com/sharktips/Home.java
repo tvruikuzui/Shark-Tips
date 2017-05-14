@@ -117,7 +117,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
             return true;
         }else if (id == R.id.action_notification){
-            viewPager.setCurrentItem(1);
+            Intent intent = new Intent(this,Notification.class);
+            startActivity(intent);
             return true;
         }
 
