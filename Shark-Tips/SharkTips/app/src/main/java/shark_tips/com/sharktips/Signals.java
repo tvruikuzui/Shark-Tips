@@ -35,6 +35,7 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
     private List<Signal> signals;
     private Signal signal;
     private static final String BASE_URL = "http://35.184.144.226/shark2/signals/";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signals, container, false);
@@ -91,7 +92,7 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                                     ,signalObject.getDouble("sl")
                                     ,signalObject.getDouble("tp1")
                                     ,signalObject.getDouble("tp2")
-                                    ,signalObject.getString("note")
+                                    ,signalObject.getString("not")
                                     ,signalObject.getString("nameOfSl"));
                             signals.add(signal);
                         }

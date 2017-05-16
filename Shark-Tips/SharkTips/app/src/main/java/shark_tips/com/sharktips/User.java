@@ -8,6 +8,7 @@ import java.util.Date;
  */
 
 public class User {
+
     enum IsAdmin{
         notAdmin,admin,superAdmin;
     }
@@ -27,6 +28,10 @@ public class User {
 
 
     public User() {
+    }
+
+    public User(String mail) {
+        this.mail = mail;
     }
 
     public User(String name, String lastName, String mail, long timeStamp,boolean isPaid) {

@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -22,16 +25,16 @@ import pl.droidsonroids.gif.GifTextView;
  */
 public class MainHome extends Fragment {
 
-    private GifTextView gifTextView;
+    private GifTextView gifTextView,gifImgAd;
     private static final String BASE_URL = "http://35.184.144.226/shark2/performace/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_home, container, false);
-
-
-
+        gifImgAd = (GifTextView) view.findViewById(R.id.gifImgAd);
+        gifImgAd.setText("WOEK?");
         gifTextView = (GifTextView) view.findViewById(R.id.imgGif);
+
         new AsyncTask<Void, Void, String>() {
             @Override
                 protected String doInBackground(Void... params) {

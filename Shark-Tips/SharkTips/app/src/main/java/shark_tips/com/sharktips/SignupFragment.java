@@ -41,7 +41,7 @@ public class SignupFragment extends Fragment {
     private User user;
     private CountryCodePicker ccp;
     private String getCountryCode,userEmail,userPassword,langSpeak,tradeLevel;
-    private  boolean isLogin = false;
+    private  boolean isLogin = false,isAdmin;
     private String countryName;
     private SignUpListener listener;
     private Spinner spnLang,spnLevel;
@@ -270,6 +270,7 @@ public class SignupFragment extends Fragment {
                     MyHelper.saveUserEmailToSharedPreferences(getContext(),userEmail);
                     MyHelper.saveUserPasswordToSharedPreferences(getContext(),userPassword);
                     MyHelper.saveToSharedPreferences(getContext(),isLogin);
+                    MyHelper.saveIfIsAdminToSharedPreferences(getContext(),false);
 
                 }
             }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,17 +20,21 @@ import java.util.List;
  * Created by liranelyadumi on 4/27/17.
  */
 
-public class UsersManagerAdapter extends BaseAdapter {
+public class UsersManagerAdapter extends BaseAdapter implements Filterable {
 
     private Context context;
     private ArrayList<User> users;
+    private ArrayList<User> filterList;
+    private CustomFilter filter;
+
+
 
 
     public UsersManagerAdapter(Context context, ArrayList<User> users) {
         this.context = context;
         this.users = users;
+        this.filterList = users;
     }
-
 
     public Context getContext() {
         return context;
@@ -47,7 +52,53 @@ public class UsersManagerAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+        int itemID;
+        if (users == null){
+            itemID = position;
+        }else {
+            itemID = users.indexOf(filterList.get(position));
+        }
+        return itemID;
+    }
+
+    @Override
+    public Filter getFilter() {
+        if (filter == null){
+            filter = new CustomFilter();
+        }
+        return filter;
+    }
+
+    public class CustomFilter extends Filter {
+
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            if (constraint != null && constraint.length() > 0){
+                constraint = constraint.toString().toUpperCase();
+                ArrayList<User> filters = new ArrayList<User>();
+                for (int i = 0; i < filterList.size(); i++) {
+                    if (filterList.get(i).getMail().toUpperCase().contains(constraint)){
+                        User user = new User(filterList.get(i).getMail());
+                        filters.add(user);
+                    }
+                }
+
+                results.count = filters.size();
+                results.values = filters;
+            }else {
+                results.count = filterList.size();
+                results.values = filterList;
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            users = (ArrayList<User>) results.values;
+            notifyDataSetChanged();
+        }
     }
 
     public class UserRow{

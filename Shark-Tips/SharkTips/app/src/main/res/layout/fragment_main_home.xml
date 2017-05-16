@@ -1,109 +1,109 @@
 <LinearLayout
-    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:orientation="vertical"
     tools:context="shark_tips.com.sharktips.MainHome">
 
-<pl.droidsonroids.gif.GifTextView
-    android:layout_marginTop="15dp"
-    android:layout_gravity="center_horizontal"
-    android:id="@+id/imgGif"
-    android:text="60%"
-    android:textColor="@android:color/white"
-    android:gravity="center_horizontal"
-    android:paddingTop="100dp"
-    android:textSize="50sp"
-    android:textStyle="bold"
-    android:layout_width="200dp"
-    android:layout_height="200dp" />
+        <pl.droidsonroids.gif.GifTextView
+            android:id="@+id/imgGif"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:paddingTop="100dp"
+            android:text="60%"
+            android:textColor="@android:color/white"
+            android:textSize="50sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Success Rate!"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
-            android:padding="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:padding="15dp">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                         <ImageView
-                            android:layout_marginLeft="10dp"
                             android:id="@+id/imgOne"
-                            android:src="@drawable/noone"
+                            android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_width="80dp"/>
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/noone"/>
 
 
                         <TextView
-                            android:textSize="16sp"
-                            android:maxLines="4"
-                            android:lines="4"
-                            android:gravity="center_horizontal"
-                            android:layout_marginLeft="5dp"
-                            android:layout_height="wrap_content"
                             android:layout_width="100dp"
-                            android:text="Average over 300 pips of profit per month."/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_horizontal"
+                            android:lines="4"
+                            android:maxLines="4"
+                            android:text="Average over 300 pips of profit per month."
+                            android:textSize="16sp"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                         <TextView
-                            android:textSize="16sp"
-                            android:maxLines="4"
-                            android:lines="4"
-                            android:gravity="center_horizontal"
-                            android:layout_height="wrap_content"
                             android:layout_width="100dp"
-                            android:text="Zero fees and commissions to worry about!"/>
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="4"
+                            android:maxLines="4"
+                            android:text="Zero fees and commissions to worry about!"
+                            android:textSize="16sp"/>
 
                         <ImageView
                             android:id="@+id/imgTwo"
-                            android:layout_marginLeft="10dp"
-                            android:src="@drawable/notwo"
+                            android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:layout_width="80dp"/>
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/notwo"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                         <ImageView
-                            android:layout_marginLeft="5dp"
                             android:id="@+id/imgThree"
-                            android:src="@drawable/nothree"
-                            android:layout_height="80dp"
                             android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginLeft="5dp"
+                            android:src="@drawable/nothree"
                             />
 
                         <TextView
-                            android:maxLines="4"
-                            android:lines="4"
-                            android:layout_marginLeft="5dp"
-                            android:layout_height="wrap_content"
                             android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:gravity="center_horizontal"
+                            android:lines="4"
+                            android:maxLines="4"
                             android:text="Far less wasted time, wasted effort and headaches for quick and easy trading."/>
                 </LinearLayout>
 
@@ -112,23 +112,25 @@
 
         </LinearLayout>
 
-
-    <LinearLayout
-    android:background="@color/colorAccent"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-        <TextView
-            android:layout_marginTop="25dp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:textSize="25sp"
-            android:gravity="center_horizontal"
-            android:text="AD "
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+                <pl.droidsonroids.gif.GifTextView
+                    android:id="@+id/gifImgAd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:background="@android:color/darker_gray"
+                    android:gravity="center_horizontal"
+                    android:lines="3"
+                    android:maxLines="3"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+        </RelativeLayout>
 
 
 </LinearLayout>

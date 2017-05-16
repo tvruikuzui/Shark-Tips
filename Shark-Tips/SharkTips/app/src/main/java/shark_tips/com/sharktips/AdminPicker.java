@@ -163,9 +163,39 @@ public class AdminPicker extends Fragment {
         btnUpdateAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adPhoto = txtUpdatePhotoAd.getText().toString();
+
+            }
+        });
+
+
+        return view;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+             adPhoto = txtUpdatePhotoAd.getText().toString();
                 adText = txtUpdateTextAd.getText().toString();
-                if (adPhoto.length() == 0 || adText.length() == 0){
+
+                if (adPhoto.length() == 0 && adText.length() == 0){
                     lblDescription.setVisibility(View.VISIBLE);
                     lblDescription.setTextColor(Color.parseColor("#aa0036"));
                     lblDescription.setText("No Data Was Entered.");
@@ -177,24 +207,9 @@ public class AdminPicker extends Fragment {
                     lblDescription.setText("Please Clear One Field.");
                     return;
                 }else {
-                    new AsyncTask<String, Void, String>() {
-                        @Override
-                        protected String doInBackground(String... params) {
-                            // DATA HERE
-                            return null;
-                        }
-
-                        @Override
-                        protected void onPostExecute(String s) {
-                            super.onPostExecute(s);
-                        }
-                    }.execute();
+                    if (listener != null){
+                        listener.updatePhotoAd(adPhoto);
+                        listener.updateTextAd(adText);
+                    }
                 }
-            }
-        });
-
-
-        return view;
-    }
-
-}
+ */

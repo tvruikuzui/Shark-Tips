@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,17 +41,33 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
     private UsersManagerAdapter adapter;
     private ArrayList<User> users;
     private String userEmail,userPassword;
+    private SearchView lblSearchUsers;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_users_manager, container, false);
         listUsersAdminPanel = (ListView) view.findViewById(R.id.listUsersAdminPanel);
         lblShowResult = (TextView) view.findViewById(R.id.lblShowResult);
+        lblSearchUsers = (SearchView) view.findViewById(R.id.lblSearchUsers);
         userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
         userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
         users = new ArrayList<>();
         adapter = new UsersManagerAdapter(getContext(),users);
         listUsersAdminPanel.setAdapter(adapter);
+        listUsersAdminPanel.setTextFilterEnabled(true);
+        lblSearchUsers.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                adapter.notifyDataSetChanged();
+                return false;
+            }
+        });
 
         new AsyncTask<String, Void, ArrayList<User>>() {
             @Override
@@ -126,7 +144,7 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
                 FragmentManager manager = getFragmentManager();
                 UserEditPanel userEditPanel = new UserEditPanel();
                 userEditPanel.setCancelable(true);
-                userEditPanel.setUser(users.get(position));
+                userEditPanel.setUser((User) adapter.getItem(position));
                 userEditPanel.setListener(UsersManager.this);
                 userEditPanel.show(manager,"SHOW");
             }

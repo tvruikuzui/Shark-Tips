@@ -27,9 +27,9 @@
         android:layout_height="wrap_content" />
 
 
-    <EditText
+    <SearchView
         android:id="@+id/lblSearchUsers"
-        android:hint="Search"
+        android:queryHint="Search..."
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
