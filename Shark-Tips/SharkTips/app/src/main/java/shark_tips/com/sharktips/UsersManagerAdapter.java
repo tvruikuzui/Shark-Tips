@@ -28,8 +28,6 @@ public class UsersManagerAdapter extends BaseAdapter implements Filterable {
     private CustomFilter filter;
 
 
-
-
     public UsersManagerAdapter(Context context, ArrayList<User> users) {
         this.context = context;
         this.users = users;

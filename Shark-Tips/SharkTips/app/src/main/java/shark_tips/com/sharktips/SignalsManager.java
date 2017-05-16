@@ -35,7 +35,7 @@ public class SignalsManager extends Fragment {
     private ArrayAdapter<CharSequence> actionAdapter,marketAdapter;
     private Button btnSendSignal;
     private double setPrice,setSellStop,setSl,setTp1,setTp2;
-    private String setNote,userPassword,userEmail,setCurrency,marketExecution;
+    private String setNote,userPassword,userEmail,setCurrency,marketExecution,action;
     private  boolean isBuy;
 
 
@@ -59,9 +59,11 @@ public class SignalsManager extends Fragment {
                         break;
                     case 1:
                         isBuy = true;
+                        action = "buy";
                         break;
                     case 2:
                        isBuy = false;
+                        action = "sell";
                         break;
 
                     default:

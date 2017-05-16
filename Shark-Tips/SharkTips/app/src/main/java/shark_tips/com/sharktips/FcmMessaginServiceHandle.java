@@ -60,7 +60,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.sharklogo)
                 .setContentTitle(title + "!")
-                .setContentText(result)
+                .setContentText(body)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
