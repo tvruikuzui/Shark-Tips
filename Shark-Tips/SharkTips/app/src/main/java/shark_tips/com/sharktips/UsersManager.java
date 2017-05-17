@@ -21,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UsersManager extends Fragment{
+public class UsersManager extends Fragment implements UserEditPanel.UserNameEditListener{
 
 
 
@@ -68,8 +69,9 @@ public class UsersManager extends Fragment{
     private Button btnMoveToUnpaidUsers,btnMoveToPaidUsers;
     private  ArrayList<User> users;
     private  ArrayList<User> unPaidUsers;
-    private UsersManagerAdapter adapter;
+    private UsersManagerAdapter adapterPaid,adapterUnpaid;
     private String userEmail,userPassword;
+    private SearchView lblSearchPaidUsers,lblSearchUnPaidUsers;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -81,10 +83,44 @@ public class UsersManager extends Fragment{
         frameUnPaidUsers = (FrameLayout) view.findViewById(R.id.frameUnPaidUsers);
         listPaidUsers = (ListView) view.findViewById(R.id.listPaidUsers);
         listUnPaidusers = (ListView) view.findViewById(R.id.listUnPaidUsers);
+        listPaidUsers.setTextFilterEnabled(true);
+        listUnPaidusers.setTextFilterEnabled(true);
         users = new ArrayList<>();
         unPaidUsers = new ArrayList<>();
-        adapter = new UsersManagerAdapter(getContext(),unPaidUsers);
-        listUnPaidusers.setAdapter(adapter);
+        adapterPaid = new UsersManagerAdapter(getContext(),users);
+        adapterUnpaid = new UsersManagerAdapter(getContext(),unPaidUsers);
+        listUnPaidusers.setAdapter(adapterUnpaid);
+        listPaidUsers.setAdapter(adapterPaid);
+
+        lblSearchPaidUsers = (SearchView) view.findViewById(R.id.lblSearchPaidUsers);
+        lblSearchPaidUsers.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterPaid.getFilter().filter(newText);
+                adapterPaid.notifyDataSetChanged();
+                return false;
+            }
+        });
+        lblSearchUnPaidUsers = (SearchView) view.findViewById(R.id.lblSearchPaidUsers);
+        lblSearchUnPaidUsers.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterUnpaid.getFilter().filter(newText);
+                adapterUnpaid.notifyDataSetChanged();
+                return false;
+            }
+        });
+
         btnMoveToUnpaidUsers = (Button) view.findViewById(R.id.btnMoveToUnpaidUsers);
         btnMoveToUnpaidUsers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +137,33 @@ public class UsersManager extends Fragment{
             public void onClick(View v) {
                 frameUnPaidUsers.setVisibility(View.GONE);
                 framePaidUsers.setVisibility(View.VISIBLE);
+            }
+        });
+
+        listPaidUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                FragmentManager manager = getFragmentManager();
+                UserEditPanel userEditPanel = new UserEditPanel();
+                userEditPanel.setCancelable(true);
+                userEditPanel.setUser((User) adapterPaid.getItem(position));
+                userEditPanel.setListener(UsersManager.this);
+                userEditPanel.show(manager,"SHOW");
+
+            }
+        });
+
+        listUnPaidusers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager manager = getFragmentManager();
+                UserEditPanel userEditPanel = new UserEditPanel();
+                userEditPanel.setCancelable(true);
+                userEditPanel.setUser((User) adapterUnpaid.getItem(position));
+                userEditPanel.setListener(UsersManager.this);
+                userEditPanel.show(manager,"SHOW");
+
             }
         });
 
@@ -191,4 +254,13 @@ public class UsersManager extends Fragment{
         }.execute(userEmail,userPassword);
     }
 
+    @Override
+    public void editUser() {
+
+    }
+
+    @Override
+    public void showResult(String result) {
+        Toast.makeText(getContext(), "user has been" + result, Toast.LENGTH_SHORT).show();
+    }
 }
