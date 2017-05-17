@@ -15,7 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -40,15 +42,14 @@ public class UsersManager extends Fragment{
 
 
 
+    /*
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private PagerAdapter pagerAdapter;
+*/
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_users_manager, container, false);
-
+    /*
         // Create the tool bar and The layout for the Tabs
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
@@ -60,7 +61,38 @@ public class UsersManager extends Fragment{
         pagerAdapter.addWindow(unpaidusers, "Unpaid Users");
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+*/
 
+    private FrameLayout framePaidUsers,frameUnPaidUsers;
+    private ListView listPaidUsers,listUnPaidusers;
+    private Button btnMoveToUnpaidUsers,btnMoveToPaidUsers;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.paid_unpaid_users, container, false);
+        framePaidUsers = (FrameLayout) view.findViewById(R.id.framePaidUsers);
+        frameUnPaidUsers = (FrameLayout) view.findViewById(R.id.frameUnPaidUsers);
+        listPaidUsers = (ListView) view.findViewById(R.id.listPaidUsers);
+        listUnPaidusers = (ListView) view.findViewById(R.id.listUnPaidUsers);
+
+        btnMoveToUnpaidUsers = (Button) view.findViewById(R.id.btnMoveToUnpaidUsers);
+        btnMoveToUnpaidUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                framePaidUsers.setVisibility(View.GONE);
+                frameUnPaidUsers.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        btnMoveToPaidUsers = (Button) view.findViewById(R.id.btnMoveToPaidUsers);
+        btnMoveToPaidUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                frameUnPaidUsers.setVisibility(View.GONE);
+                framePaidUsers.setVisibility(View.VISIBLE);
+            }
+        });
 
         return view;
 

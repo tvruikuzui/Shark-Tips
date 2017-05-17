@@ -61,7 +61,7 @@
         <TextView
             android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="Update Ad"
             android:layout_width="match_parent"
@@ -75,24 +75,17 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/txtUpdatePhotoAd"
-            android:hint="Enter Ad Url"
+            android:id="@+id/txtUpdateUrlAd"
+            android:hint="Url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:text="For Display Text AD."
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
 
         <EditText
+            android:layout_marginTop="5dp"
             android:id="@+id/txtUpdateTextAd"
-            android:hint="Enter Ad Text"
+            android:hint="Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="100dp" />
 
 
         <Button

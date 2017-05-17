@@ -17,7 +17,7 @@
 
 
         <ImageView
-            android:onClick="backToMain"
+            android:onClick="backToMainImg"
             android:id="@+id/imgToMainFromNote"
             android:src="@drawable/home"
             android:layout_gravity="center_vertical"

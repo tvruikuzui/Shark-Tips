@@ -76,6 +76,9 @@ public class Offers extends Fragment {
             @Override
             protected void onPostExecute(Integer integer) {
                 lblShowTs.setText("Remaining time " + integer + " days");
+                if (integer <= 1) {
+                    lblShowTs.setText("Remaining time " + integer + " day");
+                }
                 MyHelper.saveTimeToSharedPreferences(getContext(),integer);
             }
         }.execute(getUserEmail);

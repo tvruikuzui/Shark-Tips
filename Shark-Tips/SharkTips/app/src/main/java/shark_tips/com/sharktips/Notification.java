@@ -1,8 +1,11 @@
 package shark_tips.com.sharktips;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -25,11 +28,11 @@ public class Notification extends AppCompatActivity {
     private Signal signal;
     private static final String BASE_URL = "http://35.184.144.226/shark2/signals/";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-
         listView = (ListView)findViewById(R.id.listOPenSignals);
         signals = new ArrayList<>();
         adapter = new ExpandListAdapter(this,signals);
@@ -102,5 +105,11 @@ public class Notification extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         }.execute();
+    }
+
+    public void backToMainImg(View view) {
+        Intent intent = new Intent(this,Home.class);
+        startActivity(intent);
+        finish();
     }
 }

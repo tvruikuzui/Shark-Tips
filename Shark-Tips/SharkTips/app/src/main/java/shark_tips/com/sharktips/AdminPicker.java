@@ -35,9 +35,9 @@ public class AdminPicker extends Fragment {
 
     private Spinner spinnerAdmin;
     private Button btnUpdateUserAdmin,btnUpdateAd;
-    private String userEmail,userPassword,userToBeAdmin,adText,adPhoto;
+    private String userEmail,userPassword,userToBeAdmin,adText,adUrl;
     private ArrayAdapter<CharSequence> adminAdapter;
-    private EditText txtMakeAdmin,txtUpdatePhotoAd,txtUpdateTextAd;
+    private EditText txtMakeAdmin,txtUpdateUrlAd,txtUpdateTextAd;
     private TextView lblDescription;
     private boolean isAdmin = false;
 
@@ -50,7 +50,7 @@ public class AdminPicker extends Fragment {
         lblDescription = (TextView) view.findViewById(R.id.lblDescription);
         lblDescription.setVisibility(View.GONE);
         txtMakeAdmin = (EditText) view.findViewById(R.id.txtMakeAdmin);
-        txtUpdatePhotoAd = (EditText) view.findViewById(R.id.txtUpdatePhotoAd);
+        txtUpdateUrlAd = (EditText) view.findViewById(R.id.txtUpdateUrlAd);
         txtUpdateTextAd = (EditText) view.findViewById(R.id.txtUpdateTextAd);
         btnUpdateAd = (Button) view.findViewById(R.id.btnUpdateAd);
         spinnerAdmin = (Spinner) view.findViewById(R.id.spinnerAdmin);
@@ -164,7 +164,7 @@ public class AdminPicker extends Fragment {
             @Override
             public void onClick(View v) {
                 adText = txtUpdateTextAd.getText().toString();
-
+                adUrl = txtUpdateUrlAd.getText().toString();
                 if (adText.length() == 0){
                     lblDescription.setVisibility(View.VISIBLE);
                     lblDescription.setTextColor(Color.parseColor("#aa0036"));
@@ -219,9 +219,9 @@ public class AdminPicker extends Fragment {
 
                         @Override
                         protected void onPostExecute(String s) {
-                            //Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
                         }
-                    }.execute(userEmail,userPassword,adText);
+                    }.execute(userEmail,userPassword,adText,adUrl);
                 }
             }
         });
