@@ -66,15 +66,25 @@ public class UsersManager extends Fragment{
     private FrameLayout framePaidUsers,frameUnPaidUsers;
     private ListView listPaidUsers,listUnPaidusers;
     private Button btnMoveToUnpaidUsers,btnMoveToPaidUsers;
+    private  ArrayList<User> users;
+    private  ArrayList<User> unPaidUsers;
+    private UsersManagerAdapter adapter;
+    private String userEmail,userPassword;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.paid_unpaid_users, container, false);
+        userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
+        userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
+        startSynck();
         framePaidUsers = (FrameLayout) view.findViewById(R.id.framePaidUsers);
         frameUnPaidUsers = (FrameLayout) view.findViewById(R.id.frameUnPaidUsers);
         listPaidUsers = (ListView) view.findViewById(R.id.listPaidUsers);
         listUnPaidusers = (ListView) view.findViewById(R.id.listUnPaidUsers);
-
+        users = new ArrayList<>();
+        unPaidUsers = new ArrayList<>();
+        adapter = new UsersManagerAdapter(getContext(),unPaidUsers);
+        listUnPaidusers.setAdapter(adapter);
         btnMoveToUnpaidUsers = (Button) view.findViewById(R.id.btnMoveToUnpaidUsers);
         btnMoveToUnpaidUsers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +106,89 @@ public class UsersManager extends Fragment{
 
         return view;
 
+    }
+
+
+
+
+
+
+
+
+
+
+    private void startSynck(){
+        new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... params) {
+                HttpURLConnection urlConnection = null;
+                InputStream inputStream = null;
+                StringBuilder stringBuilder = new StringBuilder();
+                try {
+                    URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]+"/");
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                    urlConnection.setUseCaches(false);
+                    urlConnection.connect();
+                    inputStream = urlConnection.getInputStream();
+                    byte [] buffer = new byte[512];
+                    int actuallyRead;
+                    while ((actuallyRead = inputStream.read(buffer)) != -1){
+                        stringBuilder.append(new String(buffer,0,actuallyRead));
+                    }
+                    inputStream.close();
+                    urlConnection.disconnect();
+                    return stringBuilder.toString();
+
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally {
+                    if (inputStream != null){
+                        try {
+                            inputStream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (urlConnection != null){
+                        urlConnection.disconnect();
+                    }
+                }
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                JSONArray jsonArray = null;
+                try {
+                    jsonArray = new JSONArray(s);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (jsonArray != null){
+                    for (int i = 0;i < jsonArray.length();i++){
+                        try {
+                            JSONObject userObject = jsonArray.getJSONObject(i);
+                            User user = new User(userObject.getString("name")
+                                    ,userObject.getString("lastName")
+                                    ,userObject.getString("email")
+                                    ,userObject.getLong("addTimeToUser")
+                                    ,userObject.getBoolean("paid"));
+                            if (user.isPaid())
+                                users.add(user);
+                            else unPaidUsers.add(user);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }.execute(userEmail,userPassword);
     }
 
 }
