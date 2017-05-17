@@ -163,7 +163,66 @@ public class AdminPicker extends Fragment {
         btnUpdateAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                adText = txtUpdateTextAd.getText().toString();
 
+                if (adText.length() == 0){
+                    lblDescription.setVisibility(View.VISIBLE);
+                    lblDescription.setTextColor(Color.parseColor("#aa0036"));
+                    lblDescription.setText("No Data Was Entered.");
+                    return;
+                }else {
+                    new AsyncTask<String, Void, String>() {
+                        @Override
+                        protected String doInBackground(String... params) {
+                            HttpURLConnection urlConnection = null;
+                            InputStream inputStream = null;
+                            OutputStream outputStream = null;
+                            try {
+                                URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]+"/ad/");
+                                urlConnection = (HttpURLConnection) url.openConnection();
+                                urlConnection.setRequestMethod("PUT");
+                                urlConnection.setUseCaches(false);
+                                urlConnection.setDoOutput(true);
+                                urlConnection.connect();
+                                outputStream = urlConnection.getOutputStream();
+                                outputStream.write(params[2].getBytes());
+                                outputStream.close();
+                                inputStream = urlConnection.getInputStream();
+                                byte[] buffer = new byte[128];
+                                int a = inputStream.read(buffer);
+                                inputStream.close();
+                                return new String(buffer,0,a);
+                            } catch (MalformedURLException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }finally {
+                                if (outputStream != null) {
+                                    try {
+                                        outputStream.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                if (inputStream != null){
+                                    try {
+                                        inputStream.close();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                if (urlConnection != null)
+                                    urlConnection.disconnect();
+                            }
+                            return null;
+                        }
+
+                        @Override
+                        protected void onPostExecute(String s) {
+                            //Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
+                        }
+                    }.execute(userEmail,userPassword,adText);
+                }
             }
         });
 
@@ -176,40 +235,3 @@ public class AdminPicker extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-             adPhoto = txtUpdatePhotoAd.getText().toString();
-                adText = txtUpdateTextAd.getText().toString();
-
-                if (adPhoto.length() == 0 && adText.length() == 0){
-                    lblDescription.setVisibility(View.VISIBLE);
-                    lblDescription.setTextColor(Color.parseColor("#aa0036"));
-                    lblDescription.setText("No Data Was Entered.");
-                    return;
-                }else if (!adPhoto.isEmpty() && !adText.isEmpty()){
-
-                    lblDescription.setVisibility(View.VISIBLE);
-                    lblDescription.setTextColor(Color.parseColor("#aa0036"));
-                    lblDescription.setText("Please Clear One Field.");
-                    return;
-                }else {
-                    if (listener != null){
-                        listener.updatePhotoAd(adPhoto);
-                        listener.updateTextAd(adText);
-                    }
-                }
- */

@@ -52,6 +52,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
         String result = "";
         try {
             result = java.net.URLDecoder.decode(body,"UTF-8");
+            result = result.split("=")[0];
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -60,7 +61,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.sharklogo)
                 .setContentTitle(title + "!")
-                .setContentText(body)
+                .setContentText(result)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);

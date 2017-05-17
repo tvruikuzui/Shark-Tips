@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
@@ -25,14 +26,15 @@ import pl.droidsonroids.gif.GifTextView;
  */
 public class MainHome extends Fragment {
 
-    private GifTextView gifTextView,gifImgAd;
-    private static final String BASE_URL = "http://35.184.144.226/shark2/performace/";
+    private GifTextView gifTextView;
+    private TextView lblShowAd;
+    private static final String BASE_URL = "http://35.184.144.226/shark2/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_home, container, false);
-        gifImgAd = (GifTextView) view.findViewById(R.id.gifImgAd);
-        gifImgAd.setText("WOEK?");
+
+      lblShowAd = (TextView) view.findViewById(R.id.lblShowAd);
         gifTextView = (GifTextView) view.findViewById(R.id.imgGif);
 
         new AsyncTask<Void, Void, String>() {
@@ -41,7 +43,7 @@ public class MainHome extends Fragment {
                     HttpURLConnection urlConnection = null;
                     InputStream inputStream = null;
                     try {
-                        URL url = new URL(BASE_URL);
+                        URL url = new URL(BASE_URL+"performace/");
                         urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setRequestMethod("GET");
                         urlConnection.setUseCaches(false);
@@ -91,6 +93,52 @@ public class MainHome extends Fragment {
 
                 }
             }.execute();
+
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+                HttpURLConnection urlConnection = null;
+                InputStream inputStream = null;
+                StringBuilder stringBuilder = null;
+                try {
+                    URL url = new URL(BASE_URL+"ad/");
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setUseCaches(false);
+                    urlConnection.connect();
+                    inputStream = urlConnection.getInputStream();
+                    byte[] buffer = new byte[256];
+                    int a;
+                    stringBuilder = new StringBuilder();
+                    while ((a = inputStream.read(buffer))!= -1){
+                        stringBuilder.append(new String(buffer,0,a));
+                    }
+                    inputStream.close();
+                    return stringBuilder.toString();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally {
+                    if (inputStream != null){
+                        try {
+                            inputStream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (urlConnection != null){
+                        urlConnection.disconnect();
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                //lblShowAd.setText(s);
+            }
+        }.execute();
 
         return view;
 

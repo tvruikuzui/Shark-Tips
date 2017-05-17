@@ -135,4 +135,32 @@ public class MyHelper {
     // ---------------------------------------------------------------------------------------------
 
 
+
+    // ---------------------------------------------------------------------------------------------
+    // Check Time Stamp
+    // ---------------------------------------------------------------------------------------------
+
+    // save user Time.
+    static public void saveTimeToSharedPreferences(Context context,int time){
+        SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
+        if (preferences != null){
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("timeStamp",time);
+            editor.commit();
+        }else {
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    // retrieve user Time
+    static public int getTimeFromSharedPreferences(Context context){
+        SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
+        int time = preferences.getInt("timeStamp",0);
+        return time;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // END
+    // ---------------------------------------------------------------------------------------------
 }

@@ -27,7 +27,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,WebClickedListener{
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -36,6 +36,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private TextView lblSetUserEmail;
     private NavigationView navigationView;
     public static boolean isAdmin = false;
+    private int getTimeFromShard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         adapter.addWindow(new MainHome(),"Home");
         adapter.addWindow(new Signals(),"Signals");
         Offers offers = new Offers();
-        offers.setListener(this);
         adapter.addWindow(offers,"Offers");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -77,17 +77,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
+    protected void onStart() {
+        super.onStart();
+        getTimeFromShard = MyHelper.getTimeFromSharedPreferences(this);
+        if (getTimeFromShard == 0){
+            Intent intent = new Intent(this,ShowOffers.class);
+            startActivity(intent);
+            finish();
+        }
     }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
 
     @Override
     public void onBackPressed() {
@@ -272,10 +270,4 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }.execute(getUserEmail);
     }
 
-    @Override
-    public void handleClick(boolean click) {
-
-    }
-
-    
 }

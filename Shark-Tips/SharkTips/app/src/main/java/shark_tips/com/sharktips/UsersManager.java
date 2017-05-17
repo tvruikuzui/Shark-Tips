@@ -39,12 +39,14 @@ import java.util.ArrayList;
 public class UsersManager extends Fragment{
 
 
+
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private PagerAdapter pagerAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_users_manager, container, false);
 
         // Create the tool bar and The layout for the Tabs

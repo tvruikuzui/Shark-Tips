@@ -116,6 +116,8 @@ public class UserEditPanel extends DialogFragment {
                     }.execute(getUserMail,getUserPassword,user.getMail());
                 }
 
+
+
                 dismiss();
             }
         });
@@ -147,8 +149,9 @@ public class UserEditPanel extends DialogFragment {
     }
 
     public static interface UserNameEditListener{
-        public void editUser();
-        public void showResult(String result);
+        void editUser();
+        void showResult(String result);
+
     }
 }
 

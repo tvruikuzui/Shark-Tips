@@ -1,12 +1,9 @@
 package shark_tips.com.sharktips;
 
-
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
@@ -17,16 +14,11 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Offers extends Fragment {
+public class ShowOffers extends AppCompatActivity {
 
     private ImageView imgOfferOne,imgOfferTwo;
     private FrameLayout frame;
@@ -35,18 +27,19 @@ public class Offers extends Fragment {
     private String getUserEmail;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_offers, container, false);
-         getUserEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
-        lblShowTs = (TextView) view.findViewById(R.id.lblShowTs);
-        frame = (FrameLayout) view.findViewById(R.id.webFrame);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_offers);
+
+        lblShowTs = (TextView) findViewById(R.id.lblShowTs);
+        frame = (FrameLayout) findViewById(R.id.webFrame);
         frame.setVisibility(View.GONE);
-        loadWeb = (WebView) view.findViewById(R.id.loadWeb);
+        loadWeb = (WebView)findViewById(R.id.loadWeb);
         loadWeb.setVisibility(View.GONE);
-        imgOfferOne = (ImageView) view.findViewById(R.id.imgofferOne);
-        imgOfferTwo = (ImageView) view.findViewById(R.id.imgofferTwo);
-        Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/two.png").resize(1300,1500).into(imgOfferTwo);
-        Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/one.png").resize(1300,1500).into(imgOfferOne);
+        imgOfferOne = (ImageView) findViewById(R.id.imgofferOne);
+        imgOfferTwo = (ImageView) findViewById(R.id.imgofferTwo);
+        Picasso.with(this).load("http://pointshop.co.il/sharkTips/two.png").resize(1300,1500).into(imgOfferTwo);
+        Picasso.with(this).load("http://pointshop.co.il/sharkTips/one.png").resize(1300,1500).into(imgOfferOne);
 
         new AsyncTask<String, Void, Integer>() {
             @Override
@@ -76,7 +69,7 @@ public class Offers extends Fragment {
             @Override
             protected void onPostExecute(Integer integer) {
                 lblShowTs.setText("Remaining time " + integer + " days");
-                MyHelper.saveTimeToSharedPreferences(getContext(),integer);
+                MyHelper.saveTimeToSharedPreferences(ShowOffers.this,integer);
             }
         }.execute(getUserEmail);
 
@@ -106,9 +99,5 @@ public class Offers extends Fragment {
 
         });
 
-        return view;
-
     }
-
 }
-
