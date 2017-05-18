@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 /**
  * Created by liranelyadumi on 5/12/17.
@@ -16,12 +17,13 @@ import android.widget.EditText;
 public class EditSignalsAdmin extends DialogFragment {
 
     private Signal signal;
-    private EditText txtEditSignalCurrency,txtEditSignalStatus,txtEditSignalAction
+    private EditText txtEditSignalCurrency
             ,txtEditSignalPrice,txtEditSignalSellStop,txtEditSignalTp1
             ,txtEditSignalTp2,txtEditSignalSl,txtEditSignalNote;
     private Button btnUpdateSignal;
     private UpdateSignalAlertListener listener;
-    //private int id = signal.getId();
+    private RadioButton radioOpen,radioBuy;
+    private boolean isBuy,isOpen;
 
 
     public void setListener(UpdateSignalAlertListener listener) {
@@ -36,9 +38,10 @@ public class EditSignalsAdmin extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.edit_signal_panel,container,false);
+
+        radioOpen = (RadioButton) view.findViewById(R.id.radioOPen);
+        radioBuy = (RadioButton) view.findViewById(R.id.radioBuy);
         txtEditSignalCurrency = (EditText) view.findViewById(R.id.txtEditSignalCurrency);
-        txtEditSignalStatus = (EditText) view.findViewById(R.id.txtEditSignalStatus);
-        txtEditSignalAction = (EditText) view.findViewById(R.id.txtEditSignalAction);
         txtEditSignalPrice = (EditText) view.findViewById(R.id.txtEditSignalPrice);
         txtEditSignalSellStop = (EditText) view.findViewById(R.id.txtEditSignalSellStop);
         txtEditSignalTp1 = (EditText) view.findViewById(R.id.txtEditSignalTp1);
@@ -46,9 +49,9 @@ public class EditSignalsAdmin extends DialogFragment {
         txtEditSignalSl = (EditText) view.findViewById(R.id.txtEditSignalSl);
         txtEditSignalNote = (EditText) view.findViewById(R.id.txtEditSignalNote);
 
+        radioOpen.setChecked(signal.isOpen());
+        radioBuy.setChecked(signal.isBuy());
         txtEditSignalCurrency.setText(signal.getCurrency());
-      //  txtEditSignalStatus.setText(signal.isOpen());
-     //   txtEditSignalAction.setText(signal.isBuy());
         txtEditSignalPrice.setText(String.valueOf(signal.getPrice()));
         txtEditSignalSellStop.setText(String.valueOf(signal.getSellStop()));
         txtEditSignalTp1.setText(String.valueOf(signal.getTp1()));
@@ -78,8 +81,8 @@ public class EditSignalsAdmin extends DialogFragment {
         signal.setNote(txtEditSignalNote.getText().toString());
         signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));
         signal.setCurrency(txtEditSignalCurrency.getText().toString());
-        signal.setBuy(true);
-        signal.setOpen(true);
+        signal.setBuy(radioBuy.isChecked());
+        signal.setOpen(radioOpen.isChecked());
         signal.setPrice(Double.parseDouble(txtEditSignalPrice.getText().toString()));
         signal.setSellStop(Double.parseDouble(txtEditSignalSellStop.getText().toString()));
         signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));

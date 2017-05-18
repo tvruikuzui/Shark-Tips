@@ -132,8 +132,7 @@
                 android:text="note"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:textSize="17sp"
-                android:textStyle="bold"
+                android:textSize="14sp"
                 android:layout_height="wrap_content" />
 
         </TableRow>
