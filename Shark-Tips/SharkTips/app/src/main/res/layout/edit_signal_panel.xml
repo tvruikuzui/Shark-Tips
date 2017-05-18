@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <RadioButton
-        android:id="@+id/radioOPen"
+    <CheckBox
+        android:id="@+id/chkOpen"
         android:text="open/close"
         android:layout_marginTop="10dp"
         android:layout_marginRight="50dp"
@@ -23,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <RadioButton
-        android:id="@+id/radioBuy"
+    <CheckBox
+        android:id="@+id/chkBuy"
         android:text="buy/sell"
         android:layout_marginTop="10dp"
         android:layout_marginRight="50dp"
