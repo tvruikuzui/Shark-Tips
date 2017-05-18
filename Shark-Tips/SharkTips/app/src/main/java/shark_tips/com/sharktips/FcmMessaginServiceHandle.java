@@ -15,6 +15,9 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -44,18 +47,33 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
         // message, here is where that should be initiated. See sendNotification method below.
     }
 
-    private void sendNotifications(String body, String title) {
+    private void sendNotifications(final String body, String title) {
+
+        String result = "";
+        if (title.equals("New Signal")){
+            try {
+                JSONObject object = new JSONObject(body);
+                result += "currency " + object.getString("currency");
+                result += "buy stop " + object.getString("sellStop");
+                result += "SL " + object.getString("sl");
+                result += "TP1 " + object.getString("tp1");
+                result += "TP2 " + object.getString("tp2");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else {
+            try {
+                result = java.net.URLDecoder.decode(body,"UTF-8");
+                result = result.split("=")[0];
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT);
-        String result = "";
-        try {
-            result = java.net.URLDecoder.decode(body,"UTF-8");
-            result = result.split("=")[0];
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
