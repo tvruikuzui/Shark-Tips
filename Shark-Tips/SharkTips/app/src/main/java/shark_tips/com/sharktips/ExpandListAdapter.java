@@ -97,7 +97,7 @@ public class ExpandListAdapter extends BaseAdapter {
 
 
 
-        row.lblTime.setText(String.valueOf(item.getTime()));
+        row.lblTime.setText(String.valueOf(item.getTime()) + " " + item.getHuersDays() + " ago");
         row.lblCurrency.setText(item.getCurrency());
         row.lblPrice.setText(String.valueOf(item.getPrice()));
         row.lblSellStop.setText("SellStop - "+item.getSellStop());

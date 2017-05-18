@@ -150,14 +150,27 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
 
     private void wereToAddSignals(Signal signal) {
         int hoursPassForSignals = (int) (System.currentTimeMillis() - signal.getTs()) / 3600000;
-        if (hoursPassForSignals > 24){
+        if (hoursPassForSignals > 24 && hoursPassForSignals < 48){
             signal.setTime(hoursPassForSignals / 24);
-            signal.setHuersDays("Days");
+            signal.setHuersDays("day");
+            signals.add(signal);
+            return;
+        }
+        if (hoursPassForSignals > 48){
+            signal.setTime(hoursPassForSignals / 24);
+            signal.setHuersDays("days");
             signals.add(signal);
         }else {
-            signal.setTime(hoursPassForSignals);
-            signal.setHuersDays("Houers");
-            signals.add(signal);
+            if (hoursPassForSignals > 1) {
+                signal.setTime(hoursPassForSignals);
+                signal.setHuersDays("hrs");
+                signals.add(signal);
+            }
+            else {
+                signal.setTime(hoursPassForSignals);
+                signal.setHuersDays("hr");
+                signals.add(signal);
+            }
         }
     }
 
