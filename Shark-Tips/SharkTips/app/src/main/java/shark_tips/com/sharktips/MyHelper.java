@@ -2,8 +2,6 @@ package shark_tips.com.sharktips;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -156,7 +154,7 @@ public class MyHelper {
     // retrieve user Time
     static public int getTimeFromSharedPreferences(Context context){
         SharedPreferences preferences = context.getSharedPreferences("data",Context.MODE_PRIVATE);
-        int time = preferences.getInt("timeStamp",0);
+        int time = preferences.getInt("timeStamp",14);
         return time;
     }
 

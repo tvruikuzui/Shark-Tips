@@ -1,26 +1,18 @@
 package shark_tips.com.sharktips;
 
 
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -34,35 +26,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class UsersManager extends Fragment implements UserEditPanel.UserNameEditListener{
-
-
-
-    /*
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private PagerAdapter pagerAdapter;
-*/
-
-
-    /*
-        // Create the tool bar and The layout for the Tabs
-        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
-        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
-        pagerAdapter = new PagerAdapter(getFragmentManager());
-        viewPager.setAdapter(pagerAdapter);
-        UserPaid userPaid = new UserPaid();
-        pagerAdapter.addWindow(userPaid, "Paid Users");
-        Unpaidusers unpaidusers = new Unpaidusers();
-        pagerAdapter.addWindow(unpaidusers, "Unpaid Users");
-        viewPager.setAdapter(pagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-*/
 
     private FrameLayout framePaidUsers,frameUnPaidUsers;
     private ListView listPaidUsers,listUnPaidusers;
@@ -76,9 +40,10 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.paid_unpaid_users, container, false);
+
         userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
         userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
-        startSynck();
+
         framePaidUsers = (FrameLayout) view.findViewById(R.id.framePaidUsers);
         frameUnPaidUsers = (FrameLayout) view.findViewById(R.id.frameUnPaidUsers);
         listPaidUsers = (ListView) view.findViewById(R.id.listPaidUsers);
@@ -88,9 +53,12 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
         users = new ArrayList<>();
         unPaidUsers = new ArrayList<>();
         adapterPaid = new UsersManagerAdapter(getContext(),users);
+        listPaidUsers.setAdapter(adapterPaid);
         adapterUnpaid = new UsersManagerAdapter(getContext(),unPaidUsers);
         listUnPaidusers.setAdapter(adapterUnpaid);
-        listPaidUsers.setAdapter(adapterPaid);
+
+
+        startSynck();
 
         lblSearchPaidUsers = (SearchView) view.findViewById(R.id.lblSearchPaidUsers);
         lblSearchPaidUsers.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -101,12 +69,13 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 adapterPaid.getFilter().filter(newText);
                 adapterPaid.notifyDataSetChanged();
-                return false;
+                return true;
             }
         });
-        lblSearchUnPaidUsers = (SearchView) view.findViewById(R.id.lblSearchPaidUsers);
+        lblSearchUnPaidUsers = (SearchView) view.findViewById(R.id.lblSearchUnpaidUsers);
         lblSearchUnPaidUsers.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -137,6 +106,7 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
             public void onClick(View v) {
                 frameUnPaidUsers.setVisibility(View.GONE);
                 framePaidUsers.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -170,14 +140,6 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
         return view;
 
     }
-
-
-
-
-
-
-
-
 
 
     private void startSynck(){
@@ -242,9 +204,11 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
                                     ,userObject.getString("email")
                                     ,userObject.getLong("addTimeToUser")
                                     ,userObject.getBoolean("paid"));
-                            if (user.isPaid())
+                            if (user.isPaid()){
                                 users.add(user);
-                            else unPaidUsers.add(user);
+                            }else {
+                                unPaidUsers.add(user);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -261,6 +225,6 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
 
     @Override
     public void showResult(String result) {
-        Toast.makeText(getContext(), "user has been" + result, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "user has been " + result, Toast.LENGTH_SHORT).show();
     }
 }

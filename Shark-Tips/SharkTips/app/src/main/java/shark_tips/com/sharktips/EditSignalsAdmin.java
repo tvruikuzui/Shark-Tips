@@ -47,8 +47,8 @@ public class EditSignalsAdmin extends DialogFragment {
         txtEditSignalNote = (EditText) view.findViewById(R.id.txtEditSignalNote);
 
         txtEditSignalCurrency.setText(signal.getCurrency());
-        txtEditSignalStatus.setText(signal.getStatus());
-        txtEditSignalAction.setText(signal.getAction());
+      //  txtEditSignalStatus.setText(signal.isOpen());
+     //   txtEditSignalAction.setText(signal.isBuy());
         txtEditSignalPrice.setText(String.valueOf(signal.getPrice()));
         txtEditSignalSellStop.setText(String.valueOf(signal.getSellStop()));
         txtEditSignalTp1.setText(String.valueOf(signal.getTp1()));
@@ -74,10 +74,12 @@ public class EditSignalsAdmin extends DialogFragment {
     }
 
     private void updateSignal(Signal signal) {
+
         signal.setNote(txtEditSignalNote.getText().toString());
         signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));
         signal.setCurrency(txtEditSignalCurrency.getText().toString());
-        signal.setAction(txtEditSignalAction.getText().toString());
+        signal.setBuy(true);
+        signal.setOpen(true);
         signal.setPrice(Double.parseDouble(txtEditSignalPrice.getText().toString()));
         signal.setSellStop(Double.parseDouble(txtEditSignalSellStop.getText().toString()));
         signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));

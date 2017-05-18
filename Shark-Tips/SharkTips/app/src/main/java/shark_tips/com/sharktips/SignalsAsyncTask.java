@@ -55,6 +55,8 @@ public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
             signalObject.put("tp2",signal.getTp2());
             signalObject.put("not",signal.getNote());
             signalObject.put("nameOfSl",signal.getNameOfSl());
+            signalObject.put("buy",signal.isBuy());
+            signalObject.put("open",true);
             outputStream.write(signalObject.toString().getBytes());
             outputStream.close();
             inputStream = urlConnection.getInputStream();

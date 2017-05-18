@@ -6,8 +6,7 @@ package shark_tips.com.sharktips;
 
 public class Signal {
 
-    // Check List Status
-    private String status,action;
+
     public boolean isExpanded;
 
     // Signal
@@ -28,33 +27,19 @@ public class Signal {
     public Signal() {
     }
 
-    public Signal(String note) {
-        this.note = note;
-    }
-
-    public Signal(boolean isOpen,int id, int time, String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note,String nameOfSl) {
-        this.id = id;
-        setOpen(isOpen);
+    public Signal(boolean isOpen, int time,int id, String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note, String nameOfSl) {
+        this.isOpen = isOpen;
         this.time = time;
+        this.id = id;
         this.currency = currency;
-        setBuy(isBuy);
+        this.isBuy = isBuy;
         this.price = price;
         this.sellStop = sellStop;
+        this.sl = sl;
+        this.tp1 = tp1;
+        this.tp2 = tp2;
+        this.note = note;
         this.nameOfSl = nameOfSl;
-        this.sl = sl;
-        this.tp1 = tp1;
-        this.tp2 = tp2;
-        this.note = note;
-    }
-
-    public Signal(String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note) {
-        this.currency = currency;
-        this.price = price;
-        this.sellStop = sellStop;
-        this.sl = sl;
-        this.tp1 = tp1;
-        this.tp2 = tp2;
-        this.note = note;
     }
 
     public boolean isOpen() {
@@ -135,35 +120,6 @@ public class Signal {
 
     public void setNote(String note) {
         this.note = note;
-    }
-
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        if (isOpen == true){
-            status = "open";
-        }else {
-            status = "close";
-        }
-
-        this.status = status;
-    }
-
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        if (isBuy == true){
-            action = "buy";
-        }else {
-            action = "sell";
-        }
-        this.action = action;
     }
 
     public Integer getId() {

@@ -1,8 +1,8 @@
 package shark_tips.com.sharktips;
 
-import android.content.Context;
+
 import android.os.AsyncTask;
-import android.view.View;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;

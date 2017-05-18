@@ -82,18 +82,19 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                     if (jsonArray != null){
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject signalObject = jsonArray.getJSONObject(i);
-                            signal = new Signal(signalObject.getBoolean("open")
-                                    ,signalObject.getInt("id")
-                                    ,signalObject.getInt("time")
-                                    ,signalObject.getString("currency")
-                                    ,signalObject.getBoolean("buy")
-                                    ,signalObject.getDouble("price")
-                                    ,signalObject.getDouble("sellStop")
-                                    ,signalObject.getDouble("sl")
-                                    ,signalObject.getDouble("tp1")
-                                    ,signalObject.getDouble("tp2")
-                                    ,signalObject.getString("not")
-                                    ,signalObject.getString("nameOfSl"));
+                            signal = new Signal
+                                    (signalObject.getBoolean("open")
+                                            ,signalObject.getInt("time")
+                                            ,signalObject.getInt("id")
+                                            ,signalObject.getString("currency")
+                                            ,signalObject.getBoolean("buy")
+                                            ,signalObject.getDouble("price")
+                                            ,signalObject.getDouble("sellStop")
+                                            ,signalObject.getDouble("sl")
+                                            ,signalObject.getDouble("tp1")
+                                            ,signalObject.getDouble("tp2")
+                                            ,signalObject.getString("not")
+                                            ,signalObject.getString("nameOfSl"));
                             signals.add(signal);
                         }
                     }
