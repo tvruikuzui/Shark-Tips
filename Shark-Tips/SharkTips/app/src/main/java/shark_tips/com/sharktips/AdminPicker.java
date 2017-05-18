@@ -172,6 +172,7 @@ public class AdminPicker extends Fragment {
                     new AsyncTask<String, Void, String>() {
                         @Override
                         protected String doInBackground(String... params) {
+                            String toSend = params[2] + "~" + params[3];
                             HttpURLConnection urlConnection = null;
                             InputStream inputStream = null;
                             OutputStream outputStream = null;
@@ -184,7 +185,7 @@ public class AdminPicker extends Fragment {
                                 urlConnection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
                                 urlConnection.connect();
                                 outputStream = urlConnection.getOutputStream();
-                                outputStream.write(params[2].getBytes());
+                                outputStream.write(toSend.getBytes());
                                 outputStream.close();
                                 inputStream = urlConnection.getInputStream();
                                 byte[] buffer = new byte[128];

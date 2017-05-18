@@ -1,6 +1,8 @@
 package shark_tips.com.sharktips;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -133,7 +135,17 @@ public class MainHome extends Fragment {
 
             @Override
             protected void onPostExecute(String s) {
-                lblShowAd.setText(s);
+                String [] strings = s.split("~");
+                lblShowAd.setTag(strings[1]);
+                lblShowAd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse((String) v.getTag()));
+                        startActivity(intent);
+                    }
+                });
+                lblShowAd.setText(strings[0]);
+                //lblShowAd.setText(s);
             }
         }.execute();
 
