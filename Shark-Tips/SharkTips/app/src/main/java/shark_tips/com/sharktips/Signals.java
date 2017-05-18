@@ -148,6 +148,7 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
         return view;
     }
 
+    //new method
     private void wereToAddSignals(Signal signal) {
         int hoursPassForSignals = (int) (System.currentTimeMillis() - signal.getTs()) / 3600000;
         if (hoursPassForSignals > 24 && hoursPassForSignals < 48){
