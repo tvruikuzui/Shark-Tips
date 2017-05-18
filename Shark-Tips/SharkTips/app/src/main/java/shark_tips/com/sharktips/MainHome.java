@@ -135,7 +135,11 @@ public class MainHome extends Fragment {
 
             @Override
             protected void onPostExecute(String s) {
-                String [] strings = s.split("~");
+                String [] strings;
+                if ((strings = s.split("~")).length != 2){
+                    lblShowAd.setText(s);
+                    return;
+                }
                 lblShowAd.setTag(strings[1]);
                 lblShowAd.setOnClickListener(new View.OnClickListener() {
                     @Override
