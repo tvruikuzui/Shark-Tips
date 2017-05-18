@@ -62,12 +62,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
                 e.printStackTrace();
             }
         }else {
-            try {
-                result = java.net.URLDecoder.decode(body,"UTF-8");
-                result = result.split("=")[0];
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
+            result = body;
         }
 
         Intent intent = new Intent(this, MainActivity.class);

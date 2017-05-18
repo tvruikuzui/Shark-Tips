@@ -181,6 +181,7 @@ public class AdminPicker extends Fragment {
                                 urlConnection.setRequestMethod("PUT");
                                 urlConnection.setUseCaches(false);
                                 urlConnection.setDoOutput(true);
+                                urlConnection.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
                                 urlConnection.connect();
                                 outputStream = urlConnection.getOutputStream();
                                 outputStream.write(params[2].getBytes());

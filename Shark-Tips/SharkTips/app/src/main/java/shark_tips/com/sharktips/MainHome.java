@@ -133,7 +133,7 @@ public class MainHome extends Fragment {
 
             @Override
             protected void onPostExecute(String s) {
-                //lblShowAd.setText(s);
+                lblShowAd.setText(s);
             }
         }.execute();
 
