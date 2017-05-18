@@ -34,7 +34,7 @@
             android:id="@+id/txtPrice"
             android:paddingLeft="10dp"
             android:hint="Price"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -42,7 +42,7 @@
             android:id="@+id/txtSellStop"
             android:paddingLeft="10dp"
             android:hint="Sell Stop"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -55,7 +55,7 @@
             android:id="@+id/txtSl"
             android:paddingLeft="10dp"
             android:hint="Sl"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
@@ -75,7 +75,7 @@
             android:id="@+id/txtTp1"
             android:paddingLeft="10dp"
             android:hint="Tp1"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -83,7 +83,7 @@
             android:id="@+id/txtTp2"
             android:paddingLeft="10dp"
             android:hint="Tp2"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

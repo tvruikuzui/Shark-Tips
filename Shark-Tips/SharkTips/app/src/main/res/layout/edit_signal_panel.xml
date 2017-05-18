@@ -44,6 +44,7 @@
     <EditText
         android:id="@+id/txtEditSignalPrice"
         android:hint="Price"
+        android:inputType="numberDecimal"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:layout_width="match_parent"
@@ -52,6 +53,7 @@
     <EditText
         android:id="@+id/txtEditSignalSellStop"
         android:hint="SellStop"
+        android:inputType="numberDecimal"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:layout_width="match_parent"
@@ -60,6 +62,7 @@
     <EditText
         android:id="@+id/txtEditSignalTp1"
         android:hint="Tp1"
+        android:inputType="numberDecimal"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:layout_width="match_parent"
@@ -68,6 +71,7 @@
     <EditText
         android:id="@+id/txtEditSignalTp2"
         android:hint="Tp2"
+        android:inputType="numberDecimal"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:layout_width="match_parent"
@@ -76,6 +80,7 @@
     <EditText
         android:id="@+id/txtEditSignalSl"
         android:hint="Sl"
+        android:inputType="numberDecimal"
         android:layout_marginRight="50dp"
         android:layout_marginLeft="50dp"
         android:layout_width="match_parent"
