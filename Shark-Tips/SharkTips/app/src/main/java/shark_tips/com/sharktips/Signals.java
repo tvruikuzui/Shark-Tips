@@ -22,6 +22,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -95,8 +97,10 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                                             ,signalObject.getDouble("tp2")
                                             ,signalObject.getString("not")
                                             ,signalObject.getString("nameOfSl"));
-                            signals.add(signal);
+                            signal.setTs(signalObject.getLong("ts"));
+                            wereToAddSignals(signal);
                         }
+                        Collections.sort(signals);
                     }
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -142,6 +146,19 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
 
         });
         return view;
+    }
+
+    private void wereToAddSignals(Signal signal) {
+        int hoursPassForSignals = (int) (System.currentTimeMillis() - signal.getTs()) / 3600000;
+        if (hoursPassForSignals > 24){
+            signal.setTime(hoursPassForSignals / 24);
+            signal.setHuersDays("Days");
+            signals.add(signal);
+        }else {
+            signal.setTime(hoursPassForSignals);
+            signal.setHuersDays("Houers");
+            signals.add(signal);
+        }
     }
 
     @Override

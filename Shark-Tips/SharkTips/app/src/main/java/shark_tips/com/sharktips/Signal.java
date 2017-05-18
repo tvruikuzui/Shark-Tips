@@ -1,10 +1,12 @@
 package shark_tips.com.sharktips;
 
+import android.support.annotation.NonNull;
+
 /**
  * Created by liranelyadumi on 4/13/17.
  */
 
-public class Signal {
+public class Signal implements Comparable<Signal> {
 
 
     public boolean isExpanded;
@@ -23,6 +25,9 @@ public class Signal {
     Integer id;
     int time;
 
+    long ts;
+    String huersDays;
+
 
     public Signal() {
     }
@@ -40,6 +45,22 @@ public class Signal {
         this.tp2 = tp2;
         this.note = note;
         this.nameOfSl = nameOfSl;
+    }
+
+    public long getTs() {
+        return ts;
+    }
+
+    public String getHuersDays() {
+        return huersDays;
+    }
+
+    public void setHuersDays(String huersDays) {
+        this.huersDays = huersDays;
+    }
+
+    public void setTs(long ts) {
+        this.ts = ts;
     }
 
     public boolean isOpen() {
@@ -139,4 +160,13 @@ public class Signal {
     }
 
 
+    @Override
+    public int compareTo(@NonNull Signal o) {
+        if (this.ts == o.getTs())
+            return 0;
+        else if (this.ts < o.getTs())
+            return 1;
+        else
+            return -1;
+    }
 }
