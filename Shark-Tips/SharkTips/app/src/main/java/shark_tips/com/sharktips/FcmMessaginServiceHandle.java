@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 
 import android.util.Log;
+import android.widget.RemoteViews;
 
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -25,6 +26,8 @@ import java.io.UnsupportedEncodingException;
  */
 
 public class FcmMessaginServiceHandle extends FirebaseMessagingService {
+
+    private RemoteViews remoteViews;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -45,6 +48,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
+
     }
 
     private void sendNotifications(final String body, String title) {
@@ -53,11 +57,11 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
         if (title.equals("New Signal")){
             try {
                 JSONObject object = new JSONObject(body);
-                result += "currency " + object.getString("currency");
-                result += "buy stop " + object.getString("sellStop");
-                result += "SL " + object.getString("sl");
-                result += "TP1 " + object.getString("tp1");
-                result += "TP2 " + object.getString("tp2");
+                result += "currency - " + object.getString("currency")+"\n";
+                result += "buy stop - " + object.getString("sellStop")+"\n";
+                result += "SL - " + object.getString("sl")+"\n";
+                result += "TP1 - " + object.getString("tp1")+"\n";
+                result += "TP2 - " + object.getString("tp2");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -72,12 +76,17 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.sharklogo)
-                .setContentTitle(title + "!")
-                .setContentText(result)
-                .setAutoCancel(true)
+                 .setSmallIcon(R.drawable.sharklogo)
+                 .setContentTitle(title + "!")
+                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
+
+        NotificationCompat.BigTextStyle big  = new NotificationCompat.BigTextStyle();
+        big.bigText(result);
+        big.setSummaryText("For your success.");
+        notificationBuilder.setStyle(big);
+
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
