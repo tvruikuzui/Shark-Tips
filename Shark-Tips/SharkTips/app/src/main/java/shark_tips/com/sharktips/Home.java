@@ -114,10 +114,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
-            return true;
-        }else if (id == R.id.action_notification){
+             if (id == R.id.action_notification){
             Intent intent = new Intent(this,Notification.class);
             startActivity(intent);
             return true;
@@ -166,7 +163,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
         sendIntent.setType("text/plain");
-        sendIntent.setPackage("com.whatsapp");
+     //   sendIntent.setPackage("com.whatsapp");
         startActivity(sendIntent);
     }
 
