@@ -20,15 +20,23 @@ import java.net.URL;
 public class FcmServiceIdToken extends FirebaseInstanceIdService {
 
      private String checkUserEmailExsist,refreshedToken;
+    static boolean paid = true;
+
+    public static void setPaid(boolean paid) {
+        FcmServiceIdToken.paid = paid;
+    }
+
 
     @Override
     public void onTokenRefresh() {
-        refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d("TOKEN", "Refreshed token: " + refreshedToken);
-        checkUserEmailExsist = MyHelper.getUserEmailFromSharedPreferences(this);
-        if (checkUserEmailExsist.isEmpty())
-            return;
-        sendNewToken(checkUserEmailExsist,refreshedToken);
+        if (paid) {
+            refreshedToken = FirebaseInstanceId.getInstance().getToken();
+            Log.d("TOKEN", "Refreshed token: " + refreshedToken);
+            checkUserEmailExsist = MyHelper.getUserEmailFromSharedPreferences(this);
+            if (checkUserEmailExsist.isEmpty())
+                return;
+            sendNewToken(checkUserEmailExsist, refreshedToken);
+        }
     }
 
     private void sendNewToken(String checkUserEmailExsist, String refreshedToken) {

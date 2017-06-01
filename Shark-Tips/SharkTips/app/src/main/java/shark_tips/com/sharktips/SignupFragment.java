@@ -1,5 +1,6 @@
 package shark_tips.com.sharktips;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -264,6 +265,7 @@ public class SignupFragment extends Fragment {
                         @Override
                         protected void onPostExecute(String result) {
                             super.onPostExecute(result);
+
                         }
                     }.execute();
 

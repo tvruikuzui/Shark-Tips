@@ -179,6 +179,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     // Send Mail To Admin
     protected void sendEmail() {
+
         String[] TO = {"Office@shark-tips.com"};
         String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);

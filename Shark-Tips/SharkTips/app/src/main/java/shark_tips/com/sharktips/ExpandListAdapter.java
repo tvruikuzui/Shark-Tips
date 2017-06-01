@@ -2,10 +2,12 @@ package shark_tips.com.sharktips;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -43,7 +45,7 @@ public class ExpandListAdapter extends BaseAdapter {
 
     public class Row {
         TextView lblStatus,lblTime,lblCurrency,lblAction,lblPrice,lblSellStop,lblsl,lbltp1,lbltp2,lblNote;
-        TableLayout table;
+        LinearLayout table;
     }
 
     @Override
@@ -52,7 +54,7 @@ public class ExpandListAdapter extends BaseAdapter {
         if (convertView == null){
             row = new Row();
             convertView = LayoutInflater.from(context).inflate(R.layout.row_signal,parent,false);
-            row.table = (TableLayout) convertView.findViewById(R.id.table);
+            row.table = (LinearLayout) convertView.findViewById(R.id.table);
             row.lblStatus = (TextView) convertView.findViewById(R.id.lblStatus);
             row.lblTime = (TextView) convertView.findViewById(R.id.lblTime);
             row.lblCurrency = (TextView) convertView.findViewById(R.id.lblCurrency);
@@ -80,10 +82,11 @@ public class ExpandListAdapter extends BaseAdapter {
         //check the status value and paint the color - green = open / red = close
         if (item.isOpen() == true){
             row.lblStatus.setTextColor(Color.argb(255,67,206,01));
-            row.lblStatus.setText("open");
+            row.lblStatus.setText("active");
         }else {
             row.lblStatus.setTextColor(Color.argb(255,450,11,15));
             row.lblStatus.setText("close");
+            row.lblStatus.setPaintFlags(row.lblStatus.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
 
         //check the action value and paint the color - green = buy / red = sell

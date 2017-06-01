@@ -66,24 +66,20 @@
 
     </LinearLayout>
 
-    <TableLayout
+    <LinearLayout
         android:id="@+id/table"
+        android:orientation="vertical"
         android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#e6e8ef">
-
-        <TableRow
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/lblSellStop"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:text="Sell Stop - "
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_height="wrap_content" />
 
@@ -93,15 +89,8 @@
                 android:textStyle="bold"
                 android:text="Sl - "
                 android:layout_marginLeft="15dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/lbltp1"
@@ -109,8 +98,7 @@
                 android:textStyle="bold"
                 android:text="TP1 - "
                 android:layout_marginLeft="15dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -119,27 +107,19 @@
                 android:textStyle="bold"
                 android:text="TP2 - "
                 android:layout_marginLeft="15dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow>
 
             <TextView
                 android:id="@+id/lblNote"
                 android:layout_marginLeft="15dp"
                 android:text="note"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:textSize="13sp"
                 android:layout_height="wrap_content" />
 
-        </TableRow>
 
-
-    </TableLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

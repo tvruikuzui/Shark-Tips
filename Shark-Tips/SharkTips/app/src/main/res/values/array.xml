@@ -3,10 +3,9 @@
 
     <string-array name="language">
         <item>Spoken language</item>
-        <item>Arabic</item>
         <item>English</item>
-        <item>Russian</item>
-        <item>German</item>
+        <item>Arabic</item>
+        <item>Spanish</item>
     </string-array>
 
     <string-array name="TradingLevel">
