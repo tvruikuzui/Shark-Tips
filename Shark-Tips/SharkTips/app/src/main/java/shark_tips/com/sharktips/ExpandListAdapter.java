@@ -87,6 +87,7 @@ public class ExpandListAdapter extends BaseAdapter {
             row.lblStatus.setTextColor(Color.argb(255,450,11,15));
             row.lblStatus.setText("close");
             row.lblStatus.setPaintFlags(row.lblStatus.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
         }
 
         //check the action value and paint the color - green = buy / red = sell
