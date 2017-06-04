@@ -2,14 +2,14 @@
 <resources>
 
     <string-array name="language">
-        <item>Spoken language</item>
+        <item><b>Spoken language</b></item>
         <item>English</item>
         <item>Arabic</item>
         <item>Spanish</item>
     </string-array>
 
     <string-array name="TradingLevel">
-        <item>Trading level</item>
+        <item><b>Trading level</b></item>
         <item>Beginner</item>
         <item>Advanced</item>
         <item>Pro</item>

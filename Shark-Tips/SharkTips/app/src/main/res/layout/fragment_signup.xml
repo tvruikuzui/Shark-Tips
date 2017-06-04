@@ -1,7 +1,4 @@
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,54 +10,58 @@
 
 <LinearLayout
     android:id="@+id/top"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="15dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/txtName"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:hint="name"/>
 
     <EditText
         android:id="@+id/txtLast"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:hint="last"/>
 
 
     <EditText
         android:id="@+id/txtEmail"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:inputType="textEmailAddress"
         android:hint="email"/>
 
     <EditText
-        android:id="@+id/txtPassword"
-        android:layout_marginTop="15dp"
+        android:id="@+id/txtVerfayEmail"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:inputType="textEmailAddress"
+        android:hint="repeat email"/>
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_output"
+        android:padding="5dp"
         android:inputType="textPassword"
         android:hint="password"/>
 
@@ -69,8 +70,11 @@
 
 <LinearLayout
     android:id="@+id/midl"
+    android:layout_marginTop="5dp"
     android:layout_below="@+id/top"
     android:orientation="horizontal"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -79,8 +83,6 @@
         android:id="@+id/ccp"
         app:defaultNameCode="IL"
         app:defaultCode="972"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
         android:layout_width="0dp"
         android:paddingBottom="5dp"
         android:layout_weight="1"
@@ -89,33 +91,41 @@
     <EditText
         android:id="@+id/txtPhoneNumber"
         android:inputType="phone"
-        android:layout_marginTop="15dp"
         android:layout_width="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:background="@drawable/input_output"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:hint="phone"/>
 </LinearLayout>
 
     <LinearLayout
         android:id="@+id/countryLayout"
         android:layout_below="@+id/midl"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
+            android:id="@+id/txtVerfayPhoneNumber"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/input_output"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:hint="phone"/>
+
+        <EditText
             android:id="@+id/txtCountry"
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/input_output"
             android:padding="5dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
             android:hint="country"/>
     </LinearLayout>
 
@@ -124,9 +134,10 @@
         android:layout_below="@+id/countryLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
 
         <Spinner
             android:padding="5dp"
@@ -151,7 +162,7 @@
     <RelativeLayout
         android:layout_below="@+id/spinnerlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/btnRegister"
@@ -166,4 +177,3 @@
 
 </RelativeLayout>
 
-</ScrollView>

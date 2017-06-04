@@ -38,7 +38,7 @@ public class SignupFragment extends Fragment {
 
     public static final String BASE_URL = "http://35.184.144.226/shark2/";
     private Button btnRegister;
-    private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword;
+    private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword,txtverfayEmail,txtVerfayPhone;
     private User user;
     private CountryCodePicker ccp;
     private String getCountryCode,userEmail,userPassword,langSpeak,tradeLevel;
@@ -65,7 +65,9 @@ public class SignupFragment extends Fragment {
         txtLast = (EditText) view.findViewById(R.id.txtLast);
         txtCountry = (EditText) view.findViewById(R.id.txtCountry);
         txtEmail = (EditText) view.findViewById(R.id.txtEmail);
+        txtverfayEmail = (EditText) view.findViewById(R.id.txtVerfayEmail);
         txtPhoneNumber = (EditText) view.findViewById(R.id.txtPhoneNumber);
+        txtVerfayPhone = (EditText) view.findViewById(R.id.txtVerfayPhoneNumber);
         txtPassword = (EditText) view.findViewById(R.id.txtPassword);
         spnLang = (Spinner) view.findViewById(R.id.spnLang);
         spnLevel = (Spinner) view.findViewById(R.id.spnLevel);
@@ -81,6 +83,7 @@ public class SignupFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
+                    langSpeak = "None";
                     return;
                 }else if (position == 1){
                     langSpeak = "Arabic";
@@ -106,6 +109,7 @@ public class SignupFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0){
+                    tradeLevel = "None";
                     return;
                 }else if (position == 1){
                     tradeLevel = "Beginner";
@@ -160,17 +164,17 @@ public class SignupFragment extends Fragment {
                     return;
                 }
                 user.setMail(txtEmail.getText().toString());
-                if (user.checkValidMail() == false){
-                    txtEmail.setText("");
-                    txtEmail.setHint("Invalid Email");
+                if (user.checkValidMail() == false || !txtverfayEmail.getText().toString().equals(txtEmail.getText().toString())){
+                    txtverfayEmail.setText("");
+                    txtverfayEmail.setHint("Invalid Email");
                     return;
                 }
                 userEmail = txtEmail.getText().toString();
 
                 user.setPhoneNumber(Long.parseLong((getCountryCode+txtPhoneNumber.getText().toString())));
-                if (user.checkValidPhoneNumber() == false){
-                    txtPhoneNumber.setText("");
-                    txtPhoneNumber.setHint("Phone Must have 7 numbers");
+                if (user.checkValidPhoneNumber() == false || !txtVerfayPhone.getText().toString().equals(txtPhoneNumber.getText().toString())){
+                    txtVerfayPhone.setText("");
+                    txtVerfayPhone.setHint("Phone Number Dos'nt match");
                     return;
                 }
 

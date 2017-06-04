@@ -81,10 +81,10 @@ public class ExpandListAdapter extends BaseAdapter {
 
         //check the status value and paint the color - green = open / red = close
         if (item.isOpen() == true){
-            row.lblStatus.setTextColor(Color.argb(255,67,206,01));
+            row.lblStatus.setTextColor(Color.parseColor("#48AD34"));
             row.lblStatus.setText("active");
         }else {
-            row.lblStatus.setTextColor(Color.argb(255,450,11,15));
+            row.lblStatus.setTextColor(Color.parseColor("#D60300"));
             row.lblStatus.setText("close");
             row.lblStatus.setPaintFlags(row.lblStatus.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
@@ -92,10 +92,10 @@ public class ExpandListAdapter extends BaseAdapter {
 
         //check the action value and paint the color - green = buy / red = sell
         if (item.isBuy() == true){
-            row.lblAction.setTextColor(Color.argb(255,67,206,01));
+            row.lblAction.setTextColor(Color.parseColor("#48AD34"));
             row.lblAction.setText("buy");
         }else {
-            row.lblAction.setTextColor(Color.argb(255,450,11,15));
+            row.lblAction.setTextColor(Color.parseColor("#D60300"));
             row.lblAction.setText("sell");
         }
 

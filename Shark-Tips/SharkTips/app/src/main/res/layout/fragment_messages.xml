@@ -29,4 +29,52 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="Update Ad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:text="NOTE: Must to Have https://..."
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/txtUpdateUrlAd"
+            android:text="https://"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_marginTop="5dp"
+            android:id="@+id/txtUpdateTextAd"
+            android:hint="Text"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+
+        <Button
+            android:id="@+id/btnUpdateAd"
+            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
 </LinearLayout>
