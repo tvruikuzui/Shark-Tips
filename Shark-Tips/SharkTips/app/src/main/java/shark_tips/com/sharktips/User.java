@@ -20,7 +20,7 @@ public class User {
     private String country,countryCode;
     private String password;
     private boolean isAdmin,isPaid;
-    private String speakLang,trdeLvl;
+    private String speakLang,trdeLvl,adminType;
     private long registerTime;
     private int isActive;
     private long timeStamp;
@@ -34,7 +34,12 @@ public class User {
         this.mail = mail;
     }
 
-    public User(String name, String lastName, String mail, long timeStamp,boolean isPaid) {
+    public User(String mail, String adminType) {
+        this.mail = mail;
+        this.adminType = adminType;
+    }
+
+    public User(String name, String lastName, String mail, long timeStamp, boolean isPaid) {
         this.name = name;
         this.lastName = lastName;
         this.mail = mail;

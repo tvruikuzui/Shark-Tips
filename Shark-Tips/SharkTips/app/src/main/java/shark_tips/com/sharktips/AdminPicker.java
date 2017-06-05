@@ -19,12 +19,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 /**
@@ -40,6 +45,7 @@ public class AdminPicker extends Fragment {
     private TextView lblDescription;
     private ListView listShowAdmins;
     private ArrayAdapter<User> showAdminAdapter;
+    private ArrayList<User> users;
     private boolean isAdmin = false;
 
 
@@ -56,9 +62,10 @@ public class AdminPicker extends Fragment {
 
         txtMakeAdmin = (EditText) view.findViewById(R.id.txtMakeAdmin);
         spinnerAdmin = (Spinner) view.findViewById(R.id.spinnerAdmin);
-
-        showAdminAdapter = new ArrayAdapter<User>(getContext(),android.R.layout.simple_list_item_1);
-
+        users = new ArrayList<>();
+        showAdminAdapter = new ArrayAdapter<User>(getContext(),android.R.layout.simple_list_item_1,users);
+        listShowAdmins.setAdapter(showAdminAdapter);
+        showAdminAdapter.notifyDataSetChanged();
         adminAdapter = ArrayAdapter.createFromResource(getContext(),R.array.admin,android.R.layout.simple_spinner_item);
         adminAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdmin.setAdapter(adminAdapter);
@@ -168,7 +175,76 @@ public class AdminPicker extends Fragment {
     }
 
     private void showCurrentAdmins() {
+        new AsyncTask<String, Void, String>() {
+            @Override
+            protected String doInBackground(String... params) {
+                HttpURLConnection urlConnection = null;
+                InputStream inputStream = null;
+                StringBuilder stringBuilder = new StringBuilder();
+                try {
+                    URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]+"/");
+                    urlConnection = (HttpURLConnection) url.openConnection();
+                    urlConnection.setRequestMethod("GET");
+                    urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                    urlConnection.setUseCaches(false);
+                    urlConnection.connect();
+                    inputStream = urlConnection.getInputStream();
+                    byte [] buffer = new byte[512];
+                    int actuallyRead;
+                    while ((actuallyRead = inputStream.read(buffer)) != -1){
+                        stringBuilder.append(new String(buffer,0,actuallyRead));
+                    }
+                    inputStream.close();
+                    urlConnection.disconnect();
+                    return stringBuilder.toString();
 
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally {
+                    if (inputStream != null){
+                        try {
+                            inputStream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (urlConnection != null){
+                        urlConnection.disconnect();
+                    }
+                }
+
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                JSONArray jsonArray = null;
+                try {
+                    jsonArray = new JSONArray(s);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (jsonArray != null){
+                    for (int i = 0;i < jsonArray.length();i++){
+                        try {
+                            JSONObject userObject = jsonArray.getJSONObject(i);
+                            User user = new User(userObject.getString("email") ,userObject.getString("admin"));
+                            if (userObject.getString("admin").equals("SUPER_ADMIN") || userObject.getString("admin").equals("SIGNAL_ADMIN")){
+                                users.add(user);
+                                showAdminAdapter.notifyDataSetChanged();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+
+            }
+        }.execute(userEmail,userPassword);
     }
 
 
