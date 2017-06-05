@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,8 @@ public class AdminPicker extends Fragment {
     private ArrayAdapter<CharSequence> adminAdapter;
     private EditText txtMakeAdmin;
     private TextView lblDescription;
+    private ListView listShowAdmins;
+    private ArrayAdapter<User> showAdminAdapter;
     private boolean isAdmin = false;
 
 
@@ -47,8 +50,11 @@ public class AdminPicker extends Fragment {
         userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
         lblDescription = (TextView) view.findViewById(R.id.lblDescription);
         lblDescription.setVisibility(View.GONE);
+        listShowAdmins = (ListView) view.findViewById(R.id.listShowAdmins);
+        showCurrentAdmins();
         txtMakeAdmin = (EditText) view.findViewById(R.id.txtMakeAdmin);
         spinnerAdmin = (Spinner) view.findViewById(R.id.spinnerAdmin);
+        showAdminAdapter = new ArrayAdapter<User>(getContext(),android.R.layout.simple_list_item_1);
         adminAdapter = ArrayAdapter.createFromResource(getContext(),R.array.admin,android.R.layout.simple_spinner_item);
         adminAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdmin.setAdapter(adminAdapter);
@@ -155,6 +161,10 @@ public class AdminPicker extends Fragment {
         });
 
         return view;
+    }
+
+    private void showCurrentAdmins() {
+
     }
 
 
