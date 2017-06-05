@@ -46,15 +46,19 @@ public class AdminPicker extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admin_picker, container, false);
+
         userEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
         userPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
         lblDescription = (TextView) view.findViewById(R.id.lblDescription);
         lblDescription.setVisibility(View.GONE);
         listShowAdmins = (ListView) view.findViewById(R.id.listShowAdmins);
         showCurrentAdmins();
+
         txtMakeAdmin = (EditText) view.findViewById(R.id.txtMakeAdmin);
         spinnerAdmin = (Spinner) view.findViewById(R.id.spinnerAdmin);
+
         showAdminAdapter = new ArrayAdapter<User>(getContext(),android.R.layout.simple_list_item_1);
+
         adminAdapter = ArrayAdapter.createFromResource(getContext(),R.array.admin,android.R.layout.simple_spinner_item);
         adminAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdmin.setAdapter(adminAdapter);
