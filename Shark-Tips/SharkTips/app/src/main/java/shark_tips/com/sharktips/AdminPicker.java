@@ -44,10 +44,9 @@ public class AdminPicker extends Fragment {
     private EditText txtMakeAdmin;
     private TextView lblDescription;
     private ListView listShowAdmins;
-    private ArrayAdapter<User> showAdminAdapter;
+    private AdminsAdapter adminsAdapter;
     private ArrayList<User> users;
     private boolean isAdmin = false;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -63,9 +62,9 @@ public class AdminPicker extends Fragment {
         txtMakeAdmin = (EditText) view.findViewById(R.id.txtMakeAdmin);
         spinnerAdmin = (Spinner) view.findViewById(R.id.spinnerAdmin);
         users = new ArrayList<>();
-        showAdminAdapter = new ArrayAdapter<User>(getContext(),android.R.layout.simple_list_item_1,users);
-        listShowAdmins.setAdapter(showAdminAdapter);
-        showAdminAdapter.notifyDataSetChanged();
+        adminsAdapter = new AdminsAdapter(getContext(),users);
+        listShowAdmins.setAdapter(adminsAdapter);
+        adminsAdapter.notifyDataSetChanged();
         adminAdapter = ArrayAdapter.createFromResource(getContext(),R.array.admin,android.R.layout.simple_spinner_item);
         adminAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAdmin.setAdapter(adminAdapter);
@@ -234,12 +233,14 @@ public class AdminPicker extends Fragment {
                             User user = new User(userObject.getString("email") ,userObject.getString("admin"));
                             if (userObject.getString("admin").equals("SUPER_ADMIN") || userObject.getString("admin").equals("SIGNAL_ADMIN")){
                                 users.add(user);
-                                showAdminAdapter.notifyDataSetChanged();
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
+
+                    adminsAdapter.notifyDataSetChanged();
                 }
 
 

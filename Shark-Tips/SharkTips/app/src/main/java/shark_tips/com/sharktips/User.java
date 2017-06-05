@@ -75,7 +75,13 @@ public class User {
         this.trdeLvl = trdeLvl;
     }
 
+    public String getAdminType() {
+        return adminType;
+    }
 
+    public void setAdminType(String adminType) {
+        this.adminType = adminType;
+    }
 
     public String getCountryCode() {
         return countryCode;

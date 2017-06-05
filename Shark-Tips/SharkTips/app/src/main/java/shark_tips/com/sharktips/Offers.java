@@ -79,6 +79,9 @@ public class Offers extends Fragment  {
                 lblShowTs.setText("Remaining time " + integer + " days");
                 if (integer <= 1) {
                     lblShowTs.setText("Remaining time " + integer + " day");
+                }else if (integer < 0){
+                    //TODO: check if this is work , is user is paid and is days from server less than 0 he is a paid users. 404.
+                    lblShowTs.setVisibility(View.GONE);
                 }
                 MyHelper.saveTimeToSharedPreferences(getContext(),integer);
             }
