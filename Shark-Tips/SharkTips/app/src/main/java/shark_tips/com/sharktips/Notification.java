@@ -17,6 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Notification extends AppCompatActivity {
@@ -61,22 +62,24 @@ public class Notification extends AppCompatActivity {
                     if (jsonArray != null){
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject signalObject = jsonArray.getJSONObject(i);
-                            signal = new Signal(signalObject.getBoolean("open")
-                                    ,signalObject.getInt("id")
-                                    ,signalObject.getInt("time")
-                                    ,signalObject.getString("currency")
-                                    ,signalObject.getBoolean("buy")
-                                    ,signalObject.getDouble("price")
-                                    ,signalObject.getDouble("sellStop")
-                                    ,signalObject.getDouble("sl")
-                                    ,signalObject.getDouble("tp1")
-                                    ,signalObject.getDouble("tp2")
-                                    ,signalObject.getString("not")
-                                    ,signalObject.getString("nameOfSl"));
-                            signals.add(0,signal);
+                            signal = new Signal
+                                    (signalObject.getBoolean("open")
+                                            ,signalObject.getInt("time")
+                                            ,signalObject.getInt("id")
+                                            ,signalObject.getString("currency")
+                                            ,signalObject.getBoolean("buy")
+                                            ,signalObject.getDouble("price")
+                                            ,signalObject.getDouble("sellStop")
+                                            ,signalObject.getDouble("sl")
+                                            ,signalObject.getDouble("tp1")
+                                            ,signalObject.getDouble("tp2")
+                                            ,signalObject.getString("not")
+                                            ,signalObject.getString("nameOfSl"));
+                            signal.setTs(signalObject.getLong("ts"));
+                            wereToAddSignals(signal);
                             signal.isExpanded = true;
-
                         }
+                        Collections.sort(signals);
                     }
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -104,6 +107,33 @@ public class Notification extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         }.execute();
+    }
+
+    //new method
+    private void wereToAddSignals(Signal signal) {
+        int hoursPassForSignals = (int) (System.currentTimeMillis() - signal.getTs()) / 3600000;
+        if (hoursPassForSignals > 24 && hoursPassForSignals < 48){
+            signal.setTime(hoursPassForSignals / 24);
+            signal.setHuersDays("day");
+            signals.add(signal);
+            return;
+        }
+        if (hoursPassForSignals > 48){
+            signal.setTime(hoursPassForSignals / 24);
+            signal.setHuersDays("days");
+            signals.add(signal);
+        }else {
+            if (hoursPassForSignals > 1) {
+                signal.setTime(hoursPassForSignals);
+                signal.setHuersDays("hrs");
+                signals.add(signal);
+            }
+            else {
+                signal.setTime(hoursPassForSignals);
+                signal.setHuersDays("hr");
+                signals.add(signal);
+            }
+        }
     }
 
     public void backToMainImg(View view) {
