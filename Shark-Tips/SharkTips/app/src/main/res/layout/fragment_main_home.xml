@@ -116,17 +116,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/lblShowAd"
+                <ImageView
+                    android:id="@+id/imgShowAd"
                     android:textStyle="bold"
-                    android:text=""
-                    android:paddingTop="15dp"
-                    android:lines="3"
-                    android:maxLines="3"
                     android:layout_alignParentBottom="true"
                     android:gravity="center_horizontal"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/darker_gray"
+                    android:background="#f2f2f8"
                     android:layout_width="match_parent"
                     android:layout_height="100dp" />
 

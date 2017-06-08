@@ -6,10 +6,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,14 +31,14 @@ import pl.droidsonroids.gif.GifTextView;
 public class MainHome extends Fragment {
 
     private GifTextView gifTextView;
-    private TextView lblShowAd;
+    private ImageView imgShowAd;
     private static final String BASE_URL = "http://35.184.144.226/shark2/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_home, container, false);
 
-      lblShowAd = (TextView) view.findViewById(R.id.lblShowAd);
+      imgShowAd = (ImageView) view.findViewById(R.id.imgShowAd);
         gifTextView = (GifTextView) view.findViewById(R.id.imgGif);
 
         new AsyncTask<Void, Void, String>() {
@@ -137,19 +142,19 @@ public class MainHome extends Fragment {
             protected void onPostExecute(String s) {
                 String [] strings;
                 if ((strings = s.split("~")).length != 2){
-                    lblShowAd.setText(s);
+                    Log.d("AD",s);
                     return;
                 }
-                lblShowAd.setTag(strings[1]);
-                lblShowAd.setOnClickListener(new View.OnClickListener() {
+                imgShowAd.setTag(strings[1]);
+                imgShowAd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse((String) v.getTag()));
                         startActivity(intent);
                     }
                 });
-                lblShowAd.setText(strings[0]);
-                //lblShowAd.setText(s);
+                Picasso.with(getContext()).load(strings[0]).fit().into(imgShowAd);
+
             }
         }.execute();
 

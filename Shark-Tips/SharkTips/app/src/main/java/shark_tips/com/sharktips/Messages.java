@@ -172,7 +172,7 @@ public class Messages extends Fragment {
                         protected void onPostExecute(String s) {
                             Toast.makeText(getContext(), ""+s, Toast.LENGTH_SHORT).show();
                         }
-                    }.execute(getUserEmail,getUserEmail,adText,adUrl);
+                    }.execute(getUserEmail,getPassword,adText,adUrl);
                 }
             }
         });
