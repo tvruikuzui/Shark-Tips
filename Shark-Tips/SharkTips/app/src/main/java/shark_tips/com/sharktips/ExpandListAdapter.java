@@ -67,6 +67,7 @@ public class ExpandListAdapter extends BaseAdapter {
             row.lblNote = (TextView) convertView.findViewById(R.id.lblNote);
 
             convertView.setTag(row);
+
         }else {
             row = (Row) convertView.getTag();
         }
@@ -86,7 +87,7 @@ public class ExpandListAdapter extends BaseAdapter {
         }else {
             row.lblStatus.setTextColor(Color.parseColor("#D60300"));
             row.lblStatus.setText("close");
-            row.lblStatus.setPaintFlags(row.lblStatus.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+          //  row.lblStatus.setPaintFlags(row.lblStatus.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         }
 
@@ -104,10 +105,10 @@ public class ExpandListAdapter extends BaseAdapter {
         row.lblTime.setText(String.valueOf(item.getTime()) + " " + item.getHuersDays() + " ago");
         row.lblCurrency.setText(item.getCurrency());
         row.lblPrice.setText(String.valueOf(item.getPrice()));
-        row.lblSellStop.setText("SellStop - "+item.getSellStop());
-        row.lblsl.setText(item.getNameOfSl() +" - "+item.getSl());
-        row.lbltp1.setText("Tp1 - "+item.getTp1());
-        row.lbltp2.setText("Tp2 - "+item.getTp2());
+        row.lblSellStop.setText("SellStop  "+item.getSellStop());
+        row.lblsl.setText(item.getNameOfSl() +"  "+item.getSl());
+        row.lbltp1.setText("Tp1  "+item.getTp1());
+        row.lbltp2.setText("Tp2  "+item.getTp2());
         row.lblNote.setText(item.getNote());
 
 
