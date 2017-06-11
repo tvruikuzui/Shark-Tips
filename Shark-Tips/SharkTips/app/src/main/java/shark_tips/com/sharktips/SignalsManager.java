@@ -103,11 +103,11 @@ public class SignalsManager extends Fragment {
             public void onClick(View v) {
 
                 setCurrency = txtCurrency.getText().toString();
-                setPrice = Double.parseDouble(txtPrice.getText().toString());
-                setSellStop = Double.parseDouble(txtSellStop.getText().toString());
-                setSl = Double.parseDouble(txtSl.getText().toString());
-                setTp1 = Double.parseDouble(txtTp1.getText().toString());
-                setTp2 = Double.parseDouble(txtTp2.getText().toString());
+                setPrice = convertValues(txtPrice.getText().toString());
+                setSellStop = convertValues(txtSellStop.getText().toString());
+                setSl = convertValues(txtSl.getText().toString());
+                setTp1 = convertValues(txtTp1.getText().toString());
+                setTp2 = convertValues(txtTp1.getText().toString());
                 setNote = txtNote.getText().toString();
 
                 Signal signal = new Signal();
@@ -133,6 +133,13 @@ public class SignalsManager extends Fragment {
 
 
         return view;
+    }
+
+    private double convertValues(String value){
+        if (value != null && value.isEmpty()){
+            return -1.0;
+        }
+        return Double.parseDouble(value);
     }
 
 }

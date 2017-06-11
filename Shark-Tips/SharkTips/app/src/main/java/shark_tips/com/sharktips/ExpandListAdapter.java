@@ -115,4 +115,11 @@ public class ExpandListAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+    private String convertValues(double value){
+        if (value == -1.0){
+            return null;
+        }
+        return String.valueOf(value);
+    }
 }

@@ -45,8 +45,10 @@ public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
             urlConnection.connect();
             outputStream = urlConnection.getOutputStream();
             JSONObject signalObject = new JSONObject();
-            if (signal.getId() != null)
+            if (signal.getId() != null){
                 signalObject.put("id",signal.getId());
+                signalObject.put("ts",signal.getTs());
+            }
             signalObject.put("currency",signal.getCurrency());
             signalObject.put("price",signal.getPrice());
             signalObject.put("sellStop",signal.getSellStop());
