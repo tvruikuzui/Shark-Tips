@@ -86,7 +86,7 @@ public class EditSignalsAdmin extends DialogFragment {
         signal.setOpen(chkOpen.isChecked());
         signal.setPrice(convertValues(txtEditSignalPrice.getText().toString()));
         signal.setSellStop(convertValues(txtEditSignalSellStop.getText().toString()));
-        signal.setTp1(convertValues(txtEditSignalTp1.getText().toString()));
+        signal.setTp2(convertValues(txtEditSignalTp2.getText().toString()));
         signal.setSl(convertValues(txtEditSignalSl.getText().toString()));
 
 

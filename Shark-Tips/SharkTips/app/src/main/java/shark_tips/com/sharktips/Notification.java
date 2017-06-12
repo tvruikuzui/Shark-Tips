@@ -115,23 +115,23 @@ public class Notification extends AppCompatActivity {
         if (hoursPassForSignals > 24 && hoursPassForSignals < 48){
             signal.setTime(hoursPassForSignals / 24);
             signal.setHuersDays("day");
-            signals.add(signal);
+            signals.add(0,signal);
             return;
         }
         if (hoursPassForSignals > 48){
             signal.setTime(hoursPassForSignals / 24);
             signal.setHuersDays("days");
-            signals.add(signal);
+            signals.add(0,signal);
         }else {
             if (hoursPassForSignals > 1) {
                 signal.setTime(hoursPassForSignals);
                 signal.setHuersDays("hrs");
-                signals.add(signal);
+                signals.add(0,signal);
             }
             else {
                 signal.setTime(hoursPassForSignals);
                 signal.setHuersDays("hr");
-                signals.add(signal);
+                signals.add(0,signal);
             }
         }
     }
