@@ -41,7 +41,6 @@ public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
             URL url = new URL("http://35.184.144.226/shark2/admin/"+userEmail+"/"+userPassword);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("PUT");
-            urlConnection.setConnectTimeout(10000);
             urlConnection.setUseCaches(false);
             urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             urlConnection.connect();
@@ -72,7 +71,6 @@ public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("IO", String.valueOf(e));
         } catch (JSONException e) {
             e.printStackTrace();
         }finally {

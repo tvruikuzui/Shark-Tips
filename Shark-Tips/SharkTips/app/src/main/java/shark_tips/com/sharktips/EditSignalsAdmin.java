@@ -80,14 +80,14 @@ public class EditSignalsAdmin extends DialogFragment {
     private void updateSignal(Signal signal) {
 
         signal.setNote(txtEditSignalNote.getText().toString());
-        signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));
+        signal.setTp1(convertValues(txtEditSignalTp1.getText().toString()));
         signal.setCurrency(txtEditSignalCurrency.getText().toString());
         signal.setBuy(chkBuy.isChecked());
         signal.setOpen(chkOpen.isChecked());
-        signal.setPrice(Double.parseDouble(txtEditSignalPrice.getText().toString()));
-        signal.setSellStop(Double.parseDouble(txtEditSignalSellStop.getText().toString()));
-        signal.setTp1(Double.parseDouble(txtEditSignalTp1.getText().toString()));
-        signal.setSl(Double.parseDouble(txtEditSignalSl.getText().toString()));
+        signal.setPrice(convertValues(txtEditSignalPrice.getText().toString()));
+        signal.setSellStop(convertValues(txtEditSignalSellStop.getText().toString()));
+        signal.setTp1(convertValues(txtEditSignalTp1.getText().toString()));
+        signal.setSl(convertValues(txtEditSignalSl.getText().toString()));
 
 
     }
@@ -96,5 +96,10 @@ public class EditSignalsAdmin extends DialogFragment {
         void signalUpdate();
     }
 
-
+    private double convertValues(String value){
+        if (value != null && value.isEmpty()){
+            return -1.0;
+        }
+        return Double.parseDouble(value);
+    }
 }

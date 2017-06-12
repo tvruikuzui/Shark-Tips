@@ -1,9 +1,9 @@
-<ScrollView
-    android:background="#ffffff"
+<ScrollView android:background="#ffffff"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scrView"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <LinearLayout
     android:orientation="vertical"
@@ -33,9 +33,17 @@
 
  </ImageView>
 
+ <android.support.design.widget.FloatingActionButton
+     android:id="@+id/fab"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_gravity="bottom|end"
+     android:layout_marginRight="5dp"
+     android:backgroundTint="@color/colorPrimary"
+     app:srcCompat="@android:drawable/arrow_down_float" />
 
  <ImageView
-     android:layout_marginTop="2dp"
+     android:layout_marginTop="1dp"
      android:layout_marginBottom="10dp"
      android:id="@+id/imgofferTwo"
      android:layout_width="match_parent"
@@ -44,7 +52,7 @@
  </ImageView>
 
  <FrameLayout
-     android:layout_marginTop="5dp"
+     android:layout_marginTop="3dp"
      android:layout_marginBottom="5dp"
      android:id="@+id/webFrame"
      android:layout_width="match_parent"

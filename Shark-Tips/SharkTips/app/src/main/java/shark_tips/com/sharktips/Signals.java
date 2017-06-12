@@ -82,6 +82,7 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                     inputStream.close();
                     jsonArray = new JSONArray(stringBuilder.toString());
                     if (jsonArray != null){
+                        List<Signal> close = new ArrayList<Signal>();
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject signalObject = jsonArray.getJSONObject(i);
                             signal = new Signal
@@ -98,9 +99,14 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                                             ,signalObject.getString("not")
                                             ,signalObject.getString("nameOfSl"));
                             signal.setTs(signalObject.getLong("ts"));
+                            if (signal.isOpen())
                             wereToAddSignals(signal);
+                            else
+                                close.add(signal);
                         }
                         Collections.sort(signals);
+                        Collections.sort(close);
+                        signals.addAll(close);
                     }
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
