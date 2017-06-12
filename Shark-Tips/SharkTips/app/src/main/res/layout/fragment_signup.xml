@@ -110,16 +110,6 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/txtVerfayPhoneNumber"
-            android:inputType="phone"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/input_output"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:hint="phone"/>
-
-        <EditText
             android:id="@+id/txtCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

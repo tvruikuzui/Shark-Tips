@@ -29,6 +29,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
 
     private RemoteViews remoteViews;
 
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // ...
@@ -58,10 +59,10 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
             try {
                 JSONObject object = new JSONObject(body);
                 result += "currency - " + object.getString("currency")+"\n";
-                result += "buy stop - " + object.getString("sellStop")+"\n";
-                result += "SL - " + object.getString("sl")+"\n";
-                result += "TP1 - " + object.getString("tp1")+"\n";
-                result += "TP2 - " + object.getString("tp2");
+                result += "buy stop - " + convertValues(object.getDouble("sellStop"))+"\n";
+                result += "SL - " + convertValues(object.getDouble("sl"))+"\n";
+                result += "TP1 - " + convertValues(object.getDouble("tp1"))+"\n";
+                result += "TP2 - " + convertValues(object.getDouble("tp2"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -92,5 +93,12 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+    }
+
+    private String convertValues(double value){
+        if (value == -1){
+            return "none";
+        }
+        return String.valueOf(value);
     }
 }

@@ -63,9 +63,9 @@
         <EditText
             android:layout_marginTop="5dp"
             android:id="@+id/txtUpdateTextAd"
-            android:hint="Text"
+            android:hint="enter image link here"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="80dp" />
 
 
         <Button

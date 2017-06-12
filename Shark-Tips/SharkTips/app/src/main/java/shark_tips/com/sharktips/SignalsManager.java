@@ -107,7 +107,7 @@ public class SignalsManager extends Fragment {
                 setSellStop = convertValues(txtSellStop.getText().toString());
                 setSl = convertValues(txtSl.getText().toString());
                 setTp1 = convertValues(txtTp1.getText().toString());
-                setTp2 = convertValues(txtTp1.getText().toString());
+                setTp2 = convertValues(txtTp2.getText().toString());
                 setNote = txtNote.getText().toString();
 
                 Signal signal = new Signal();

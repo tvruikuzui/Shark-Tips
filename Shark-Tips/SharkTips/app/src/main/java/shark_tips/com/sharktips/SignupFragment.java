@@ -38,7 +38,7 @@ public class SignupFragment extends Fragment {
 
     public static final String BASE_URL = "http://35.184.144.226/shark2/";
     private Button btnRegister;
-    private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword,txtverfayEmail,txtVerfayPhone;
+    private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword,txtverfayEmail;
     private User user;
     private CountryCodePicker ccp;
     private String getCountryCode,userEmail,userPassword,langSpeak,tradeLevel;
@@ -67,7 +67,6 @@ public class SignupFragment extends Fragment {
         txtEmail = (EditText) view.findViewById(R.id.txtEmail);
         txtverfayEmail = (EditText) view.findViewById(R.id.txtVerfayEmail);
         txtPhoneNumber = (EditText) view.findViewById(R.id.txtPhoneNumber);
-        txtVerfayPhone = (EditText) view.findViewById(R.id.txtVerfayPhoneNumber);
         txtPassword = (EditText) view.findViewById(R.id.txtPassword);
         spnLang = (Spinner) view.findViewById(R.id.spnLang);
         spnLevel = (Spinner) view.findViewById(R.id.spnLevel);
@@ -172,9 +171,9 @@ public class SignupFragment extends Fragment {
                 userEmail = txtEmail.getText().toString();
 
                 user.setPhoneNumber(Long.parseLong((getCountryCode+txtPhoneNumber.getText().toString())));
-                if (user.checkValidPhoneNumber() == false || !txtVerfayPhone.getText().toString().equals(txtPhoneNumber.getText().toString())){
-                    txtVerfayPhone.setText("");
-                    txtVerfayPhone.setHint("Phone Number Dos'nt match");
+                if (user.checkValidPhoneNumber() == false){
+                    txtPhoneNumber.setText("");
+                    txtPhoneNumber.setHint("Phone Number is to short");
                     return;
                 }
 
