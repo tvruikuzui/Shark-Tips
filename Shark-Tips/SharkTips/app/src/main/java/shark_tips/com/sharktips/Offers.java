@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -35,15 +36,11 @@ public class Offers extends Fragment  {
     private WebView loadWeb;
     private TextView lblShowTs;
     private String getUserEmail;
-    private ScrollView scrollview;
-    private FloatingActionButton fab;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_offers, container, false);
-        scrollview = (ScrollView) view.findViewById(R.id.scrView);
-        fab = (FloatingActionButton)view.findViewById(R.id.fab);
         getUserEmail = MyHelper.getUserEmailFromSharedPreferences(getContext());
         lblShowTs = (TextView) view.findViewById(R.id.lblShowTs);
         frame = (FrameLayout) view.findViewById(R.id.webFrame);
@@ -55,19 +52,7 @@ public class Offers extends Fragment  {
         Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/two.png").resize(1300,1500).into(imgOfferTwo);
         Picasso.with(getContext()).load("http://pointshop.co.il/sharkTips/one.png").resize(1300,1500).into(imgOfferOne);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                scrollview.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        scrollview.fullScroll(ScrollView.FOCUS_DOWN);
-                    }
-                });
-
-            }
-        });
 
 
 

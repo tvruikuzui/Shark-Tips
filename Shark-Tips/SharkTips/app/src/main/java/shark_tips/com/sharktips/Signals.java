@@ -100,9 +100,9 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                                             ,signalObject.getString("nameOfSl"));
                             signal.setTs(signalObject.getLong("ts"));
                             if (signal.isOpen())
-                            wereToAddSignals(signal);
+                            wereToAddSignals(signal,signals);
                             else
-                                close.add(signal);
+                                wereToAddSignals(signal,close);
                         }
                         Collections.sort(signals);
                         Collections.sort(close);
@@ -155,28 +155,28 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
     }
 
     //new method
-    private void wereToAddSignals(Signal signal) {
+    private void wereToAddSignals(Signal signal,List<Signal>list) {
         int hoursPassForSignals = (int) (System.currentTimeMillis() - signal.getTs()) / 3600000;
         if (hoursPassForSignals > 24 && hoursPassForSignals < 48){
             signal.setTime(hoursPassForSignals / 24);
             signal.setHuersDays("day");
-            signals.add(signal);
+            list.add(0,signal);
             return;
         }
         if (hoursPassForSignals > 48){
             signal.setTime(hoursPassForSignals / 24);
             signal.setHuersDays("days");
-            signals.add(signal);
+            list.add(0,signal);
         }else {
             if (hoursPassForSignals > 1) {
                 signal.setTime(hoursPassForSignals);
                 signal.setHuersDays("hrs");
-                signals.add(signal);
+                list.add(0,signal);
             }
             else {
                 signal.setTime(hoursPassForSignals);
                 signal.setHuersDays("hr");
-                signals.add(signal);
+                list.add(0,signal);
             }
         }
     }

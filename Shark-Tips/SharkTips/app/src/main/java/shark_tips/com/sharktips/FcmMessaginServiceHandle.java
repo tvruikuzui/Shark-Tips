@@ -55,7 +55,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
     private void sendNotifications(final String body, String title) {
 
         String result = "";
-        if (title.equals("New Signal")){
+        if (title.equals("New Signal") || title.equals("Update Signal")){
             try {
                 JSONObject object = new JSONObject(body);
                 result += "currency - " + object.getString("currency")+"\n";
