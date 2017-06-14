@@ -84,7 +84,7 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
                 .setContentIntent(pendingIntent);
 
         NotificationCompat.BigTextStyle big  = new NotificationCompat.BigTextStyle();
-        big.bigText(result);
+        big.bigText(body);
         big.setSummaryText("For your success.");
         notificationBuilder.setStyle(big);
 
