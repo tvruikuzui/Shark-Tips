@@ -17,7 +17,7 @@
 
   <TextView
       android:id="@+id/lblShowTs"
-      android:padding="10dp"
+      android:paddingTop="10dp"
       android:text=""
       android:gravity="center_horizontal"
       android:textSize="20sp"
@@ -44,7 +44,6 @@
  </ImageView>
 
  <FrameLayout
-     android:layout_marginTop="3dp"
      android:layout_marginBottom="5dp"
      android:id="@+id/webFrame"
      android:layout_width="match_parent"
@@ -56,6 +55,7 @@
       android:layout_height="match_parent">
 
   </WebView>
+
  </FrameLayout>
 
 </LinearLayout>
