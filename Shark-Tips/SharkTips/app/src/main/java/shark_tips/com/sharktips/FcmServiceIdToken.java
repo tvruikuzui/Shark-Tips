@@ -39,7 +39,7 @@ public class FcmServiceIdToken extends FirebaseInstanceIdService {
         }
     }
 
-    private void sendNewToken(String checkUserEmailExsist, String refreshedToken) {
+    public void sendNewToken(String checkUserEmailExsist, String refreshedToken) {
 
         new AsyncTask<String, Void, String>() {
             @Override

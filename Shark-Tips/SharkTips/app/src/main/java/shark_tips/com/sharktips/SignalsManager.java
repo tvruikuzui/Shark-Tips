@@ -16,7 +16,7 @@ import android.widget.Spinner;
 public class SignalsManager extends Fragment {
 
     private Spinner spnAction,spinnerMarket;
-    private EditText txtCurrency,txtPrice,txtSellStop,txtSl,txtTp1,txtTp2,txtNote;
+    private EditText txtCurrency,txtPrice,txtSellStop,txtTp1,txtTp2,txtNote;
     private ArrayAdapter<CharSequence> actionAdapter,marketAdapter;
     private Button btnSendSignal;
     private double setPrice,setSellStop,setSl,setTp1,setTp2;
@@ -90,7 +90,6 @@ public class SignalsManager extends Fragment {
         txtCurrency = (EditText) view.findViewById(R.id.txtCurrency);
         txtPrice = (EditText) view.findViewById(R.id.txtPrice);
         txtSellStop = (EditText) view.findViewById(R.id.txtSellStop);
-        txtSl = (EditText) view.findViewById(R.id.txtSl);
         txtTp1 = (EditText) view.findViewById(R.id.txtTp1);
         txtTp2 = (EditText) view.findViewById(R.id.txtTp2);
         txtNote = (EditText) view.findViewById(R.id.txtNote);
@@ -105,7 +104,6 @@ public class SignalsManager extends Fragment {
                 setCurrency = txtCurrency.getText().toString();
                 setPrice = convertValues(txtPrice.getText().toString());
                 setSellStop = convertValues(txtSellStop.getText().toString());
-                setSl = convertValues(txtSl.getText().toString());
                 setTp1 = convertValues(txtTp1.getText().toString());
                 setTp2 = convertValues(txtTp2.getText().toString());
                 setNote = txtNote.getText().toString();
@@ -117,7 +115,6 @@ public class SignalsManager extends Fragment {
                 signal.setPrice(setPrice);
                 signal.setSellStop(setSellStop);
                 signal.setNameOfSl(marketExecution);
-                signal.setSl(setSl);
                 signal.setTp1(setTp1);
                 signal.setTp2(setTp2);
                 signal.setNote(setNote);

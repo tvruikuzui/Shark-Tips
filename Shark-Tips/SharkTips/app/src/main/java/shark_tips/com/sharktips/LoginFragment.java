@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -96,13 +98,14 @@ public class LoginFragment extends Fragment {
                                 txtLoginPassword.setText(s);
                                 break;
                             case "ok":
-                                Log.d("LIRAN",s);
                                 if (listener != null){
                                     isLogin = true;
                                     MyHelper.saveUserEmailToSharedPreferences(getContext(),getUserEmail);
                                     MyHelper.saveUserPasswordToSharedPreferences(getContext(),getUserPassword);
                                     MyHelper.saveToSharedPreferences(getContext(),isLogin);
                                     listener.checkUserLogFromLogin(isLogin);
+                                    FcmServiceIdToken token = new FcmServiceIdToken();
+                                    token.sendNewToken(getUserEmail, FirebaseInstanceId.getInstance().getToken());
                                 }
 
                                 break;

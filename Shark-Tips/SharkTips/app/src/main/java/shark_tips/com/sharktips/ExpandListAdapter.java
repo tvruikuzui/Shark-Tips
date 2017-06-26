@@ -44,7 +44,7 @@ public class ExpandListAdapter extends BaseAdapter {
     }
 
     public class Row {
-        TextView lblStatus,lblTime,lblCurrency,lblAction,lblPrice,lblSellStop,lblsl,lbltp1,lbltp2,lblNote;
+        TextView lblStatus,lblTime,lblCurrency,lblAction,lblPrice,lblSellStop,lblsl,lbltp1,lbltp2,lblNote,lbShowsl;
         LinearLayout table;
     }
 
@@ -61,10 +61,11 @@ public class ExpandListAdapter extends BaseAdapter {
             row.lblAction = (TextView) convertView.findViewById(R.id.lblAction);
             row.lblPrice = (TextView) convertView.findViewById(R.id.lblPrice);
             row.lblSellStop = (TextView) convertView.findViewById(R.id.lblSellStop);
-            row.lblsl = (TextView) convertView.findViewById(R.id.lblsl);
+            row.lbShowsl = (TextView) convertView.findViewById(R.id.lblShowSl);
             row.lbltp1 = (TextView) convertView.findViewById(R.id.lbltp1);
             row.lbltp2 = (TextView) convertView.findViewById(R.id.lbltp2);
             row.lblNote = (TextView) convertView.findViewById(R.id.lblNote);
+            row.lblsl = (TextView) convertView.findViewById(R.id.lblsl);
 
             convertView.setTag(row);
 
@@ -106,10 +107,11 @@ public class ExpandListAdapter extends BaseAdapter {
         row.lblCurrency.setText(item.getCurrency());
         row.lblPrice.setText(String.valueOf(item.getPrice()));
         row.lblSellStop.setText(convertValues(item.getSellStop()));
-        row.lblsl.setText(item.getNameOfSl() +" "+convertValues(item.getSl()));
+        row.lblsl.setText(String.valueOf(item.getPrice()));
         row.lbltp1.setText(convertValues(item.getTp1()));
         row.lbltp2.setText(convertValues(item.getTp2()));
         row.lblNote.setText(item.getNote());
+        row.lbShowsl.setText(item.getNameOfSl());
 
 
 

@@ -30,13 +30,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/txtPrice"
-            android:paddingLeft="10dp"
-            android:hint="Price"
-            android:inputType="numberDecimal"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/txtPrice"
+                    android:paddingLeft="10dp"
+                    android:hint="Price"
+                    android:inputType="numberDecimal"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <Spinner
+                    android:id="@+id/spinnerMarket"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                </Spinner>
+
+        </LinearLayout>
+
 
         <EditText
             android:id="@+id/txtSellStop"
@@ -45,31 +62,6 @@
             android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/txtSl"
-            android:paddingLeft="10dp"
-            android:hint="Sl"
-            android:inputType="numberDecimal"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-        <Spinner
-            android:id="@+id/spinnerMarket"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-
-        </Spinner>
-
-
-</LinearLayout>
 
         <EditText
             android:id="@+id/txtTp1"

@@ -15,11 +15,14 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     private boolean isLogin = false;
+    private boolean isNote = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // Create the tool bar and The layout for the Tabs
         tableLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
 
         tableLayout.setupWithViewPager(viewPager);
 
+
+
     }
 
 
@@ -43,7 +48,14 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
         super.onStart();
         isLogin = MyHelper.getDataFromSharedPreferences(this);
         if (isLogin == true){
-            moveToHomeActivity();
+            if (getIntent().getBooleanExtra("goto",false) == true){
+                Intent intent = new Intent(this,Notification.class);
+                startActivity(intent);
+                finish();
+
+            }else {
+                moveToHomeActivity();
+            }
         }
     }
 

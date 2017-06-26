@@ -93,7 +93,6 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                                             ,signalObject.getBoolean("buy")
                                             ,signalObject.getDouble("price")
                                             ,signalObject.getDouble("sellStop")
-                                            ,signalObject.getDouble("sl")
                                             ,signalObject.getDouble("tp1")
                                             ,signalObject.getDouble("tp2")
                                             ,signalObject.getString("not")

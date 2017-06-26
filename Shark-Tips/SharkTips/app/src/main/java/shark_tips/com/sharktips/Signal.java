@@ -17,7 +17,6 @@ public class Signal implements Comparable<Signal> {
     boolean isBuy;
     double price;
     double sellStop;
-    double sl;
     double tp1;
     double tp2;
     String note;
@@ -32,7 +31,7 @@ public class Signal implements Comparable<Signal> {
     public Signal() {
     }
 
-    public Signal(boolean isOpen, int time,int id, String currency, boolean isBuy, double price, double sellStop, double sl, double tp1, double tp2, String note, String nameOfSl) {
+    public Signal(boolean isOpen, int time,int id, String currency, boolean isBuy, double price, double sellStop, double tp1, double tp2, String note, String nameOfSl) {
         this.isOpen = isOpen;
         this.time = time;
         this.id = id;
@@ -40,7 +39,6 @@ public class Signal implements Comparable<Signal> {
         this.isBuy = isBuy;
         this.price = price;
         this.sellStop = sellStop;
-        this.sl = sl;
         this.tp1 = tp1;
         this.tp2 = tp2;
         this.note = note;
@@ -109,14 +107,6 @@ public class Signal implements Comparable<Signal> {
 
     public void setSellStop(double sellStop) {
         this.sellStop = sellStop;
-    }
-
-    public double getSl() {
-        return sl;
-    }
-
-    public void setSl(double sl) {
-        this.sl = sl;
     }
 
     public double getTp1() {

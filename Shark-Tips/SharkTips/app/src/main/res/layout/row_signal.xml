@@ -103,6 +103,7 @@
             <TableRow>
 
                 <TextView
+                    android:id="@+id/lblShowSl"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="Sl"

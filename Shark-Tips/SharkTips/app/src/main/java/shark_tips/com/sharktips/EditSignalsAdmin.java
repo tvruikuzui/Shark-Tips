@@ -20,7 +20,7 @@ public class EditSignalsAdmin extends DialogFragment {
     private Signal signal;
     private EditText txtEditSignalCurrency
             ,txtEditSignalPrice,txtEditSignalSellStop,txtEditSignalTp1
-            ,txtEditSignalTp2,txtEditSignalSl,txtEditSignalNote;
+            ,txtEditSignalTp2,txtEditSignalNote;
     private Button btnUpdateSignal;
     private UpdateSignalAlertListener listener;
     private CheckBox chkOpen,chkBuy;
@@ -47,7 +47,6 @@ public class EditSignalsAdmin extends DialogFragment {
         txtEditSignalSellStop = (EditText) view.findViewById(R.id.txtEditSignalSellStop);
         txtEditSignalTp1 = (EditText) view.findViewById(R.id.txtEditSignalTp1);
         txtEditSignalTp2 = (EditText) view.findViewById(R.id.txtEditSignalTp2);
-        txtEditSignalSl = (EditText) view.findViewById(R.id.txtEditSignalSl);
         txtEditSignalNote = (EditText) view.findViewById(R.id.txtEditSignalNote);
 
         chkOpen.setChecked(signal.isOpen());
@@ -57,7 +56,6 @@ public class EditSignalsAdmin extends DialogFragment {
         txtEditSignalSellStop.setText(String.valueOf(signal.getSellStop()));
         txtEditSignalTp1.setText(String.valueOf(signal.getTp1()));
         txtEditSignalTp2.setText(String.valueOf(signal.getTp2()));
-        txtEditSignalSl.setText(String.valueOf(signal.getSl()));
         txtEditSignalNote.setText(signal.getNote());
 
         btnUpdateSignal = (Button) view.findViewById(R.id.btnUpdateSignal);
@@ -87,7 +85,7 @@ public class EditSignalsAdmin extends DialogFragment {
         signal.setPrice(convertValues(txtEditSignalPrice.getText().toString()));
         signal.setSellStop(convertValues(txtEditSignalSellStop.getText().toString()));
         signal.setTp2(convertValues(txtEditSignalTp2.getText().toString()));
-        signal.setSl(convertValues(txtEditSignalSl.getText().toString()));
+
 
 
     }
