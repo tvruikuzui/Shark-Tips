@@ -84,10 +84,12 @@ public class Offers extends Fragment  {
             @Override
             protected void onPostExecute(Integer integer) {
                 lblShowTs.setText("Remaining time " + integer + " days");
-                if (integer <= 1) {
-                    lblShowTs.setText("Remaining time " + integer + " day");
-                }else if (integer == -404){
+                if (integer == -404) {
+                    lblShowTs.setText("");
                     lblShowTs.setVisibility(View.GONE);
+                }else if (integer <= 1){
+                    lblShowTs.setText("Remaining time " + integer + " day");
+
                 }
                 MyHelper.saveTimeToSharedPreferences(getContext(),integer);
             }

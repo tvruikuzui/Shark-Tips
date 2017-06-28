@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:hint="name"/>
+        android:hint="First Name"/>
 
     <EditText
         android:id="@+id/txtLast"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:hint="last"/>
+        android:hint="Last Name"/>
 
 
     <EditText
@@ -43,7 +43,7 @@
         android:background="@drawable/input_output"
         android:padding="5dp"
         android:inputType="textEmailAddress"
-        android:hint="email"/>
+        android:hint="Email"/>
 
     <EditText
         android:id="@+id/txtVerfayEmail"
@@ -53,7 +53,7 @@
         android:background="@drawable/input_output"
         android:padding="5dp"
         android:inputType="textEmailAddress"
-        android:hint="repeat email"/>
+        android:hint="Repeat Email"/>
 
     <EditText
         android:id="@+id/txtPassword"
@@ -63,7 +63,7 @@
         android:background="@drawable/input_output"
         android:padding="5dp"
         android:inputType="textPassword"
-        android:hint="password"/>
+        android:hint="Password"/>
 
 </LinearLayout>
 
@@ -96,7 +96,7 @@
         android:background="@drawable/input_output"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:hint="phone"/>
+        android:hint="Phone"/>
 </LinearLayout>
 
     <LinearLayout
@@ -116,7 +116,7 @@
             android:background="@drawable/input_output"
             android:padding="5dp"
             android:layout_marginTop="5dp"
-            android:hint="country"/>
+            android:hint="Country"/>
     </LinearLayout>
 
     <LinearLayout

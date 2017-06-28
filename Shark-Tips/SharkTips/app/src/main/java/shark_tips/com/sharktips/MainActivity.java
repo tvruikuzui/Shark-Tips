@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     private boolean isLogin = false;
-    private boolean isNote = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +48,15 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
         super.onStart();
         isLogin = MyHelper.getDataFromSharedPreferences(this);
         if (isLogin == true){
-            if (getIntent().getBooleanExtra("goto",false) == true){
+           if (getIntent().hasExtra("goto")){
                 Intent intent = new Intent(this,Notification.class);
                 startActivity(intent);
                 finish();
 
             }else {
-                moveToHomeActivity();
-            }
+               moveToHomeActivity();
+           }
+
         }
     }
 

@@ -70,13 +70,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         lblSetUserEmail = (TextView)view.findViewById(R.id.lblSetUserEmail);
         lblSetUserEmail.setText(getUserEmail);
 
-        checkIfUserAdmin();
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        checkIfUserAdmin();
         getTimeFromShard = MyHelper.getTimeFromSharedPreferences(this);
         if (getTimeFromShard == 0){
             Intent intent = new Intent(this,ShowOffers.class);
