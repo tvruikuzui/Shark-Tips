@@ -17,13 +17,16 @@
             android:orientation="horizontal"
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
             android:layout_height="130dp">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="130dp"
-                android:src="@drawable/sharklogo"
+                android:src="@drawable/bar"
                 android:contentDescription="shark tips logo"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"/>
         </LinearLayout>
 

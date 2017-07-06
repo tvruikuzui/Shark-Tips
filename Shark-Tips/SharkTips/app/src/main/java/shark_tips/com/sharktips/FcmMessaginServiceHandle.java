@@ -70,8 +70,8 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
             result = body;
         }
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("goto",true);
+        Intent intent = new Intent(this, Notification.class);
+        intent.putExtra("goto","");
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 

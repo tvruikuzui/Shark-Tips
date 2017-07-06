@@ -58,7 +58,7 @@
         <EditText
             android:id="@+id/txtSellStop"
             android:paddingLeft="10dp"
-            android:hint="Sell Stop"
+            android:hint="Stop Loos"
             android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

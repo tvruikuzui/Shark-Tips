@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         // Create the tool bar and The layout for the Tabs
         tableLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -38,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
 
         tableLayout.setupWithViewPager(viewPager);
 
-
-
     }
 
 
@@ -48,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
         super.onStart();
         isLogin = MyHelper.getDataFromSharedPreferences(this);
         if (isLogin == true){
-           if (getIntent().hasExtra("goto")){
+           if (getIntent().hasExtra("click_action")){
                 Intent intent = new Intent(this,Notification.class);
                 startActivity(intent);
                 finish();
