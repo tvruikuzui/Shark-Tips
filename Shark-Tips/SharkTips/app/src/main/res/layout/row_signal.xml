@@ -171,6 +171,7 @@
                     android:id="@+id/lblNote"
                     android:layout_marginLeft="15dp"
                     android:text="note"
+                    android:textColor="#00079D"
                     android:layout_width="wrap_content"
                     android:textSize="15sp"
                     android:layout_height="wrap_content" />

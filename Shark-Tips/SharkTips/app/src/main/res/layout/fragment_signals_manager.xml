@@ -27,6 +27,7 @@
             android:id="@+id/txtCurrency"
             android:paddingLeft="10dp"
             android:hint="Currency"
+            android:inputType="textCapCharacters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
