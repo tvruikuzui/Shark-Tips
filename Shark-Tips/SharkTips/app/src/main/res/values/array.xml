@@ -17,8 +17,8 @@
 
     <string-array name="action">
         <item>Choose action</item>
-        <item>Buy</item>
-        <item>Sell</item>
+        <item>Long</item>
+        <item>Short</item>
     </string-array>
 
     <string-array name="admin">

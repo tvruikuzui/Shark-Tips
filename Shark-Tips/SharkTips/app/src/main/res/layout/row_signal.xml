@@ -83,7 +83,7 @@
                 <TextView
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Sell Stop"
+                    android:text="Stop Loos"
                     android:layout_width="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_height="wrap_content" />
@@ -128,7 +128,7 @@
                 <TextView
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="TP1"
+                    android:text="Take Profit1"
                     android:layout_marginLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -149,7 +149,7 @@
                 <TextView
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="TP2"
+                    android:text="Take Profit2"
                     android:layout_marginLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

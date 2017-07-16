@@ -19,7 +19,7 @@ public class SignalsManager extends Fragment {
     private EditText txtCurrency,txtPrice,txtSellStop,txtTp1,txtTp2,txtNote;
     private ArrayAdapter<CharSequence> actionAdapter,marketAdapter;
     private Button btnSendSignal;
-    private double setPrice,setSellStop,setSl,setTp1,setTp2;
+    private double setPrice,setSellStop,setTp1,setTp2;
     private String setNote,setCurrency,marketExecution;
     private boolean action;
 

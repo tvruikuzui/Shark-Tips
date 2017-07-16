@@ -95,10 +95,10 @@ public class ExpandListAdapter extends BaseAdapter {
         //check the action value and paint the color - green = buy / red = sell
         if (item.isBuy() == true){
             row.lblAction.setTextColor(Color.parseColor("#48AD34"));
-            row.lblAction.setText("buy");
+            row.lblAction.setText("long");
         }else {
             row.lblAction.setTextColor(Color.parseColor("#D60300"));
-            row.lblAction.setText("sell");
+            row.lblAction.setText("short");
         }
 
 

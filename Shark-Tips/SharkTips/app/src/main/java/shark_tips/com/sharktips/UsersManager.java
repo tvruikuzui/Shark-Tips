@@ -3,6 +3,7 @@ package shark_tips.com.sharktips;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -204,6 +205,7 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
                                     ,userObject.getString("email")
                                     ,userObject.getLong("addTimeToUser")
                                     ,userObject.getBoolean("paid"));
+                            user.setTimeStamp(((System.currentTimeMillis() - userObject.getLong("ts")) / 86400000)-user.getAddTimeToUser());
                             if (user.isPaid()){
                                 users.add(user);
                             }else {

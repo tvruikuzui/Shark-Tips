@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:text="» Edit Signal."
         android:textStyle="bold"
@@ -62,14 +63,14 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Sl:"
+            android:text="StopLoos:"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/txtEditSignalSl"
-            android:hint="Sl"
+            android:id="@+id/txtEditSignalSellStop"
+            android:hint="StopLoos"
             android:inputType="numberDecimal"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -77,6 +78,7 @@
 
 
     </LinearLayout>
+
 
     <LinearLayout
         android:paddingLeft="15dp"
@@ -101,28 +103,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:text="SellStop:"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/txtEditSignalSellStop"
-            android:hint="SellStop"
-            android:inputType="numberDecimal"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:paddingLeft="15dp"
@@ -170,34 +150,55 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:text="Note:"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+        <TableLayout
+            android:id="@+id/lNote"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/txtEditSignalNote"
-            android:hint="Note"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            <TableRow>
+
+                <TextView
+                    android:text="Note:"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/txtEditSignalNote"
+                    android:hint="Note"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content" />
 
 
-    </LinearLayout>
+            </TableRow>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
-    <Button
-        android:id="@+id/btnUpdateSignal"
-        android:text="Submit"
-       android:layout_margin="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/btnUpdateSignal"
+                    android:text="Submit"
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </TableLayout>
+
+
+    </ScrollView>
+
+
 
 </LinearLayout>

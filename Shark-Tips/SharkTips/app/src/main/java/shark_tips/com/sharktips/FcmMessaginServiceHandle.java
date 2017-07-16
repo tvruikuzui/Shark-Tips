@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
@@ -81,6 +82,8 @@ public class FcmMessaginServiceHandle extends FirebaseMessagingService {
                  .setSmallIcon(R.drawable.sharklogo)
                  .setContentTitle(title + "!")
                  .setAutoCancel(true)
+                .setLights(Color.BLUE,3000,3000)
+                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent);
 

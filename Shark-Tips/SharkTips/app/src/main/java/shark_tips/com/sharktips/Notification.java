@@ -78,7 +78,7 @@ public class Notification extends AppCompatActivity {
                             wereToAddSignals(signal);
                             signal.isExpanded = true;
                         }
-                        Collections.sort(signals);
+                     //   Collections.sort(signals);
                     }
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
