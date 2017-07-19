@@ -128,8 +128,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:gravity="center_horizontal"
-                            android:lines="4"
-                            android:maxLines="4"
+                            android:lines="6"
+                            android:maxLines="6"
                             android:text="Far less wasted time, wasted effort and headaches for quick and easy trading."/>
                 </LinearLayout>
 

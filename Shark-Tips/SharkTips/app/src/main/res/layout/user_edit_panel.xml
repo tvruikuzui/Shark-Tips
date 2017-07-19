@@ -51,6 +51,7 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_margin="10dp"
         android:orientation="horizontal"
@@ -73,6 +74,41 @@
             android:layout_weight="1"
             android:inputType="number"
             android:text="0"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:textColor="#042d44"
+        android:text="Note: 0 for not to add or remove days."
+        android:backgroundTint="@color/colorPrimary"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <CheckBox
+            android:id="@+id/chkAddOrRemoveDays"
+            android:hint="Add/Remove Days"
+            android:layout_width="match_parent"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:lines="2"
+            android:maxLines="2"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="If CheckBox Is Checked you add days  if not you remove Days."
             android:backgroundTint="@color/colorPrimary"
             android:layout_height="wrap_content" />
 

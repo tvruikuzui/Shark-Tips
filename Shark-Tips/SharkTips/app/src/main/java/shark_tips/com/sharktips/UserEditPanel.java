@@ -26,12 +26,12 @@ public class UserEditPanel extends DialogFragment {
 
     
     private TextView lblEditUserEmailPanel,lblEditUserTsPanel;
-    private CheckBox chkYes,chkNo;
+    private CheckBox chkYes,chkNo,chkAddOrRemoveDays;
     private EditText txtUpdateUserDays;
     private Button btnSaveUserPanel,btnExitUserPanel;
     private User user;
     private UserNameEditListener listener;
-    private boolean isPaid = false;
+    private boolean isPaid = false,hasDays = false;
     private int updateDays;
     private String getUserMail,getUserPassword;
 
@@ -47,7 +47,7 @@ public class UserEditPanel extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.user_edit_panel,container,false);
-
+        // Get user data from Shared.
         getUserMail = MyHelper.getUserEmailFromSharedPreferences(getContext());
         getUserPassword = MyHelper.getUserPasswordFromSharedPreferences(getContext());
 
@@ -55,8 +55,9 @@ public class UserEditPanel extends DialogFragment {
         lblEditUserTsPanel = (TextView) view.findViewById(R.id.lblEditUserTsPanel);
         chkYes = (CheckBox) view.findViewById(R.id.chkYes);
         chkNo = (CheckBox) view.findViewById(R.id.chkNo);
+        chkAddOrRemoveDays = (CheckBox) view.findViewById(R.id.chkAddOrRemoveDays);
         txtUpdateUserDays = (EditText) view.findViewById(R.id.txtUpdateUserDays);
-
+        // Take the mail and days from user.
         lblEditUserEmailPanel.setText(user.getMail());
         lblEditUserTsPanel.setText(String.valueOf(user.getTimeStamp()));
 
@@ -65,6 +66,7 @@ public class UserEditPanel extends DialogFragment {
             @Override
             public void onClick(View v) {
                 checkUserPayment();
+                addOrRemoveDays();
                 updateDays = Integer.parseInt(txtUpdateUserDays.getText().toString());
                 if (listener != null){
                     new AsyncTask<String, Void, String>() {
@@ -83,7 +85,9 @@ public class UserEditPanel extends DialogFragment {
                                         + "/"
                                         + updateDays
                                         + "/"
-                                        + isPaid + "/");
+                                        + isPaid
+                                        + "/"
+                                        + hasDays + "/");
                                 urlConnection = (HttpURLConnection) url.openConnection();
                                 urlConnection.setRequestMethod("GET");
                                 urlConnection.setUseCaches(false);
@@ -116,7 +120,8 @@ public class UserEditPanel extends DialogFragment {
                 dismiss();
             }
         });
-        
+
+        // Close the Edit Panel.
         btnExitUserPanel = (Button) view.findViewById(R.id.btnExitUserPanel);
         btnExitUserPanel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +132,7 @@ public class UserEditPanel extends DialogFragment {
         return view;
     }
 
+    // Check the status of user if paid or not.
     private void checkUserPayment() {
         if (chkYes.isChecked() && chkNo.isChecked()){
             Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
@@ -140,6 +146,16 @@ public class UserEditPanel extends DialogFragment {
         }else {
             chkNo.isChecked();
             isPaid = false;
+        }
+    }
+
+    // Check the status for add or remove days to user.
+    private void addOrRemoveDays(){
+
+        if (chkAddOrRemoveDays.isChecked()){
+            hasDays = true;
+        }else {
+            hasDays = false;
         }
     }
 

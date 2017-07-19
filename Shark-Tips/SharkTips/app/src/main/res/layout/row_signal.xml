@@ -81,15 +81,16 @@
             <TableRow>
 
                 <TextView
+                    android:id="@+id/lblShowSl"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Stop Loos"
-                    android:layout_width="wrap_content"
+                    android:text="Sl"
                     android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/lblSellStop"
+                    android:id="@+id/lblsl"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="value"
@@ -103,16 +104,15 @@
             <TableRow>
 
                 <TextView
-                    android:id="@+id/lblShowSl"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Sl"
-                    android:layout_marginLeft="15dp"
+                    android:text="Stop Loos"
                     android:layout_width="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/lblsl"
+                    android:id="@+id/lblSellStop"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:text="value"

@@ -164,9 +164,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         sendIntent.putExtra(Intent.EXTRA_TEXT, "Hey, I joined a great Forex trading App and I think you should too.\n" +
                 "Why? To get 14-day of free Forex Signals, to get more pairs, more indices and market updates than with any other signals provider. And their signals are simply the best!\n" +
                 "Believe me, they make it really easy to trade on Forex. \n" +
-                "My friendly advice: download SharkTips app now.");
+                "My friendly advice: download SharkTips app now. \n " + "https://goo.gl/anFWGU");
         sendIntent.setType("text/plain");
-     //   sendIntent.setPackage("com.whatsapp");
+        sendIntent.setPackage("com.whatsapp");
         startActivity(sendIntent);
     }
 
