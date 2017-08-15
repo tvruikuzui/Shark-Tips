@@ -123,6 +123,14 @@ public class SignalsManager extends Fragment {
                 signalsAsyncTask.setC(getContext());
                 signalsAsyncTask.execute(signal);
 
+
+                txtCurrency.setText("");
+                txtPrice.setText("");
+                txtSellStop.setText("");
+                txtTp1.setText("");
+                txtTp2.setText("");
+                txtNote.setText("");
+
             }
 
         });

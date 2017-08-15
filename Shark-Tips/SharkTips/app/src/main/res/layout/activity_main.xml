@@ -19,11 +19,11 @@
             android:layout_width="match_parent"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:layout_height="130dp">
+            android:layout_height="75dp">
 
             <ImageView
                 android:layout_width="300dp"
-                android:layout_height="130dp"
+                android:layout_height="60dp"
                 android:src="@drawable/bar"
                 android:contentDescription="shark tips logo"
                 android:layout_gravity="center_horizontal"

@@ -22,7 +22,7 @@
         android:padding="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:hint="Email"/>
+        android:hint="Enter Email"/>
 
     <EditText
         android:id="@+id/txtLoginPassword"
@@ -34,7 +34,7 @@
         android:padding="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:hint="Password"/>
+        android:hint="Enter Password"/>
 
 </LinearLayout>
 

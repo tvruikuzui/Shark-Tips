@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:hint="First Name"/>
+        android:hint="Enter First Name"/>
 
     <EditText
         android:id="@+id/txtLast"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/input_output"
         android:padding="5dp"
-        android:hint="Last Name"/>
+        android:hint="Enter Last Name"/>
 
 
     <EditText
@@ -43,7 +43,7 @@
         android:background="@drawable/input_output"
         android:padding="5dp"
         android:inputType="textEmailAddress"
-        android:hint="Email"/>
+        android:hint=" Enter Email"/>
 
     <EditText
         android:id="@+id/txtVerfayEmail"
@@ -63,7 +63,7 @@
         android:background="@drawable/input_output"
         android:padding="5dp"
         android:inputType="textPassword"
-        android:hint="Password"/>
+        android:hint="Enter Password"/>
 
 </LinearLayout>
 

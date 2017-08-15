@@ -166,7 +166,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 "Believe me, they make it really easy to trade on Forex. \n" +
                 "My friendly advice: download SharkTips app now. \n " + "https://goo.gl/anFWGU");
         sendIntent.setType("text/plain");
-        sendIntent.setPackage("com.whatsapp");
         startActivity(sendIntent);
     }
 
