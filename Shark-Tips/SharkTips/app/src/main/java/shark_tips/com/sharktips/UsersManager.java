@@ -203,9 +203,11 @@ public class UsersManager extends Fragment implements UserEditPanel.UserNameEdit
                             User user = new User(userObject.getString("name")
                                     ,userObject.getString("lastName")
                                     ,userObject.getString("email")
-                                    ,userObject.getLong("addTimeToUser")
+                                    ,0
                                     ,userObject.getBoolean("paid"));
-                            user.setTimeStamp(((System.currentTimeMillis() - userObject.getLong("ts")) / 86400000)-user.getAddTimeToUser());
+                            long time = (userObject.getLong("ts") - System.currentTimeMillis())/86400000L;
+                            user.setTimeStamp(time + userObject.getInt("addTimeToUser"));
+
                             if (user.isPaid()){
                                 users.add(user);
                             }else {

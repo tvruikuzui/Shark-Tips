@@ -77,7 +77,7 @@ public class UsersManagerAdapter extends BaseAdapter implements Filterable {
                 ArrayList<User> filters = new ArrayList<User>();
                 for (int i = 0; i < filterList.size(); i++) {
                     if (filterList.get(i).getMail().toUpperCase().contains(constraint)){
-                        User user = new User(filterList.get(i).getMail());
+                        User user = new User(filterList.get(i).getMail(),filterList.get(i).getTimeStamp());
                         filters.add(user);
                     }
                 }

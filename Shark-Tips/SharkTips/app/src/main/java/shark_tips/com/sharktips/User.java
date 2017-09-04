@@ -34,6 +34,11 @@ public class User {
         this.mail = mail;
     }
 
+    public User(String mail, long timeStamp) {
+        this.mail = mail;
+        this.timeStamp = timeStamp;
+    }
+
     public User(String mail, String adminType) {
         this.mail = mail;
         this.adminType = adminType;
@@ -149,13 +154,13 @@ public class User {
     }
 
     public void setPhoneNumber(long phoneNumber) {
-        if (phoneNumber < 6)
+        if (phoneNumber == 0 || phoneNumber < 6)
             return;
         this.phoneNumber = phoneNumber;
     }
 
     public boolean checkValidPhoneNumber(){
-        if (phoneNumber > 6){
+        if (phoneNumber < 6 || phoneNumber == 0){
             return true;
         }
         return false;

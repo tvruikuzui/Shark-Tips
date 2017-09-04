@@ -38,6 +38,7 @@
             android:id="@+id/lblCurrency"
             android:textSize="14sp"
             android:text="Currency"
+            android:textAllCaps="true"
             android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -165,21 +166,16 @@
 
             </TableRow>
 
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/lblNote"
-                    android:layout_marginLeft="15dp"
-                    android:text="note"
-                    android:textColor="#00079D"
-                    android:layout_width="wrap_content"
-                    android:textSize="15sp"
-                    android:layout_height="wrap_content" />
-
-            </TableRow>
-
         </TableLayout>
 
+        <TextView
+            android:id="@+id/lblNote"
+            android:layout_marginLeft="15dp"
+            android:text="note"
+            android:textColor="#00079D"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

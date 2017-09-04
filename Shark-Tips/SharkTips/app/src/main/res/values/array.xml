@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="language">
-        <item><b>Spoken language</b></item>
-        <item>English</item>
-        <item>Arabic</item>
-        <item>Spanish</item>
-    </string-array>
-
-    <string-array name="TradingLevel">
-        <item><b>Trading level</b></item>
-        <item>Beginner</item>
-        <item>Advanced</item>
-        <item>Pro</item>
-    </string-array>
-
+    
     <string-array name="action">
         <item>Choose action</item>
         <item>Long</item>

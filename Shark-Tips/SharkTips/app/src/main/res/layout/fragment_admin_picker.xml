@@ -41,7 +41,7 @@
 
     <EditText
         android:id="@+id/txtMakeAdmin"
-        android:hint="enter email"
+        android:hint="Enter User Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

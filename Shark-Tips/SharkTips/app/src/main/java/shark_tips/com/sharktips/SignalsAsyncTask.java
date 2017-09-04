@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
 /**
  * Created by User on 11/05/2017.
@@ -48,7 +49,7 @@ public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
             JSONObject signalObject = new JSONObject();
             if (signal.getId() != null){
                 signalObject.put("id",signal.getId());
-                signalObject.put("ts",signal.getTs());
+                signalObject.put("ts",new Date().getTime());
             }
             signalObject.put("currency",signal.getCurrency());
             signalObject.put("price",signal.getPrice());
@@ -90,10 +91,10 @@ public class SignalsAsyncTask extends AsyncTask<Signal,Void,String>{
     protected void onPostExecute(String result) {
         switch (result){
             case "ok":
-                Toast.makeText(c, result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "Signal Sent", Toast.LENGTH_SHORT).show();
                 break;
             case "error":
-                Toast.makeText(c, result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "Error Something Went Wrong", Toast.LENGTH_SHORT).show();
         }
     }
 }

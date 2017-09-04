@@ -1,6 +1,7 @@
 <RelativeLayout android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <LinearLayout
     android:id="@+id/topLogin"
@@ -12,29 +13,50 @@
     android:background="#ffffff"
     tools:context="shark_tips.com.sharktips.LoginFragment">
 
-    <EditText
-        android:id="@+id/txtLogimEmail"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
+    <LinearLayout
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:hint="Enter Email"/>
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/txtLoginPassword"
-        android:inputType="textPassword"
-        android:layout_marginTop="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:hint="Enter Password"/>
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/txtLogimEmail"
+            android:hint="Enter Your Email"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@color/colorForInput"
+            app:met_singleLineEllipsis="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/txtLoginPassword"
+            android:hint="Enter a password"
+            android:inputType="textPassword"
+            app:met_primaryColor="@color/colorForInput"
+            app:met_floatingLabel="highlight"
+            app:met_singleLineEllipsis="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/lblShowError"
+            android:textSize="18sp"
+            android:visibility="invisible"
+            android:paddingTop="20dp"
+            android:textColor="#CC0000"
+            android:text="Error"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
 

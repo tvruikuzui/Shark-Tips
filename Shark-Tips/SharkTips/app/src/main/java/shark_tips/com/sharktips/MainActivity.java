@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
         pagerAdapter = new PagerAdapter(getSupportFragmentManager());
         SignupFragment signupFragment = new SignupFragment();
         signupFragment.setListener(this);
-        pagerAdapter.addWindow(signupFragment,"SignUp");
+        pagerAdapter.addWindow(signupFragment,"SIGN UP");
         LoginFragment loginFragment = new LoginFragment();
         loginFragment.setListener(this);
-        pagerAdapter.addWindow(loginFragment,"Login");
+        pagerAdapter.addWindow(loginFragment,"LOGIN");
         viewPager.setAdapter(pagerAdapter);
 
         tableLayout.setupWithViewPager(viewPager);

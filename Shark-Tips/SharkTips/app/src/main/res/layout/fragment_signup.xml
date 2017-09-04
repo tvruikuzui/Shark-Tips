@@ -12,65 +12,64 @@
     android:id="@+id/top"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="5dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <EditText
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/txtName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
-        android:hint="Enter First Name"/>
+        android:hint="Enter First Name"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@color/colorForInput"
+        app:met_singleLineEllipsis="true"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/txtLast"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
-        android:hint="Enter Last Name"/>
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/txtLastName"
+        android:hint="Enter Last Name"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="@color/colorForInput"
+        app:met_singleLineEllipsis="true"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" />
 
 
-    <EditText
+</LinearLayout>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/txtEmail"
-        android:layout_marginTop="5dp"
+        android:hint="Enter Your Email"
+        app:met_primaryColor="@color/colorForInput"
+        app:met_floatingLabel="highlight"
+        app:met_singleLineEllipsis="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
-        android:inputType="textEmailAddress"
-        android:hint=" Enter Email"/>
+        android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/txtVerfayEmail"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
-        android:inputType="textEmailAddress"
-        android:hint="Repeat Email"/>
-
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/txtPassword"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_output"
-        android:padding="5dp"
+        android:hint="Create a password"
+        app:met_primaryColor="@color/colorForInput"
         android:inputType="textPassword"
-        android:hint="Enter Password"/>
+        app:met_floatingLabel="highlight"
+        app:met_singleLineEllipsis="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
 
 
 <LinearLayout
     android:id="@+id/midl"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
     android:layout_below="@+id/top"
     android:orientation="horizontal"
     android:layout_marginLeft="15dp"
@@ -84,73 +83,25 @@
         app:defaultNameCode="IL"
         app:defaultCode="972"
         android:layout_width="0dp"
-        android:paddingBottom="5dp"
+        android:paddingTop="15dp"
         android:layout_weight="1"
         android:layout_height="wrap_content" />
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/txtPhoneNumber"
+        android:hint="Enter Phone"
+        app:met_primaryColor="@color/colorForInput"
         android:inputType="phone"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/input_output"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:hint="Phone"/>
+        app:met_floatingLabel="highlight"
+        app:met_singleLineEllipsis="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
 </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/countryLayout"
-        android:layout_below="@+id/midl"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/txtCountry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/input_output"
-            android:padding="5dp"
-            android:layout_marginTop="5dp"
-            android:hint="Country"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/spinnerlayout"
-        android:layout_below="@+id/countryLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:orientation="horizontal">
-
-        <Spinner
-            android:padding="5dp"
-            android:id="@+id/spnLevel"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-
-        </Spinner>
-
-        <Spinner
-            android:padding="5dp"
-            android:id="@+id/spnLang"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-
-        </Spinner>
-
-    </LinearLayout>
-
     <RelativeLayout
-        android:layout_below="@+id/spinnerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

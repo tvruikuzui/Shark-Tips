@@ -3,6 +3,7 @@ package shark_tips.com.sharktips;
 
 
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,8 +36,9 @@ interface LogInListener{
  */
 public class LoginFragment extends Fragment {
 
-    private EditText txtLoginEmail,txtLoginPassword;
+    private MaterialEditText txtLoginEmail,txtLoginPassword;
     private Button btnLogin;
+    private TextView lblShowError;
     private LogInListener listener;
     private boolean isLogin = false;
     private String getUserEmail,getUserPassword;
@@ -47,14 +51,33 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-        txtLoginEmail = (EditText) view.findViewById(R.id.txtLogimEmail);
-        txtLoginPassword = (EditText) view.findViewById(R.id.txtLoginPassword);
+        txtLoginEmail = (MaterialEditText) view.findViewById(R.id.txtLogimEmail);
+        txtLoginPassword = (MaterialEditText) view.findViewById(R.id.txtLoginPassword);
+        lblShowError = (TextView) view.findViewById(R.id.lblShowError);
         btnLogin = (Button) view.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (txtLoginEmail.length() == 0){
+                    txtLoginEmail.setHintTextColor(Color.RED);
+                    txtLoginEmail.setText("");
+                    txtLoginEmail.setHint("No Data.");
+                    return;
+                }
+
+                if (txtLoginPassword.length() == 0){
+                    txtLoginPassword.setHintTextColor(Color.RED);
+                    txtLoginPassword.setText("");
+                    txtLoginPassword.setHint("No Data.");
+                    return;
+
+                }
+
                 getUserEmail = txtLoginEmail.getText().toString();
                 getUserPassword = txtLoginPassword.getText().toString();
+
+                btnLogin.setEnabled(false);
+
                 new AsyncTask<String, Void, String>() {
                     @Override
                     protected String doInBackground(String... params) {
@@ -90,12 +113,14 @@ public class LoginFragment extends Fragment {
                     protected void onPostExecute(String s) {
                         switch (s){
                             case "not registered":
-                                txtLoginEmail.setText("");
-                                txtLoginEmail.setText(s);
+                                lblShowError.setVisibility(View.VISIBLE);
+                                lblShowError.setText(s);
+                                btnLogin.setEnabled(true);
                                 break;
                             case "wrong password":
-                                txtLoginEmail.setText("");
-                                txtLoginPassword.setText(s);
+                                lblShowError.setVisibility(View.VISIBLE);
+                                lblShowError.setText(s);
+                                btnLogin.setEnabled(true);
                                 break;
                             case "ok":
                                 if (listener != null){

@@ -13,9 +13,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.hbb20.CountryCodePicker;
+import com.rengwuxian.materialedittext.MaterialEditText;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
@@ -38,15 +42,13 @@ public class SignupFragment extends Fragment {
 
     public static final String BASE_URL = "http://35.184.144.226/shark2/";
     private Button btnRegister;
-    private EditText txtName,txtLast,txtEmail,txtPhoneNumber,txtCountry,txtPassword,txtverfayEmail;
+    private MaterialEditText txtName,txtLastName,txtEmail,txtPhoneNumber,txtPassword;
     private User user;
     private CountryCodePicker ccp;
-    private String getCountryCode,userEmail,userPassword,langSpeak,tradeLevel;
-    private  boolean isLogin = false,isAdmin;
-    private String countryName;
+    private String getCountryCode,userEmail,userPassword;
+    private  boolean isLogin = false;
     private SignUpListener listener;
-    private Spinner spnLang,spnLevel;
-    private ArrayAdapter<CharSequence> langAdapter,levelAdapter;
+
 
 
     public void setListener(SignUpListener listener) {
@@ -61,77 +63,16 @@ public class SignupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
-        txtName = (EditText) view.findViewById(R.id.txtName);
-        txtLast = (EditText) view.findViewById(R.id.txtLast);
-        txtCountry = (EditText) view.findViewById(R.id.txtCountry);
-        txtEmail = (EditText) view.findViewById(R.id.txtEmail);
-        txtverfayEmail = (EditText) view.findViewById(R.id.txtVerfayEmail);
-        txtPhoneNumber = (EditText) view.findViewById(R.id.txtPhoneNumber);
-        txtPassword = (EditText) view.findViewById(R.id.txtPassword);
-        spnLang = (Spinner) view.findViewById(R.id.spnLang);
-        spnLevel = (Spinner) view.findViewById(R.id.spnLevel);
+        txtName = (MaterialEditText) view.findViewById(R.id.txtName);
+        txtLastName = (MaterialEditText) view.findViewById(R.id.txtLastName);
+        txtEmail = (MaterialEditText) view.findViewById(R.id.txtEmail);
+        txtPhoneNumber = (MaterialEditText) view.findViewById(R.id.txtPhoneNumber);
+        txtPassword = (MaterialEditText) view.findViewById(R.id.txtPassword);
         ccp = (CountryCodePicker) view.findViewById(R.id.ccp);
-        langAdapter = ArrayAdapter.createFromResource(getContext(),R.array.language,android.R.layout.simple_spinner_item);
-        langAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnLang.setAdapter(langAdapter);
-        levelAdapter = ArrayAdapter.createFromResource(getContext(),R.array.TradingLevel,android.R.layout.simple_spinner_item);
-        levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnLevel.setAdapter(levelAdapter);
 
-        spnLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0){
-                    langSpeak = "None";
-                    return;
-                }else if (position == 1){
-                    langSpeak = "Arabic";
-                    return;
-                }else if (position == 2){
-                    langSpeak = "English";
-                    return;
-                }else if (position == 3){
-                    langSpeak = "Russian";
-                    return;
-                }else if(position == 4){
-                    langSpeak = "German";
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        spnLevel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0){
-                    tradeLevel = "None";
-                    return;
-                }else if (position == 1){
-                    tradeLevel = "Beginner";
-                    return;
-                }else if (position == 2){
-                    tradeLevel = "Advanced";
-                    return;
-                }else if (position == 3){
-                    tradeLevel = "Pro";
-                    return;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         // Get the Country Code from Country Piker and store the value in getCountryCode.
         getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
-        countryName = ccp.getDefaultCountryName();
-        txtCountry.setText(countryName);
         // Add to the EditText the Country Code that was Selected.
         ccp.registerCarrierNumberEditText(txtPhoneNumber);
         // If user wrong and Switch Country Code , the portal was update.
@@ -140,8 +81,8 @@ public class SignupFragment extends Fragment {
             public void onCountrySelected() {
                 // update the portal.
                 getCountryCode = String.valueOf(ccp.getSelectedCountryCodeAsInt());
-                countryName = ccp.getSelectedCountryName();
-                txtCountry.setText(countryName);
+
+
 
             }
         });
@@ -153,46 +94,47 @@ public class SignupFragment extends Fragment {
                 user.setName(txtName.getText().toString());
                 if (user.checkValidUserName() == false){
                     txtName.setText("");
+                    txtName.setHintTextColor(Color.RED);
                     txtName.setHint("Invalid Name");
                     return;
                 }
-                user.setLastName(txtLast.getText().toString());
+
+                user.setLastName(txtLastName.getText().toString());
                 if (user.checkValidUserLastName() == false){
-                    txtLast.setText("");
-                    txtLast.setHint("Invalid Last");
+                    txtLastName.setText("");
+                    txtLastName.setHintTextColor(Color.RED);
+                    txtLastName.setHint("Invalid last Name");
                     return;
                 }
+
                 user.setMail(txtEmail.getText().toString());
-                if (user.checkValidMail() == false || !txtverfayEmail.getText().toString().equals(txtEmail.getText().toString())){
-                    txtverfayEmail.setText("");
-                    txtverfayEmail.setHint("Invalid Email");
+                if (user.checkValidMail() == false){
+                    txtEmail.setText("");
+                    txtEmail.setHintTextColor(Color.RED);
+                    txtEmail.setHint("Invalid Email");
                     return;
                 }
                 userEmail = txtEmail.getText().toString();
 
-                user.setPhoneNumber(Long.parseLong((getCountryCode+txtPhoneNumber.getText().toString())));
-                if (user.checkValidPhoneNumber() == false){
-                    txtPhoneNumber.setText("");
-                    txtPhoneNumber.setHint("Phone Number is to short");
-                    return;
-                }
-
-                user.setCountryCode(String.valueOf(ccp.getSelectedCountryCodeAsInt()));
-
                 user.setPassword(txtPassword.getText().toString());
                 if (user.checkValidPassword() == false){
                     txtPassword.setText("");
+                    txtPassword.setHintTextColor(Color.RED);
                     txtPassword.setHint("Invalid Password");
                     return;
                 }
                 userPassword = txtPassword.getText().toString();
 
-                user.setCountry(countryName);
-                if (user.checkValidCountryCode() == false){
-                    txtCountry.setText("");
-                    txtCountry.setHint("Invalid country name");
+
+                if (user.checkValidPhoneNumber() == false || txtPhoneNumber.length() == 0 || txtPhoneNumber.length() < 6) {
+                    txtPhoneNumber.setText("");
+                    txtPhoneNumber.setHint("Phone number is to short");
+                    txtPhoneNumber.setHintTextColor(Color.RED);
                     return;
                 }
+                user.setPhoneNumber(Long.parseLong((txtPhoneNumber.getText().toString())));
+
+                user.setCountryCode(String.valueOf(ccp.getSelectedCountryCodeAsInt()));
 
 
                 if (listener != null){
@@ -218,12 +160,12 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("phoneNumber",user.getPhoneNumber());
                                 jsonObject.put("name",user.getName());
                                 jsonObject.put("lastName",user.getLastName());
-                                jsonObject.put("country",user.getCountry());
+                                jsonObject.put("country","");
                                 jsonObject.put("countryCode",user.getCountryCode());
                                 jsonObject.put("password",user.getPassword());
                                 jsonObject.put("email",user.getMail());
-                                jsonObject.put("langSpeak",langSpeak);
-                                jsonObject.put("tradeLvl",tradeLevel);
+                                jsonObject.put("langSpeak","");
+                                jsonObject.put("tradeLvl","");
                                 jsonObject.put("paid",false);
                                 jsonObject.put("token",FirebaseInstanceId.getInstance().getToken());
                                 outputStream.write(jsonObject.toString().getBytes());
