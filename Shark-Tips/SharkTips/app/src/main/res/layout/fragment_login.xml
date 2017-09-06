@@ -48,7 +48,7 @@
             android:visibility="invisible"
             android:paddingTop="20dp"
             android:textColor="#CC0000"
-            android:text="Error"
+            android:text="Wrong Email or Password."
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

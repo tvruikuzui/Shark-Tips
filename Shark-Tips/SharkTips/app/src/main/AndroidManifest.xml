@@ -13,13 +13,14 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl,android:allowBackup">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
         <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
@@ -38,7 +39,7 @@
         </service>
 
         <activity android:name=".Notification" />
-        <activity android:name=".ShowOffers"></activity>
+        <activity android:name=".ShowOffers" />
     </application>
 
 </manifest>

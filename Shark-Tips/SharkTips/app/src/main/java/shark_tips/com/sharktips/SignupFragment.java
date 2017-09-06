@@ -43,9 +43,10 @@ public class SignupFragment extends Fragment {
     public static final String BASE_URL = "http://35.184.144.226/shark2/";
     private Button btnRegister;
     private MaterialEditText txtName,txtLastName,txtEmail,txtPhoneNumber,txtPassword;
+    TextView txtCountry;
     private User user;
     private CountryCodePicker ccp;
-    private String getCountryCode,userEmail,userPassword;
+    private String getCountryCode,userEmail,userPassword,countryName;
     private  boolean isLogin = false;
     private SignUpListener listener;
 
@@ -69,10 +70,12 @@ public class SignupFragment extends Fragment {
         txtPhoneNumber = (MaterialEditText) view.findViewById(R.id.txtPhoneNumber);
         txtPassword = (MaterialEditText) view.findViewById(R.id.txtPassword);
         ccp = (CountryCodePicker) view.findViewById(R.id.ccp);
+        txtCountry = (TextView) view.findViewById(R.id.txtCountry);
 
 
         // Get the Country Code from Country Piker and store the value in getCountryCode.
         getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
+        txtCountry.setText(countryName);
         // Add to the EditText the Country Code that was Selected.
         ccp.registerCarrierNumberEditText(txtPhoneNumber);
         // If user wrong and Switch Country Code , the portal was update.
@@ -81,6 +84,8 @@ public class SignupFragment extends Fragment {
             public void onCountrySelected() {
                 // update the portal.
                 getCountryCode = String.valueOf(ccp.getSelectedCountryCodeAsInt());
+                countryName = ccp.getSelectedCountryName();
+                txtCountry.setText(countryName);
 
 
 
@@ -160,7 +165,7 @@ public class SignupFragment extends Fragment {
                                 jsonObject.put("phoneNumber",user.getPhoneNumber());
                                 jsonObject.put("name",user.getName());
                                 jsonObject.put("lastName",user.getLastName());
-                                jsonObject.put("country","");
+                                jsonObject.put("country",countryName);
                                 jsonObject.put("countryCode",user.getCountryCode());
                                 jsonObject.put("password",user.getPassword());
                                 jsonObject.put("email",user.getMail());

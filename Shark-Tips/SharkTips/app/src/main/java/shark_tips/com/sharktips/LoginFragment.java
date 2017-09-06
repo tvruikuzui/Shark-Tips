@@ -111,29 +111,21 @@ public class LoginFragment extends Fragment {
 
                     @Override
                     protected void onPostExecute(String s) {
-                        switch (s){
-                            case "not registered":
-                                lblShowError.setVisibility(View.VISIBLE);
-                                lblShowError.setText(s);
-                                btnLogin.setEnabled(true);
-                                break;
-                            case "wrong password":
-                                lblShowError.setVisibility(View.VISIBLE);
-                                lblShowError.setText(s);
-                                btnLogin.setEnabled(true);
-                                break;
-                            case "ok":
-                                if (listener != null){
-                                    isLogin = true;
-                                    MyHelper.saveUserEmailToSharedPreferences(getContext(),getUserEmail);
-                                    MyHelper.saveUserPasswordToSharedPreferences(getContext(),getUserPassword);
-                                    MyHelper.saveToSharedPreferences(getContext(),isLogin);
-                                    listener.checkUserLogFromLogin(isLogin);
-                                    FcmServiceIdToken token = new FcmServiceIdToken();
-                                    token.sendNewToken(getUserEmail, FirebaseInstanceId.getInstance().getToken());
-                                }
+                        if (s.equals("ok")) {
+                            if (listener != null) {
+                                isLogin = true;
+                                MyHelper.saveUserEmailToSharedPreferences(getContext(), getUserEmail);
+                                MyHelper.saveUserPasswordToSharedPreferences(getContext(), getUserPassword);
+                                MyHelper.saveToSharedPreferences(getContext(), isLogin);
+                                listener.checkUserLogFromLogin(isLogin);
+                                FcmServiceIdToken token = new FcmServiceIdToken();
+                                token.sendNewToken(getUserEmail, FirebaseInstanceId.getInstance().getToken());
 
-                                break;
+                            }
+
+                        }else {
+                            lblShowError.setVisibility(View.VISIBLE);
+                            btnLogin.setEnabled(true);
                         }
                     }
                 }.execute(getUserEmail,getUserPassword);
