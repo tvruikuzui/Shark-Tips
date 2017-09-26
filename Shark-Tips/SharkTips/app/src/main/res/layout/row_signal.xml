@@ -75,98 +75,117 @@
         android:layout_height="wrap_content"
         android:background="#e6e8ef">
 
-        <TableLayout
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TableRow>
+            <TextView
+                android:id="@+id/lblShowSl"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Sl"
+                android:layout_marginLeft="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/lblShowSl"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Sl"
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/lblsl"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="value"
-                    android:layout_marginLeft="75dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Stop Loss"
-                    android:layout_width="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/lblSellStop"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="value"
-                    android:layout_marginLeft="75dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/lblsl"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="value"
+                android:lines="1"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content" />
 
 
-            </TableRow>
 
-            <TableRow>
+        </LinearLayout>
 
-                <TextView
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Take Profit1"
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/lbltp1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="value"
-                    android:layout_marginLeft="75dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Stop Loss"
+                android:layout_marginLeft="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
 
-            </TableRow>
+            <TextView
+                android:id="@+id/lblSellStop"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="value"
+                android:layout_weight="2"
+                android:lines="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
 
-            <TableRow>
 
-                <TextView
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="Take Profit2"
-                    android:layout_marginLeft="15dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/lbltp2"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="value"
-                    android:layout_marginLeft="75dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+        </LinearLayout>
 
-            </TableRow>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        </TableLayout>
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Take Profit1"
+                android:layout_marginLeft="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/lbltp1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="value"
+                android:lines="1"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Take Profit2"
+                android:layout_marginLeft="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/lbltp2"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="value"
+                android:lines="1"
+
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/lblNote"

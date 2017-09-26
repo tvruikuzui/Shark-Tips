@@ -43,12 +43,13 @@ public class SignupFragment extends Fragment {
     public static final String BASE_URL = "http://35.184.144.226/shark2/";
     private Button btnRegister;
     private MaterialEditText txtName,txtLastName,txtEmail,txtPhoneNumber,txtPassword;
-    TextView txtCountry;
+    private TextView txtCountry;
     private User user;
     private CountryCodePicker ccp;
     private String getCountryCode,userEmail,userPassword,countryName;
     private  boolean isLogin = false;
     private SignUpListener listener;
+    private long phoneWithCode;
 
 
 
@@ -137,9 +138,12 @@ public class SignupFragment extends Fragment {
                     txtPhoneNumber.setHintTextColor(Color.RED);
                     return;
                 }
-                user.setPhoneNumber(Long.parseLong((txtPhoneNumber.getText().toString())));
 
+                phoneWithCode = Long.parseLong(ccp.getSelectedCountryCodeAsInt()+txtPhoneNumber.getText().toString());
                 user.setCountryCode(String.valueOf(ccp.getSelectedCountryCodeAsInt()));
+                user.setPhoneNumber(phoneWithCode);
+
+
 
 
                 if (listener != null){
