@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class MainActivity extends AppCompatActivity implements LogInListener,SignUpListener {
@@ -15,12 +16,20 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
     private boolean isLogin = false;
-
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "test");
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "test");
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         // Create the tool bar and The layout for the Tabs
         tableLayout = (TabLayout) findViewById(R.id.tabLayout);

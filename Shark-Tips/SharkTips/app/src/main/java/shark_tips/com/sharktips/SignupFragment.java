@@ -16,6 +16,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.internal.Logger;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.hbb20.CountryCodePicker;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -50,7 +53,8 @@ public class SignupFragment extends Fragment {
     private  boolean isLogin = false;
     private SignUpListener listener;
     private long phoneWithCode;
-
+    private FirebaseAnalytics analytics;
+    private AppEventsLogger logger;
 
 
     public void setListener(SignUpListener listener) {
@@ -73,6 +77,8 @@ public class SignupFragment extends Fragment {
         ccp = (CountryCodePicker) view.findViewById(R.id.ccp);
         txtCountry = (TextView) view.findViewById(R.id.txtCountry);
 
+        analytics = FirebaseAnalytics.getInstance(getContext());
+        logger = AppEventsLogger.newLogger(getContext());
 
         // Get the Country Code from Country Piker and store the value in getCountryCode.
         getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
@@ -219,7 +225,12 @@ public class SignupFragment extends Fragment {
                         @Override
                         protected void onPostExecute(String result) {
                             super.onPostExecute(result);
-
+                            if (result.equals("ok")) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString(FirebaseAnalytics.Param.SIGN_UP_METHOD,"regular");
+                                analytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle);
+                                logger.logEvent("Register seccess");
+                            }
                         }
                     }.execute();
 

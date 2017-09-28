@@ -40,6 +40,7 @@
 
         <activity android:name=".Notification" />
         <activity android:name=".ShowOffers" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
 
 </manifest>
