@@ -105,11 +105,11 @@ public class ExpandListAdapter extends BaseAdapter {
 
         row.lblTime.setText(String.valueOf(item.getTime()) + " " + item.getHuersDays() + " ago");
         row.lblCurrency.setText(item.getCurrency());
-        row.lblPrice.setText(String.valueOf(item.getPrice()) + "00");
-        row.lblSellStop.setText(convertValues(item.getSellStop()) + "00");
-        row.lblsl.setText(String.valueOf(item.getPrice()) + "00");
-        row.lbltp1.setText(convertValues(item.getTp1()) + "00");
-        row.lbltp2.setText(convertValues(item.getTp2()) + "00");
+        row.lblPrice.setText(String.valueOf(item.getPrice()));
+        row.lblSellStop.setText(convertValues(item.getSellStop()));
+        row.lblsl.setText(String.valueOf(item.getPrice()));
+        row.lbltp1.setText(convertValues(item.getTp1()));
+        row.lbltp2.setText(convertValues(item.getTp2()));
         row.lblNote.setText(item.getNote());
         row.lbShowsl.setText(item.getNameOfSl());
 
@@ -122,6 +122,6 @@ public class ExpandListAdapter extends BaseAdapter {
         if (value == -1.0 || value == 0){
             return "none";
         }
-        return String.valueOf(value);
+        return String.valueOf(value + "00");
     }
 }
