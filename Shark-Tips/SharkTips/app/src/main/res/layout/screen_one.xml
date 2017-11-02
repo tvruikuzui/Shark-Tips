@@ -37,16 +37,6 @@
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
 
-        <TextView
-            android:text="you find one."
-            android:paddingLeft="35dp"
-            android:paddingRight="5dp"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
 
         <ImageView
             android:layout_marginTop="10dp"

@@ -50,7 +50,7 @@ public class Performance extends Fragment {
                         InputStream inputStream = null;
                         String result = "";
                         try {
-                            URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]+"/performance/"+performanceUpdate);
+                            URL url = new URL("http://35.202.187.67/shark2/admin/"+params[0]+"/"+params[1]+"/performance/"+performanceUpdate);
                             urlConnection = (HttpURLConnection) url.openConnection();
                             urlConnection.setRequestMethod("PUT");
                             urlConnection.setUseCaches(false);

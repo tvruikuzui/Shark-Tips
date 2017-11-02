@@ -80,8 +80,8 @@
 
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
-        app:defaultNameCode="IL"
-        app:defaultCode="972"
+        app:defaultNameCode="GB"
+        app:defaultCode="44"
         android:layout_width="0dp"
         android:paddingTop="15dp"
         android:layout_weight="1"

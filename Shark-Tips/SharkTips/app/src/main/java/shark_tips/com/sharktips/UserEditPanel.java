@@ -76,7 +76,7 @@ public class UserEditPanel extends DialogFragment {
                             InputStream inputStream = null;
                             String result = null;
                             try {
-                                URL url = new URL("http://35.184.144.226/shark2/admin/"
+                                URL url = new URL("http://35.202.187.67/shark2/admin/"
                                         + params[0]
                                         + "/"
                                         + params[1]

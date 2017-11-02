@@ -32,7 +32,7 @@ public class MainHome extends Fragment {
 
     private GifTextView gifTextView;
     private ImageView imgShowAd;
-    private static final String BASE_URL = "http://35.184.144.226/shark2/";
+    private static final String BASE_URL = "http://35.202.187.67/shark2/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {

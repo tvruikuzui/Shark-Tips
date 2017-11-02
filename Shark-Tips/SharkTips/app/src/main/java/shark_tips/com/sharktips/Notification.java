@@ -26,7 +26,7 @@ public class Notification extends AppCompatActivity {
     private ExpandListAdapter adapter;
     private List<Signal> signals;
     private Signal signal;
-    private static final String BASE_URL = "http://35.184.144.226/shark2/signals/";
+    private static final String BASE_URL = "http://35.202.187.67/shark2/signals/";
 
 
     @Override

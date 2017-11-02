@@ -48,7 +48,7 @@ public class CheckPaidUsers {
                 InputStream inputStream = null;
                 StringBuilder stringBuilder = new StringBuilder();
                 try {
-                    URL url = new URL("http://35.184.144.226/shark2/admin/"+params[0]+"/"+params[1]+"/");
+                    URL url = new URL("http://35.202.187.67/shark2/admin/"+params[0]+"/"+params[1]+"/");
                     urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("GET");
                     urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");

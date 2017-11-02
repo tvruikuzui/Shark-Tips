@@ -36,7 +36,7 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
     private ExpandListAdapter adapter;
     private List<Signal> signals;
     private Signal signal;
-    private static final String BASE_URL = "http://35.184.144.226/shark2/signals/";
+    private static final String BASE_URL = "http://35.202.187.67/shark2/signals/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -156,6 +156,8 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
     //new method
     private void wereToAddSignals(Signal signal,List<Signal>list) {
         int hoursPassForSignals = (int) (System.currentTimeMillis() - signal.getTs()) / 3600000;
+        if (hoursPassForSignals < 0)
+            hoursPassForSignals *= -1;
         if (hoursPassForSignals > 24 && hoursPassForSignals < 48){
             signal.setTime(hoursPassForSignals / 24);
             signal.setHuersDays("day");

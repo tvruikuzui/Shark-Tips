@@ -26,6 +26,7 @@ public class Welcome extends AppCompatActivity {
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
+    private boolean isLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,29 @@ public class Welcome extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isLogin = MyHelper.getDataFromSharedPreferences(this);
+        if (isLogin == true){
+            if (getIntent().hasExtra("click_action")){
+                Intent intent = new Intent(this,Notification.class);
+                startActivity(intent);
+                finish();
+
+            }else {
+                moveToHomeActivity();
+            }
+
+        }
+    }
+
+    private void moveToHomeActivity(){
+        Intent intent = new Intent(this,Home.class);
+        startActivity(intent);
+        finish();
     }
 
     private void addBottomDots(int currentPage) {

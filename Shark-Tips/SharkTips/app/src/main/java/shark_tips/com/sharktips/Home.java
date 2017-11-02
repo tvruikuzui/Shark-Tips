@@ -48,8 +48,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addWindow(new MainHome(),"Home");
         adapter.addWindow(new Signals(),"Signals");
-        Offers offers = new Offers();
-        adapter.addWindow(offers,"Offers");
+    //    Offers offers = new Offers();
+          NewOffersPage newOffersPage = new NewOffersPage();
+        adapter.addWindow(newOffersPage,"Offers");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -212,7 +213,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 InputStream inputStream = null;
                 StringBuilder stringBuilder = new StringBuilder();
                 try {
-                    URL url = new URL("http://35.184.144.226/shark2/"+ params[0] + "/" );
+                    URL url = new URL("http://35.202.187.67/shark2/"+ params[0] + "/" );
                     urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("GET");
                     urlConnection.setUseCaches(false);

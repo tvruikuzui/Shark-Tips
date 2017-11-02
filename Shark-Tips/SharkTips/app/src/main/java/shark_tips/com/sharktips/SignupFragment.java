@@ -43,7 +43,9 @@ import java.net.URL;
  */
 public class SignupFragment extends Fragment {
 
-    public static final String BASE_URL = "http://35.184.144.226/shark2/";
+    // new ip 35.202.187.67
+
+    public static final String BASE_URL = "http://35.202.187.67/shark2/";
     private Button btnRegister;
     private MaterialEditText txtName,txtLastName,txtEmail,txtPhoneNumber,txtPassword;
     private TextView txtCountry;

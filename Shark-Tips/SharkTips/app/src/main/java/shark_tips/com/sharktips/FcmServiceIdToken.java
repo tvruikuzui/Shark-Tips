@@ -49,7 +49,7 @@ public class FcmServiceIdToken extends FirebaseInstanceIdService {
                 InputStream inputStream = null;
                 String result = "";
                 try {
-                    URL url = new URL("http://35.184.144.226/shark2/token/" + params[0] + "/");
+                    URL url = new URL("http://35.202.187.67/shark2/token/" + params[0] + "/");
                     urlConnection = (HttpURLConnection) url.openConnection();
                     urlConnection.setRequestMethod("POST");
                     urlConnection.setUseCaches(false);
