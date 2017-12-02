@@ -68,10 +68,10 @@ public class Notification extends AppCompatActivity {
                                             ,signalObject.getInt("id")
                                             ,signalObject.getString("currency")
                                             ,signalObject.getBoolean("buy")
-                                            ,signalObject.getDouble("price")
-                                            ,signalObject.getDouble("sellStop")
-                                            ,signalObject.getDouble("tp1")
-                                            ,signalObject.getDouble("tp2")
+                                            ,signalObject.getString("price")
+                                            ,signalObject.getString("sellStop")
+                                            ,signalObject.getString("tp1")
+                                            ,signalObject.getString("tp2")
                                             ,signalObject.getString("not")
                                             ,signalObject.getString("nameOfSl"));
                             signal.setTs(signalObject.getLong("ts"));
@@ -111,6 +111,8 @@ public class Notification extends AppCompatActivity {
     //new method
     private void wereToAddSignals(Signal signal) {
         int hoursPassForSignals = (int) (System.currentTimeMillis() - signal.getTs()) / 3600000;
+        if (hoursPassForSignals < 0)
+            hoursPassForSignals *= -1;
         if (hoursPassForSignals > 24 && hoursPassForSignals < 48){
             signal.setTime(hoursPassForSignals / 24);
             signal.setHuersDays("day");

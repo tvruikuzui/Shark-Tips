@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -17,7 +17,7 @@
             android:src="@drawable/shark" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/slide_1_title"
             android:gravity="center_horizontal"
@@ -27,13 +27,21 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="left"
             android:paddingLeft="20dp"
             android:paddingRight="5dp"
             android:text="@string/slide_desc"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/slide_desc" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="33dp"
+            android:text="you find one."
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
 

@@ -91,15 +91,15 @@ public class Signals extends Fragment implements EditSignalsAdmin.UpdateSignalAl
                                             ,signalObject.getInt("id")
                                             ,signalObject.getString("currency")
                                             ,signalObject.getBoolean("buy")
-                                            ,signalObject.getDouble("price")
-                                            ,signalObject.getDouble("sellStop")
-                                            ,signalObject.getDouble("tp1")
-                                            ,signalObject.getDouble("tp2")
+                                            ,signalObject.getString("price")
+                                            ,signalObject.getString("sellStop")
+                                            ,signalObject.getString("tp1")
+                                            ,signalObject.getString("tp2")
                                             ,signalObject.getString("not")
                                             ,signalObject.getString("nameOfSl"));
                             signal.setTs(signalObject.getLong("ts"));
                             if (signal.isOpen())
-                            wereToAddSignals(signal,signals);
+                                wereToAddSignals(signal,signals);
                             else
                                 wereToAddSignals(signal,close);
                         }

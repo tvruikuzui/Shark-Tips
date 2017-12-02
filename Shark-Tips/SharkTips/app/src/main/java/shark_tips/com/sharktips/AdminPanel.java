@@ -15,6 +15,11 @@ public class AdminPanel extends AppCompatActivity {
 
 
     private TextView lblChooseAction;
+    private UsersManager usersManager;
+    private SignalsManager signalsManager;
+    private Messages messages;
+    private Performance performance;
+    private AdminPicker adminPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,33 +27,38 @@ public class AdminPanel extends AppCompatActivity {
         setContentView(R.layout.activity_admin_panel);
 
         lblChooseAction = (TextView) findViewById(R.id.lblChooseAction);
+        usersManager = new UsersManager();
+        signalsManager = new SignalsManager();
+        messages = new Messages();
+        performance = new Performance();
+        adminPicker = new AdminPicker();
 
 
     }
 
     public void openUsers(View view) {
-        UsersManager usersManager = new UsersManager();
+
         createFragment(usersManager);
     }
 
     public void openSignals(View view) {
-         SignalsManager signalsManager = new SignalsManager();
+
          createFragment(signalsManager);
     }
 
     public void openMsg(View view) {
-        Messages messages = new Messages();
+
         createFragment(messages);
 
     }
 
     public void openTreds(View view) {
-        Performance performance = new Performance();
+
         createFragment(performance);
     }
 
     public void openAdminPicker(View view) {
-        AdminPicker adminPicker = new AdminPicker();
+
         createFragment(adminPicker);
     }
 

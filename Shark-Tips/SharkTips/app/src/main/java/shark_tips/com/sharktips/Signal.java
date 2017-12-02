@@ -15,10 +15,10 @@ public class Signal implements Comparable<Signal> {
 
     String currency,nameOfSl;
     boolean isBuy;
-    double price;
-    double sellStop;
-    double tp1;
-    double tp2;
+    String price;
+    String sellStop;
+    String tp1;
+    String tp2;
     String note;
     boolean isOpen;
     Integer id;
@@ -31,7 +31,7 @@ public class Signal implements Comparable<Signal> {
     public Signal() {
     }
 
-    public Signal(boolean isOpen, int time,int id, String currency, boolean isBuy, double price, double sellStop, double tp1, double tp2, String note, String nameOfSl) {
+    public Signal(boolean isOpen, int time,int id, String currency, boolean isBuy, String price, String sellStop, String tp1, String tp2, String note, String nameOfSl) {
         this.isOpen = isOpen;
         this.time = time;
         this.id = id;
@@ -93,35 +93,35 @@ public class Signal implements Comparable<Signal> {
         isBuy = buy;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public double getSellStop() {
+    public String getSellStop() {
         return sellStop;
     }
 
-    public void setSellStop(double sellStop) {
+    public void setSellStop(String sellStop) {
         this.sellStop = sellStop;
     }
 
-    public double getTp1() {
+    public String getTp1() {
         return tp1;
     }
 
-    public void setTp1(double tp1) {
+    public void setTp1(String tp1) {
         this.tp1 = tp1;
     }
 
-    public double getTp2() {
+    public String getTp2() {
         return tp2;
     }
 
-    public void setTp2(double tp2) {
+    public void setTp2(String tp2) {
         this.tp2 = tp2;
     }
 

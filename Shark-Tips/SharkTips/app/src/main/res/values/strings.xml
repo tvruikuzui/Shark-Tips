@@ -16,7 +16,7 @@
     <string name="start">GOT IT</string>
 
     <string name="slide_1_title">Thank you for downloading Shark Tips new app.</string>
-    <string name="slide_desc">After signing up, you will \n • Get a notification for each signal. \n • Then, simply contact your trader to place the trade. \n • If you do not have a good trader yet, we will help you find one.</string>
+    <string name="slide_desc">After signing up, you will \n • Get a notification for each signal. \n • Then, simply contact your trader to place the trade. \n • If you do not have a good trader yet, we will help</string>
 
 
     <string name="slide_2_title">Thanks to thorough market analysis, predictive software, and trading algorithms our team is able to send signals with high probability of returns followed by tens of thousands of traders worldwide since 2014.</string>
@@ -26,6 +26,7 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
-    <string name="broker_trade"> \n • FULLY REGULATED BY CYSEC, RELIABLE TRUSTED BROKER.\n • FIXED SPREADS, WITH NO COMMISSION.\n • $25 GIFT UPON REGISTRATION (NO DEPOSIT REQUIRED).\n • MINIMUM DEPOSIT 100$.</string>
-
+    <string name="forex_grand"> \n • BONUS UP TO 100%.\n • RISK-FREE FOR THE FIRST 2 WEEKS.\n • PROFESSIONAL DEALER SUPPORT AND TRAINING.\n • TRADE WITH A PERSONAL ANALYST.\n • PERSONAL ACCOUNT MANAGER.\n • MINIMUM DEPOSIT 250$.</string>
+    <string name="ava_trade"> \n • 30% BONUS ON DEPOSIT.\n • SHARP-TRADER PREMIUM CONTENT (VIDEO EDUCATION).\n • TRADING OPPORTUNITY WITH AUTOCHARTIST AUTOMATED TECHNICAL ANALYSIS.\n • MINIMUM DEPOSIT 250$.</string>
+    <string name="trade"> \n • FULLY REGULATED BY CYSEC, RELIABLE TRUSTED BROKER.\n • FIXED SPREADS, WITH NO COMMISSION.\n • $25 GIFT UPON REGISTRATION (NO DEPOSIT REQUIRED).\n • MINIMUM DEPOSIT 100$.</string>
 </resources>

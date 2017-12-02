@@ -84,6 +84,7 @@ public class SignupFragment extends Fragment {
 
         // Get the Country Code from Country Piker and store the value in getCountryCode.
         getCountryCode = String.valueOf(ccp.getDefaultCountryCodeAsInt());
+
         txtCountry.setText(countryName);
         // Add to the EditText the Country Code that was Selected.
         ccp.registerCarrierNumberEditText(txtPhoneNumber);
@@ -247,5 +248,6 @@ public class SignupFragment extends Fragment {
 
         return view;
     }
+
 
 }
