@@ -48,9 +48,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addWindow(new MainHome(),"Home");
         adapter.addWindow(new Signals(),"Signals");
-    //    Offers offers = new Offers();
+        Offers offers = new Offers();
           NewOffersPage newOffersPage = new NewOffersPage();
-        adapter.addWindow(newOffersPage,"Offers");
+        adapter.addWindow(offers,"Offers");
+        adapter.addWindow(newOffersPage,"Brokers");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 

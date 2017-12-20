@@ -97,7 +97,8 @@ public class Welcome extends AppCompatActivity {
         isLogin = MyHelper.getDataFromSharedPreferences(this);
         if (isLogin == true){
             if (getIntent().hasExtra("click_action")){
-                Intent intent = new Intent(this,Notification.class);
+                Intent intent = new Intent(this,MainActivity.class);
+                intent.putExtra("go","pnt");
                 startActivity(intent);
                 finish();
 

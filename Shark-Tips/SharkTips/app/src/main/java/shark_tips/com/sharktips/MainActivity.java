@@ -52,16 +52,14 @@ public class MainActivity extends AppCompatActivity implements LogInListener,Sig
     protected void onStart() {
         super.onStart();
         isLogin = MyHelper.getDataFromSharedPreferences(this);
-        if (isLogin == true){
-           if (getIntent().hasExtra("click_action")){
-                Intent intent = new Intent(this,Notification.class);
-                startActivity(intent);
-                finish();
+        if (getIntent().hasExtra("click_action") && isLogin || getIntent().hasExtra("go") && isLogin){
+            Intent intent = new Intent(this,Notification.class);
+            startActivity(intent);
+            finish();
 
-            }else {
+        }
+        if (isLogin){
                moveToHomeActivity();
-           }
-
         }
     }
 
